@@ -14,6 +14,10 @@ import HelloWorld from './components/HelloWorld.vue'
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
       </nav>
+
+      <h1 class="text-3xl font-bold underline">
+        This is a test for Tailwind
+      </h1>
     </div>
   </header>
 
