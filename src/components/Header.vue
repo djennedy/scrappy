@@ -1,53 +1,131 @@
-<script setup>
+<script>
+import SearchBar from "./SearchBar.vue";
 
+export default {
+  components: {
+    SearchBar,
+  },
+  data() {
+    return {
+      showSearchBar: true,
+      username: "Username",
+    };
+  },
+  methods: {
+    goHome() {
+      this.$router.push({ name: "home" });
+    },
+  }
+};
 </script>
 
 <template>
   <header>
     <div class="header">
-        <div class="text-black text-lg font-bold">
-            Scrappy
-        </div>
-        <div class="dropdown-btn bg-slate-200">
-            <img class="mr-5 rounded-full" src="https://via.placeholder.com/30" alt="user image"/>
+      <div class="header-container ">
+        <div class="scrappy text-black text-lg font-bold cursor-pointer" @click="goHome">Scrappy</div>
+      </div>
+      <div class="header-container middle">
+        <SearchBar v-if="showSearchBar" />
+      </div>
+      <div class="header-container">
+        <div class="dropdown-btn bg-slate-200 w-100px">
+          <img
+            class="mr-2 rounded-full"
+            src="https://via.placeholder.com/20"
+            alt="user image"
+          />
+          <div class="username">
             <p class="text-black font-semibold">
-                Alexis Lazcano
+              {{ username }}
             </p>
+            <img
+              class="ml-1"
+              src="https://via.placeholder.com/10"
+              alt="dropdown icon"
+            />
+          </div>
         </div>
+      </div>
     </div>
-
   </header>
- 
 </template>
 
 <style scoped>
-    header {
-        background-color: white;
-        height: 75px;
-        display: flex;
-        justify-content: center;
-        top: 0;
-        z-index: 1;
-        position: fixed;
-        width: 100%;
-    }
-    .header {
-        height: 100%;
-        width: 100%;
-        max-width: 1000px;
-        background-color: #fff;
-        display: flex;
-        justify-content: space-between;
-        padding: 0 1rem;
-        align-items: center;
-        
-    }
-    .dropdown-btn {
-        display: flex;
-        align-items: center;
-        padding: 8px 10px;
-        border-radius: 5px;
-        
-    }
+.middle {
+  max-width: 675px;
+  width: 100%;
+}
+.header-container {
+  /* border: 1px solid red; */
+  display: flex;
 
+  justify-content: center;
+}
+.header-container:first-child {
+  margin-right: auto;
+  justify-content: flex-start;
+  flex: 1;
+}
+.header-container:last-child {
+  flex: 1;
+  margin-left: auto;
+  justify-content: flex-end;
+}
+
+header {
+  background-color: white;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+}
+
+.dropdown-btn {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px;
+  border-radius: 5px;
+  height: 30px;
+  width: 100%;
+  max-width: 120px;
+  font-size: 11px;
+  cursor: pointer;
+  align-items: center;
+}
+.dropdown-btn > img {
+  height: 20px;
+  width: auto;
+}
+.header {
+  height: 100%;
+  width: 100%;
+  max-width: 1000px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  align-items: center;
+}
+
+.username {
+  /* border: 1px solid red; */
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-shrink: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+.username p {
+  flex-shrink: 1;
+  font-size: 11px;
+  margin: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
 </style>
