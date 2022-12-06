@@ -104,4 +104,72 @@ header {
 }
 
 
+  justify-content: center;
+}
+.header-container:first-child {
+  margin-right: auto;
+  justify-content: flex-start;
+  flex: 1;
+}
+.header-container:last-child {
+  flex: 1;
+  margin-left: auto;
+  justify-content: flex-end;
+}
+
+header {
+  background-color: white;
+  height: 75px;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  z-index: 1;
+  position: fixed;
+  width: 100%;
+}
+
+.dropdown-btn {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px;
+  border-radius: 5px;
+  height: 30px;
+  width: 100%;
+  max-width: 120px;
+  font-size: 11px;
+  cursor: pointer;
+  align-items: center;
+}
+.dropdown-btn > img {
+  height: 20px;
+  width: auto;
+}
+.header {
+  height: 100%;
+  width: 100%;
+  max-width: 1000px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  align-items: center;
+}
+
+.username {
+  /* border: 1px solid red; */
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-shrink: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+.username p {
+  flex-shrink: 1;
+  font-size: 11px;
+  margin: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
 </style>
