@@ -29,7 +29,7 @@ class TermInfo {
 
 const getDepartmentListFromTerm = async (year, term) => {
     let url = `${BASE_URL}${year}/${term}/`;
-    return await fetch(url)
+    return fetch(url)
         .then(response => {
             if (response.status == 404) {
                 throw new Error ("Error: Invalid year or term!")
@@ -66,7 +66,7 @@ const getCourseSectionListFromCourseNum = async (courseNumber, department, year,
 
 const getTermInfoFromCourseSection = async (courseSection, courseNumber, department, year, term) => {
     let url = `${BASE_URL}${year}/${term}/${department}/${courseNumber}/${courseSection}`;
-    return await fetch(url)
+    return fetch(url)
         .then(response => response.json())
         .then(result => new TermInfo(
             department, // course department eg: CMPT
@@ -94,7 +94,7 @@ const getTermInfo = async (termString, deptList) => {
 
     getDepartmentListFromTerm(year, term).catch(error => {console.log(error); throw error}) // Checking for wrong year/term
     
-    return await Promise.all(deptList.map(dept => getCourseListFromDepartment(dept, year, term)))
+    return Promise.all(deptList.map(dept => getCourseListFromDepartment(dept, year, term)))
         .then(coursesByDept => Promise.all(coursesByDept.filter(courses => Array.isArray(courses)).flat(1)
             .map(course => getCourseSectionListFromCourseNum(course["value"], course["dept"], year, term))))
         .then(courseSectionsByNumber => Promise.all(courseSectionsByNumber.flat(1).filter(courseSection => courseSection["classType"] == 'e')
