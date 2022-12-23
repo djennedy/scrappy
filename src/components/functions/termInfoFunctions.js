@@ -65,19 +65,41 @@ const getCourseSectionListFromCourseNum = async (courseNumber, department, year,
 }
 
 const getTermInfoFromCourseSection = async (courseSection, courseNumber, department, year, term) => {
+
+    // Helper function to get course name from result
+    // Returns the special topic name if it exists
+    // If not, return the course name
+    // Eg: For CMPT 419, it returns "Affective Programming" instead of "Special Topics in Artificial Intelligence"
+    // Eg: For CMPT 120, it returns "Intro to Computer Science and Programming"
+    const getCourseName = (courseSectionResult) => {
+        return courseSectionResult["info"]["specialTopic"].length!=0 ?
+            courseSectionResult["info"]["specialTopic"] : courseSectionResult["info"]["title"];
+    }
+
+    // Helper function to get the first instructor's name from the result
+    // Returns full name if the name exists, else return empty string
+    const getFirstInstructorName = (courseSectionResult) => {
+        return courseSectionResult.hasOwnProperty("instructor") ?
+            courseSectionResult["instructor"][0]["firstName"] + " " + courseSectionResult["instructor"][0]["lastName"] : ""
+    }
+
+    // Helper function to get the campus of the course
+    // Returns campus location (Burnaby, Vancouver, or Surrey) if information is available, else return empty string
+    const getCampus = (courseSectionResult) => {
+        return courseSectionResult.hasOwnProperty("courseSchedule") && courseSectionResult["courseSchedule"][0].hasOwnProperty("campus") ?
+            courseSectionResult["courseSchedule"][0]["campus"] : ""
+    }
+
     let url = `${BASE_URL}${year}/${term}/${department}/${courseNumber}/${courseSection}`;
     return fetch(url)
         .then(response => response.json())
         .then(result => new TermInfo(
             department, // course department eg: CMPT
             courseNumber, // course number eg: 120
-            result["info"]["specialTopic"].length!=0 ?                // if the course has a special topic, use that as the course name
-                result["info"]["specialTopic"] : result["info"]["title"],   // Else, use the regular course name, eg: Introduction to Computer Science and Programming I
+            getCourseName(result),   //  course name or special topic, eg: "Introduction to Computer Science and Programming" or "Affective Computing"
             courseSection, // course section, eg: D100
-            result.hasOwnProperty("instructor") ?
-                result["instructor"][0]["firstName"] + " " + result["instructor"][0]["lastName"] : "", // instructor full name, eg: Angelica Lim TODO: What to do with multiple instructors?
-            result.hasOwnProperty("courseSchedule") && result["courseSchedule"][0].hasOwnProperty("campus") ?
-                result["courseSchedule"][0]["campus"] : "", // campus, eg: Burnaby
+            getFirstInstructorName(result), // instructor full name, eg: Angelica Lim, shows the first instructor if there's multiple instructors
+            getCampus(result), // campus, eg: Burnaby
             getWQBDesignation(result["info"]["designation"]), // WQB, eg: W, Q, B-Hum/Soc/Sci
             result["info"]["units"], // Credits, eg: 3
             result["info"]["term"], // Term, eg: Spring 2023
