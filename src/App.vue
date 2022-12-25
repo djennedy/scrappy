@@ -3,7 +3,7 @@ import CoursePage from "./components/coursePage/CoursePage.vue";
 </script>
 
 <template>
-  <CoursePage/>
+  <CoursePage />
 </template>
 
 <style scoped></style>
