@@ -1,7 +1,20 @@
 import { BASE_URL, BASE_OUTLINE_URL , parseInput, getWQBDesignation} from "./commonFunctions.js";
 
-// Term info class, contains information for term info cards
+/** Class representing term information, contains information for term info cards in term page */ 
 class TermInfo {
+    /**
+     * Create a new TermInfo object
+     * @param {string} courseDept Course Department, eg: CMPT
+     * @param {string} courseNumber Course Number, eg: 120
+     * @param {string} courseName Course Name , eg: Introduction to Computer Science and Programming
+     * @param {string} courseSection Course Section, eg: D100
+     * @param {string} instructor Full name of the first instructor for the course, eg: Hazra Imran
+     * @param {string} campus Campus name, eg: Burnaby
+     * @param {string} wqb WQB Designation, eg: B-Sci/Q
+     * @param {string} credits Credit value of the course, eg: 3
+     * @param {string} term Term which the course was offered, eg: Spring 2023
+     * @param {string} outlinePath URL string of the link to the official SFU course outline, eg: http://www.sfu.ca/outlines.html?2023/spring/cmpt/120/d100
+     */
     constructor(
         courseDept,
         courseNumber,
@@ -107,10 +120,13 @@ const getTermInfoFromCourseSection = async (courseSection, courseNumber, departm
         ))
 }
 
-// Retrieves all courses in a given subject and term 
-// IMPORTANT NOTE: This function cascades errors, please do error handling when calling this function with a .catch block
-// Input: string of term + year (eg: "Spring 2023", "2022 Fall"), list of departments to search (eg: "IAT", "cmpt")
-// Output: A promise of lists containing information for term cards in the term page
+/** 
+ * Retrieves all courses in a given subject and term 
+ * IMPORTANT NOTE: This function cascades errors, please do error handling when calling this function with a .catch block
+ * @param {string} termString - string of term + year (eg: "Spring 2023", "2022 Fall")
+ * @param {string} deptList - list of departments to search (eg: "IAT", "cmpt")
+ * @returns {Promise<TermInfo>} A promise of lists containing information for term cards in the term page 
+ */ 
 const getTermInfo = async (termString, deptList) => {
     let [term, year] = parseInput(termString);
 
