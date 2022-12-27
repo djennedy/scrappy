@@ -103,7 +103,7 @@ header {
 .header {
   height: 100%;
   width: 100%;
-  max-width: 1000px;
+  max-width: var(--page-width);
   background-color: #fff;
   display: flex;
   justify-content: space-between;
