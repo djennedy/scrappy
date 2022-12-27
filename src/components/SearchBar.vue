@@ -9,7 +9,7 @@ export default {
   methods: {
     searchText() {
       console.log(this.search);
-      this.$router.push({ name: "about" });
+      this.$router.push({ name: this.search });
     },
   },
 };
