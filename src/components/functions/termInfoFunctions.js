@@ -36,7 +36,7 @@ class TermInfo {
         this.wqb = wqb;
         this.credits = credits;
         this.term = term;
-        this.link = `${BASE_OUTLINE_URL}/${outlinePath}`
+        this.link = `${BASE_OUTLINE_URL}${outlinePath}`
     }
 }
 
