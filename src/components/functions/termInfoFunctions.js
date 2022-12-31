@@ -93,7 +93,7 @@ const getTermInfoFromCourseSection = async (courseSection, courseNumber, departm
     // Returns full name if the name exists, else return empty string
     const getFirstInstructorName = (courseSectionResult) => {
         return courseSectionResult.hasOwnProperty("instructor") ?
-            courseSectionResult["instructor"][0]["firstName"] + " " + courseSectionResult["instructor"][0]["lastName"] : ""
+            courseSectionResult["instructor"][0]["commonName"] + " " + courseSectionResult["instructor"][0]["lastName"] : ""
     }
 
     // Helper function to get the campus of the course
