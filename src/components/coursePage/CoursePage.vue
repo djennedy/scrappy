@@ -1,9 +1,11 @@
 <script>
 import InstructorsCard from "./components/InstructorsCard.vue";
+import PrevSemesterCard from "./components/PrevSemesterCard.vue";
 
 export default {
   components: {
     InstructorsCard,
+    PrevSemesterCard,
   },
   data() {
     return {
@@ -60,11 +62,12 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-row flex-wrap justify-start gap-4">
-    <InstructorsCard
+  <div class="flex flex-col items-center gap-4">
+    <!-- <InstructorsCard
       v-for="instructor in instructors"
       :key="instructor.id"
       :instructor="instructor"
-    />
+    /> -->
+    <PrevSemesterCard />
   </div>
 </template>
