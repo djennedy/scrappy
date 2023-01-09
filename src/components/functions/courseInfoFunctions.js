@@ -149,6 +149,16 @@ class InstructorCampus{
                 courseInfo["courseSchedule"][0]["campus"] : ""
         );
     }
+    
+    static removeDuplicatesFromList = (instructorCampusList) => {
+        let result = [];
+        for (var i = 0; i < instructorCampusList.length; i++) {
+            if (result.findIndex(e => e.instructor === instructorCampusList[i].instructor && e.campus === instructorCampusList[i].campus) == -1) {
+                result.push(instructorCampusList[i]);
+            }
+        }
+        return result;
+    }
 }
 
 /**
@@ -174,7 +184,7 @@ class PreviousSemestersCardInfo {
     static getFromCourseInfoAndICList = (courseInfo, instructorCampusList) => {
         return new PreviousSemestersCardInfo(
             courseInfo["info"]["term"],
-            instructorCampusList,
+            InstructorCampus.removeDuplicatesFromList(instructorCampusList),
             `${BASE_OUTLINE_URL}${courseInfo["info"]["outlinePath"]}`
         )
     }
