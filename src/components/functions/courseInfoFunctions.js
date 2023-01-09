@@ -143,7 +143,7 @@ class InstructorCampus{
         return new InstructorCampus(
             // If instructor exists, reduce the array of instructors to be "commonName1 lastName1 & commonName2 lastName2", else return empty string
             courseInfo.hasOwnProperty("instructor") ? 
-                courseInfo["instructor"].reduce((acc, curr) => acc + "& " + curr["commonName"] + " " + curr["lastName"], "").slice(2) : "",
+                courseInfo["instructor"].reduce((acc, curr) => acc + " & " + curr["commonName"] + " " + curr["lastName"], "").slice(3) : "",
             // If campus exists, return the campus name as a string, eg: "Burnaby", else return empty string
             courseInfo.hasOwnProperty("courseSchedule") && courseInfo["courseSchedule"][0].hasOwnProperty("campus") ?
                 courseInfo["courseSchedule"][0]["campus"] : ""
