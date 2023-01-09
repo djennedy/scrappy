@@ -1,6 +1,6 @@
 const BASE_URL = "https://www.sfu.ca/bin/wcm/course-outlines?";
-
-const BASE_OUTLINE_URL = "https://www.sfu.ca/outlines.html?"
+const BASE_OUTLINE_URL = "https://www.sfu.ca/outlines.html?";
+const BASE_CALENDAR_URL = "https://www.sfu.ca/students/calendar/";
 
 // Parses a course number or term and year to it's letters and numbers
 // Assumes correct input and in term-year order

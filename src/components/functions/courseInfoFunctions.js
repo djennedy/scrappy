@@ -182,10 +182,12 @@ class PreviousSemestersCardInfo {
     }
 
     static getFromCourseInfoAndICList = (courseInfo, instructorCampusList) => {
+        let [term, year] = parseInput(courseInfo["info"]["term"]);
+        let [dept, number] = parseInput(courseInfo["info"]["name"].slice(0, -5));
         return new PreviousSemestersCardInfo(
             courseInfo["info"]["term"],
             InstructorCampus.removeDuplicatesFromList(instructorCampusList),
-            `${BASE_OUTLINE_URL}${courseInfo["info"]["outlinePath"]}`
+            `${BASE_CALENDAR_URL}${year}/${term}/courses/${dept}/${number}`
         )
     }
 }
