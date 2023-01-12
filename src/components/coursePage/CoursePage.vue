@@ -3,13 +3,15 @@ import InstructorsCard from "./components/InstructorsCard.vue";
 import PrevSemesterCard from "./components/PrevSemesterCard.vue";
 import GoBack from "./components/GoBack.vue";
 import CourseInfo from  "./components/CourseInfo.vue";
+import SaveCourse from "./components/SaveCourse.vue";
 
 export default {
   components: {
     InstructorsCard,
     PrevSemesterCard,
     GoBack,
-    CourseInfo
+    CourseInfo,
+    SaveCourse,
   },
   data() {
     return {
@@ -84,10 +86,12 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-wrap items-center gap-4">
+  <!-- <div class="flex flex-wrap items-center gap-4"> -->
+  <div>
     <GoBack />
-    <div>
+    <div class="flex flex-row items-center justify-between pt-[19px]">
       <CourseInfo />
+      <SaveCourse />
     </div>
     <!-- <InstructorsCard
       v-for="instructor in instructors"
