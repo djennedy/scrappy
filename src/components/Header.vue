@@ -23,28 +23,22 @@ export default {
   <header>
     <div class="header">
       <div class="header-container ">
-        <div class="scrappy text-black text-lg font-bold cursor-pointer" @click="goHome">Scrappy</div>
+        <div class="scrappy text-black text-4xl font-bold cursor-pointer" @click="goHome">Scrappy</div>
       </div>
       <div class="header-container middle">
         <SearchBar v-if="showSearchBar" />
       </div>
       <div class="header-container">
-        <div class="dropdown-btn bg-slate-200 w-100px">
+        <div class="dropdown-btn">
           <img
-            class="mr-2 rounded-full"
-            src="https://via.placeholder.com/20"
+            src="../assets/svg/account_circle.svg"
+            alt="dropdown icon"
+          />
+          <img
+            src="../assets/svg/arrow_dropdown.svg"
             alt="user image"
           />
-          <div class="username">
-            <p class="text-black font-semibold">
-              {{ username }}
-            </p>
-            <img
-              class="ml-1"
-              src="https://via.placeholder.com/10"
-              alt="dropdown icon"
-            />
-          </div>
+          
         </div>
       </div>
     </div>
@@ -57,7 +51,6 @@ export default {
   width: 100%;
 }
 .header-container {
-  /* border: 1px solid red; */
   display: flex;
 
   justify-content: center;
@@ -86,18 +79,17 @@ header {
 
 .dropdown-btn {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   padding: 0 5px;
   border-radius: 5px;
   height: 30px;
-  width: 100%;
   max-width: 120px;
   font-size: 11px;
   cursor: pointer;
   align-items: center;
 }
 .dropdown-btn > img {
-  height: 20px;
+  height: 30px;
   width: auto;
 }
 .header {
@@ -111,21 +103,5 @@ header {
   align-items: center;
 }
 
-.username {
-  /* border: 1px solid red; */
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  flex-shrink: 1;
-  align-items: center;
-  justify-content: space-between;
-}
-.username p {
-  flex-shrink: 1;
-  font-size: 11px;
-  margin: 0;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap;
-}
+
 </style>
