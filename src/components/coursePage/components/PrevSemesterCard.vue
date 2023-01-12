@@ -21,9 +21,15 @@ export default {
         SEM
       </p>
     </div>
-    <p>Hazra Imran</p>
-    <p>Burnaby</p>
-    <p>Harinder Khangura</p>
-    <p>Surrey</p>
+    <div class="ml-[11px] text-[16px] leading-[115%] my-[5px] space-y-4">
+      <div class="mb-[5px]">
+        <p>Hazra Imran</p>
+        <p>Burnaby</p>
+      </div>
+      <div class="mb-[5px]">
+        <p>Harinder Khangura</p>
+        <p>Surrey</p>
+      </div>
+    </div>
   </div>
 </template>

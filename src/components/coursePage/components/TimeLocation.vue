@@ -7,5 +7,5 @@ export default {
 </script>
 
 <template>
-  <p class="text-xs">{{ timeLocation }}</p>
+  <p class="text-[16px] leading-[19px]">{{ timeLocation }}</p>
 </template>
