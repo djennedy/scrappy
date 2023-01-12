@@ -4,6 +4,8 @@ import PrevSemesterCard from "./components/PrevSemesterCard.vue";
 import GoBack from "./components/GoBack.vue";
 import CourseInfo from  "./components/CourseInfo.vue";
 import SaveCourse from "./components/SaveCourse.vue";
+import NumCredits from "./components/NumCredits.vue";
+import WQB from "./components/WQB.vue";
 
 export default {
   components: {
@@ -12,6 +14,8 @@ export default {
     GoBack,
     CourseInfo,
     SaveCourse,
+    NumCredits,
+    WQB
   },
   data() {
     return {
@@ -89,9 +93,13 @@ export default {
   <!-- <div class="flex flex-wrap items-center gap-4"> -->
   <div>
     <GoBack />
-    <div class="flex flex-row items-center justify-between pt-[19px]">
+    <div class="flex flex-row items-center justify-between pt-[19px] pb-[12px]">
       <CourseInfo />
       <SaveCourse />
+    </div>
+    <div class="flex flex-row gap-x-[10px]">
+      <NumCredits />
+      <WQB />
     </div>
     <!-- <InstructorsCard
       v-for="instructor in instructors"
