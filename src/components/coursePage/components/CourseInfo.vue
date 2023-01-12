@@ -1,7 +1,7 @@
 <script></script>
 
 <template>
-  <div class="max-w-[676px] max-height-[128px]">
+  <div class="max-w-[588px] max-height-[128px]">
     <h2 class="font-normal text-[#B0001A] text-[18px] leading-[115%] mb-0">
       Spring 2023 - CMPT120
     </h2>
