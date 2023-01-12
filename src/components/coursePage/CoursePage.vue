@@ -56,6 +56,24 @@ export default {
           ],
         },
       ],
+      prevSemesters: [
+        {
+          id: 1,
+          term: "Fall 2022",
+          instructorCampus: [
+            {
+              instructor: "Hazra Imran",
+              campus: "Burnaby",
+            },
+            {
+              instructor: "Harinder Khangura",
+              campus: "Surrey",
+            },
+          ],
+          outlineLink:
+            "https://www.sfu.ca/students/calendar/2022/fall/courses/cmpt/300.html",
+        },
+      ],
     };
   },
 };
@@ -68,6 +86,10 @@ export default {
       :key="instructor.id"
       :instructor="instructor"
     />
-    <PrevSemesterCard />
+    <PrevSemesterCard
+      v-for="prevSemester in prevSemesters"
+      :key="prevSemester.id"
+      :prevSemester="prevSemester"
+    />
   </div>
 </template>

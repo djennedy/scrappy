@@ -1,9 +1,12 @@
 <script>
-import "iconify-icon";
+import InstructorCampus from "./InstructorCampus.vue";
 
 export default {
   props: {
     prevSemester: Object,
+  },
+  components: {
+    InstructorCampus,
   },
 };
 </script>
@@ -18,18 +21,15 @@ export default {
       <p
         class="font-semibold text-[22px] leading-[27px] text-white w-[169px] max-h-[25px] ml-[11px] my-[5px]"
       >
-        SEM
+        {{ prevSemester.term.toUpperCase() }}
       </p>
     </div>
     <div class="ml-[11px] text-[16px] leading-[115%] my-[5px] space-y-4">
-      <div class="mb-[5px]">
-        <p>Hazra Imran</p>
-        <p>Burnaby</p>
-      </div>
-      <div class="mb-[5px]">
-        <p>Harinder Khangura</p>
-        <p>Surrey</p>
-      </div>
+      <InstructorCampus
+        v-for="instructorCampus in prevSemester.instructorCampus"
+        :key="instructorCampus.id"
+        :instructorCampus="instructorCampus"
+      />
     </div>
   </div>
 </template>
