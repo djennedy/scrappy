@@ -62,12 +62,12 @@ export default {
 </script>
 
 <template>
-  <div class="flex flex-col items-center gap-4">
-    <!-- <InstructorsCard
+  <div class="flex flex-wrap items-center gap-4">
+    <InstructorsCard
       v-for="instructor in instructors"
       :key="instructor.id"
       :instructor="instructor"
-    /> -->
+    />
     <PrevSemesterCard />
   </div>
 </template>
