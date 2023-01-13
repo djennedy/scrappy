@@ -56,6 +56,15 @@ export default {
             "Fr 8:30AM – 10:20AM SRYE 3016, Surrey",
           ],
         },
+        {
+          id: 5,
+          section: "D100",
+          instructor: "Harinder Khangura",
+          timeLocations: [
+            "We 9:30AM – 10:20AM SRYE 3016, Surrey",
+            "Fr 8:30AM – 10:20AM SRYE 3016, Surrey",
+          ],
+        },
       ],
       prevSemesters: [
         {
@@ -173,7 +182,7 @@ export default {
       <WQB />
     </div>
     <div class="flex flex-row mt-[35px]">
-      <div class="w-[50%]">
+      <div class="w-[60%]">
         <p
           class="font-semibold text-[26px] leading-[32px] text-[#302A40] h-[46px]"
         >
@@ -187,13 +196,13 @@ export default {
           />
         </div>
       </div>
-      <div class="w-[50%] justify-end">
+      <div class="w-[40%] justify-end ml-[101px] box-border">
         <p
           class="font-semibold text-[26px] leading-[32px] text-[#302A40] h-[46px]"
         >
           Previous Semesters
         </p>
-        <div class="flex flex-start flex-wrap gap-[18px]">
+        <div class="flex flex-wrap gap-x-[30px] gap-y-[18px]">
           <PrevSemesterCard
             v-for="prevSemester in prevSemesters"
             :key="prevSemester.id"
