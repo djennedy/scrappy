@@ -2,7 +2,7 @@
 import InstructorsCard from "./components/InstructorsCard.vue";
 import PrevSemesterCard from "./components/PrevSemesterCard.vue";
 import GoBack from "./components/GoBack.vue";
-import CourseInfo from  "./components/CourseInfo.vue";
+import CourseInfo from "./components/CourseInfo.vue";
 import SaveCourse from "./components/SaveCourse.vue";
 import NumCredits from "./components/NumCredits.vue";
 import WQB from "./components/WQB.vue";
@@ -15,7 +15,7 @@ export default {
     CourseInfo,
     SaveCourse,
     NumCredits,
-    WQB
+    WQB,
   },
   data() {
     return {
@@ -56,19 +56,90 @@ export default {
             "Fr 8:30AM – 10:20AM SRYE 3016, Surrey",
           ],
         },
-        {
-          id: 5,
-          section: "D200",
-          instructor: "Hazra Imran",
-          timeLocations: [
-            "Mo 12:30PM - 1:20PM WMC 3520, Burnaby",
-            "Th 12:30PM - 2:20PM RCB IMAGTH, Burnaby",
-          ],
-        },
       ],
       prevSemesters: [
         {
           id: 1,
+          term: "Fall 2022",
+          instructorCampus: [
+            {
+              instructor: "Hazra Imran",
+              campus: "Burnaby",
+            },
+            {
+              instructor: "Harinder Khangura",
+              campus: "Surrey",
+            },
+          ],
+          outlineLink:
+            "https://www.sfu.ca/students/calendar/2022/fall/courses/cmpt/300.html",
+        },
+        {
+          id: 2,
+          term: "Fall 2022",
+          instructorCampus: [
+            {
+              instructor: "Hazra Imran",
+              campus: "Burnaby",
+            },
+            {
+              instructor: "Harinder Khangura",
+              campus: "Surrey",
+            },
+          ],
+          outlineLink:
+            "https://www.sfu.ca/students/calendar/2022/fall/courses/cmpt/300.html",
+        },
+        {
+          id: 3,
+          term: "Fall 2022",
+          instructorCampus: [
+            {
+              instructor: "Hazra Imran",
+              campus: "Burnaby",
+            },
+            {
+              instructor: "Harinder Khangura",
+              campus: "Surrey",
+            },
+          ],
+          outlineLink:
+            "https://www.sfu.ca/students/calendar/2022/fall/courses/cmpt/300.html",
+        },
+        {
+          id: 4,
+          term: "Fall 2022",
+          instructorCampus: [
+            {
+              instructor: "Hazra Imran",
+              campus: "Burnaby",
+            },
+            {
+              instructor: "Harinder Khangura",
+              campus: "Surrey",
+            },
+          ],
+          outlineLink:
+            "https://www.sfu.ca/students/calendar/2022/fall/courses/cmpt/300.html",
+        },
+        {
+          id: 5,
+          term: "Fall 2022",
+          instructorCampus: [
+            {
+              instructor: "Hazra Imran",
+              campus: "Burnaby",
+            },
+            {
+              instructor: "Harinder Khangura",
+              campus: "Surrey",
+            },
+          ],
+          outlineLink:
+            "https://www.sfu.ca/students/calendar/2022/fall/courses/cmpt/300.html",
+        },
+        {
+          id: 6,
           term: "Fall 2022",
           instructorCampus: [
             {
@@ -101,15 +172,35 @@ export default {
       <NumCredits />
       <WQB />
     </div>
-    <!-- <InstructorsCard
-      v-for="instructor in instructors"
-      :key="instructor.id"
-      :instructor="instructor"
-    />
-    <PrevSemesterCard
-      v-for="prevSemester in prevSemesters"
-      :key="prevSemester.id"
-      :prevSemester="prevSemester"
-    /> -->
+    <div class="flex flex-row mt-[35px]">
+      <div class="w-[50%]">
+        <p
+          class="font-semibold text-[26px] leading-[32px] text-[#302A40] h-[46px]"
+        >
+          Course Offerings
+        </p>
+        <div class="flex flex-wrap flext-start gap-x-[18px] gap-y-[25px]">
+          <InstructorsCard
+            v-for="instructor in instructors"
+            :key="instructor.id"
+            :instructor="instructor"
+          />
+        </div>
+      </div>
+      <div class="w-[50%] justify-end">
+        <p
+          class="font-semibold text-[26px] leading-[32px] text-[#302A40] h-[46px]"
+        >
+          Previous Semesters
+        </p>
+        <div class="flex flex-start flex-wrap gap-[18px]">
+          <PrevSemesterCard
+            v-for="prevSemester in prevSemesters"
+            :key="prevSemester.id"
+            :prevSemester="prevSemester"
+          />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
