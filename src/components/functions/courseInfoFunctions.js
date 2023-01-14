@@ -220,7 +220,7 @@ const getPreviousSemestersInfos = async (currTermString, department, number) => 
  * Retrieves information required for the course page.
  * IMPORTANT NOTE: This function cascades errors, please do error handling when calling this function with a .catch block
  * @param {string} courseString User inputted course string. Eg: CMPT 120
- * @return {CourseInfo} The course information for the given course
+ * @return {Promise<CourseInfo>} A Promise containing course information for the given course
  */
 const getCourseInfo = async (courseString) => {
     let [department, number] = parseInput(courseString);
