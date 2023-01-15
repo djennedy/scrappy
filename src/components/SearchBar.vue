@@ -33,11 +33,10 @@ export default {
 </template>
 
 <style scoped>
-.hello {
-  color: red;
-}
+
 div.search-bar {
   border: 1px solid rgba(149, 149, 149, 1);
+  background-color: white;
   display: flex;
   align-items: center;
   padding: 8px 10px;
