@@ -6,6 +6,7 @@ import CourseInfo from "./components/CourseInfo.vue";
 import SaveCourse from "./components/SaveCourse.vue";
 import NumCredits from "./components/NumCredits.vue";
 import WQB from "./components/WQB.vue";
+import CourseParagraph from "./components/CourseParagraph.vue";
 
 export default {
   components: {
@@ -16,6 +17,7 @@ export default {
     SaveCourse,
     NumCredits,
     WQB,
+    CourseParagraph,
   },
   data() {
     return {
@@ -226,72 +228,30 @@ export default {
       </div>
     </div>
     <div class="mt-[24px] space-y-[35.57px]">
-      <div>
-        <h3
-          class="font-semibold text-[26px] leading-[32px] text-[#6F6F6F] mb-[10px]"
-        >
-          Calender Description
-        </h3>
-        <p
-          class="font-normal text-[18px] leading-[115%] text-black"
-          v-html="courseDescription.description"
-        ></p>
-      </div>
-      <div>
-        <h3
-          class="font-semibold text-[26px] leading-[32px] text-[#6F6F6F] mb-[10px]"
-        >
-          Pre-requisites
-        </h3>
-        <p
-          class="font-normal text-[18px] leading-[115%] text-black"
-          v-html="courseDescription.description"
-        ></p>
-      </div>
-      <div>
-        <h3
-          class="font-semibold text-[26px] leading-[32px] text-[#6F6F6F] mb-[10px]"
-        >
-          Course Detail
-        </h3>
-        <p
-          class="font-normal text-[18px] leading-[115%] text-black"
-          v-html="courseDescription.description"
-        ></p>
-      </div>
-      <div>
-        <h3
-          class="font-semibold text-[26px] leading-[32px] text-[#6F6F6F] mb-[10px]"
-        >
-          Educational Goals
-        </h3>
-        <p
-          class="font-normal text-[18px] leading-[115%] text-black"
-          v-html="courseDescription.description"
-        ></p>
-      </div>
-      <div>
-        <h3
-          class="font-semibold text-[26px] leading-[32px] text-[#6F6F6F] mb-[10px]"
-        >
-          Materials + Supplies
-        </h3>
-        <p
-          class="font-normal text-[18px] leading-[115%] text-black"
-          v-html="courseDescription.description"
-        ></p>
-      </div>
-      <div>
-        <h3
-          class="font-semibold text-[26px] leading-[32px] text-[#6F6F6F] mb-[10px]"
-        >
-          Grading
-        </h3>
-        <p
-          class="font-normal text-[18px] leading-[115%] text-black"
-          v-html="courseDescription.description"
-        ></p>
-      </div>
+      <CourseParagraph
+        header="Calendar Description"
+        :rawHtml="courseDescription.description"
+      />
+      <CourseParagraph
+        header="Pre-requisites"
+        :rawHtml="courseDescription.description"
+      />
+      <CourseParagraph
+        header="Course Details"
+        :rawHtml="courseDescription.description"
+      />
+      <CourseParagraph
+        header="Educational Goals"
+        :rawHtml="courseDescription.description"
+      />
+      <CourseParagraph
+        header="Materials + Supplies"
+        :rawHtml="courseDescription.description"
+      />
+      <CourseParagraph
+        header="Grading"
+        :rawHtml="courseDescription.description"
+      />
     </div>
   </div>
 </template>
