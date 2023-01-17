@@ -1,4 +1,5 @@
 <script>
+import "iconify-icon";
 import InstructorsCard from "./components/InstructorsCard.vue";
 import PrevSemesterCard from "./components/PrevSemesterCard.vue";
 import GoBack from "./components/GoBack.vue";
@@ -181,6 +182,8 @@ export default {
         grading:
           "faucibus orci id gravida dui vehicula, lobortis, ipsum felis, ex. non non. placerat elementum sollicitudin. dui vel risus odio Nunc non, gravida eget laoreet quam Ut nec eget in dui. ipsum commodo Vestibulum elit odio Ut Donec sit vitae nisi odio vitae laoreet maximus odio faucibus faucibus malesuada nec ex adipiscing commodo elit dui facilisis elit at, quis vitae dui viverra non faucibus amet, Sed nisi quis fringilla ullamcorper vitae amet, vel placerat varius nec at at orci vitae Cras amet, nec placerat non elit Lorem placerat scelerisque nulla, laoreet Sed hendrerit quis elit. luctus consectetur in vitae Nunc placerat. eget faucibus non, malesuada leo. quis volutpat commodo Ut non. urna. dui. porta sit amet, vehicula, elementum elementum quis non, Morbi laoreet vehicula, eget venenatis ",
       },
+      numCourses: 0,
+      numSemesters: 0,
     };
   },
 };
@@ -198,33 +201,95 @@ export default {
       <WQB />
     </div>
     <div class="flex flex-row mt-[35px]">
-      <div class="w-[60%]">
-        <p
-          class="font-semibold text-[26px] leading-[32px] text-[#302A40] h-[46px]"
-        >
-          Course Offerings
-        </p>
-        <div class="flex flex-wrap flext-start gap-x-[18px] gap-y-[25px]">
-          <InstructorsCard
-            v-for="instructor in instructors"
-            :key="instructor.id"
-            :instructor="instructor"
-          />
+      <div class="w-[614px]">
+        <div class="flex flex-row items-center justify-between h-[46px] mb-2">
+          <p class="font-semibold text-[26px] leading-[32px] text-[#302A40]">
+            Course Offerings
+          </p>
+          <div class="flex flex-row items-center">
+            <v-btn
+              variant="plain"
+              @click="model = Math.max(numCourses - 1, 0)"
+              size="x-small"
+            >
+              <iconify-icon
+                icon="fluent:triangle-left-48-filled"
+                color="#d9d9d9"
+                width="21"
+                height="21"
+              />
+            </v-btn>
+            {{ numCourses }}
+            <v-btn
+              variant="plain"
+              @click="
+                model = Math.min(numCourses + 1, instructors.length / 6 - 1)
+              "
+              size="x-small"
+            >
+              <iconify-icon
+                icon="fluent:triangle-right-48-filled"
+                color="#d9d9d9"
+                width="21"
+                height="21"
+              />
+            </v-btn>
+          </div>
         </div>
+        <v-carousel hide-delimiters :show-arrows="false" v-model="numCourses">
+          <div class="flex flex-wrap flext-start gap-x-[18px] gap-y-[25px]">
+            <InstructorsCard
+              v-for="instructor in instructors"
+              :key="instructor.id"
+              :instructor="instructor"
+            />
+          </div>
+        </v-carousel>
       </div>
-      <div class="w-[40%] justify-end ml-[101px] box-border">
-        <p
-          class="font-semibold text-[26px] leading-[32px] text-[#302A40] h-[46px]"
-        >
-          Previous Semesters
-        </p>
-        <div class="flex flex-wrap gap-x-[30px] gap-y-[18px]">
-          <PrevSemesterCard
-            v-for="prevSemester in prevSemesters"
-            :key="prevSemester.id"
-            :prevSemester="prevSemester"
-          />
+      <div class="w-[450px] justify-end ml-[150px] box-border">
+        <div class="flex flex-row items-center justify-between h-[46px] mb-2">
+          <p class="font-semibold text-[26px] leading-[32px] text-[#302A40]">
+            Previous Semesters
+          </p>
+          <div class="flex flex-row items-center">
+            <v-btn
+              variant="plain"
+              @click="model = Math.max(numCourses - 1, 0)"
+              size="x-small"
+            >
+              <iconify-icon
+                icon="fluent:triangle-left-48-filled"
+                color="#d9d9d9"
+                width="21"
+                height="21"
+              />
+            </v-btn>
+            {{ numCourses }}
+            <v-btn
+              variant="plain"
+              @click="
+                model = Math.min(numCourses + 1, prevSemesters.length / 6 - 1)
+              "
+              size="x-small"
+            >
+              <iconify-icon
+                icon="fluent:triangle-right-48-filled"
+                color="#d9d9d9"
+                width="21"
+                height="21"
+              />
+            </v-btn>
+          </div>
         </div>
+        <v-carousel hide-delimiters :show-arrows="false" v-model="numSemesters">
+          <div class="flex flex-wrap gap-x-[30px] gap-y-[18px]">
+            <PrevSemesterCard
+              v-for="prevSemester in prevSemesters"
+              :key="prevSemester.id"
+              :prevSemester="prevSemester"
+            />
+          </div>
+        </v-carousel>
       </div>
     </div>
     <div class="mt-[24px] space-y-[35.57px]">
