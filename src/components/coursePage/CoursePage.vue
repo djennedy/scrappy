@@ -164,14 +164,28 @@ export default {
             "https://www.sfu.ca/students/calendar/2022/fall/courses/cmpt/300.html",
         },
       ],
+      courseDescription: {
+        id: 1,
+        description:
+          "faucibus orci id gravida dui vehicula, lobortis, ipsum felis, ex. non non. placerat elementum sollicitudin. dui vel risus odio Nunc non, gravida eget laoreet quam Ut nec eget in dui. ipsum commodo Vestibulum elit odio Ut Donec sit vitae nisi odio vitae laoreet maximus odio faucibus faucibus malesuada nec ex adipiscing commodo elit dui facilisis elit at, quis vitae dui viverra non faucibus amet, Sed nisi quis fringilla ullamcorper vitae amet, vel placerat varius nec at at orci vitae Cras amet, nec placerat non elit Lorem placerat scelerisque nulla, laoreet Sed hendrerit quis elit. luctus consectetur in vitae Nunc placerat. eget faucibus non, malesuada leo. quis volutpat commodo Ut non. urna. dui. porta sit amet, vehicula, elementum elementum quis non, Morbi laoreet vehicula, eget venenatis ",
+        prereq:
+          "faucibus orci id gravida dui vehicula, lobortis, ipsum felis, ex. non non. placerat elementum sollicitudin. dui vel risus odio Nunc non, gravida eget laoreet quam Ut nec eget in dui. ipsum commodo Vestibulum elit odio Ut Donec sit vitae nisi odio vitae laoreet maximus odio faucibus faucibus malesuada nec ex adipiscing commodo elit dui facilisis elit at, quis vitae dui viverra non faucibus amet, Sed nisi quis fringilla ullamcorper vitae amet, vel placerat varius nec at at orci vitae Cras amet, nec placerat non elit Lorem placerat scelerisque nulla, laoreet Sed hendrerit quis elit. luctus consectetur in vitae Nunc placerat. eget faucibus non, malesuada leo. quis volutpat commodo Ut non. urna. dui. porta sit amet, vehicula, elementum elementum quis non, Morbi laoreet vehicula, eget venenatis ",
+        detail:
+          "faucibus orci id gravida dui vehicula, lobortis, ipsum felis, ex. non non. placerat elementum sollicitudin. dui vel risus odio Nunc non, gravida eget laoreet quam Ut nec eget in dui. ipsum commodo Vestibulum elit odio Ut Donec sit vitae nisi odio vitae laoreet maximus odio faucibus faucibus malesuada nec ex adipiscing commodo elit dui facilisis elit at, quis vitae dui viverra non faucibus amet, Sed nisi quis fringilla ullamcorper vitae amet, vel placerat varius nec at at orci vitae Cras amet, nec placerat non elit Lorem placerat scelerisque nulla, laoreet Sed hendrerit quis elit. luctus consectetur in vitae Nunc placerat. eget faucibus non, malesuada leo. quis volutpat commodo Ut non. urna. dui. porta sit amet, vehicula, elementum elementum quis non, Morbi laoreet vehicula, eget venenatis ",
+        goals:
+          "faucibus orci id gravida dui vehicula, lobortis, ipsum felis, ex. non non. placerat elementum sollicitudin. dui vel risus odio Nunc non, gravida eget laoreet quam Ut nec eget in dui. ipsum commodo Vestibulum elit odio Ut Donec sit vitae nisi odio vitae laoreet maximus odio faucibus faucibus malesuada nec ex adipiscing commodo elit dui facilisis elit at, quis vitae dui viverra non faucibus amet, Sed nisi quis fringilla ullamcorper vitae amet, vel placerat varius nec at at orci vitae Cras amet, nec placerat non elit Lorem placerat scelerisque nulla, laoreet Sed hendrerit quis elit. luctus consectetur in vitae Nunc placerat. eget faucibus non, malesuada leo. quis volutpat commodo Ut non. urna. dui. porta sit amet, vehicula, elementum elementum quis non, Morbi laoreet vehicula, eget venenatis ",
+        materials:
+          "faucibus orci id gravida dui vehicula, lobortis, ipsum felis, ex. non non. placerat elementum sollicitudin. dui vel risus odio Nunc non, gravida eget laoreet quam Ut nec eget in dui. ipsum commodo Vestibulum elit odio Ut Donec sit vitae nisi odio vitae laoreet maximus odio faucibus faucibus malesuada nec ex adipiscing commodo elit dui facilisis elit at, quis vitae dui viverra non faucibus amet, Sed nisi quis fringilla ullamcorper vitae amet, vel placerat varius nec at at orci vitae Cras amet, nec placerat non elit Lorem placerat scelerisque nulla, laoreet Sed hendrerit quis elit. luctus consectetur in vitae Nunc placerat. eget faucibus non, malesuada leo. quis volutpat commodo Ut non. urna. dui. porta sit amet, vehicula, elementum elementum quis non, Morbi laoreet vehicula, eget venenatis ",
+        grading:
+          "faucibus orci id gravida dui vehicula, lobortis, ipsum felis, ex. non non. placerat elementum sollicitudin. dui vel risus odio Nunc non, gravida eget laoreet quam Ut nec eget in dui. ipsum commodo Vestibulum elit odio Ut Donec sit vitae nisi odio vitae laoreet maximus odio faucibus faucibus malesuada nec ex adipiscing commodo elit dui facilisis elit at, quis vitae dui viverra non faucibus amet, Sed nisi quis fringilla ullamcorper vitae amet, vel placerat varius nec at at orci vitae Cras amet, nec placerat non elit Lorem placerat scelerisque nulla, laoreet Sed hendrerit quis elit. luctus consectetur in vitae Nunc placerat. eget faucibus non, malesuada leo. quis volutpat commodo Ut non. urna. dui. porta sit amet, vehicula, elementum elementum quis non, Morbi laoreet vehicula, eget venenatis ",
+      },
     };
   },
 };
 </script>
 
 <template>
-  <!-- <div class="flex flex-wrap items-center gap-4"> -->
-  <div>
+  <div class="mb-[150px]">
     <GoBack />
     <div class="flex flex-row items-center justify-between pt-[19px] pb-[12px]">
       <CourseInfo />
@@ -209,6 +223,74 @@ export default {
             :prevSemester="prevSemester"
           />
         </div>
+      </div>
+    </div>
+    <div class="mt-[24px] space-y-[35.57px]">
+      <div>
+        <h3
+          class="font-semibold text-[26px] leading-[32px] text-[#6F6F6F] mb-[10px]"
+        >
+          Calender Description
+        </h3>
+        <p
+          class="font-normal text-[18px] leading-[115%] text-black"
+          v-html="courseDescription.description"
+        ></p>
+      </div>
+      <div>
+        <h3
+          class="font-semibold text-[26px] leading-[32px] text-[#6F6F6F] mb-[10px]"
+        >
+          Pre-requisites
+        </h3>
+        <p
+          class="font-normal text-[18px] leading-[115%] text-black"
+          v-html="courseDescription.description"
+        ></p>
+      </div>
+      <div>
+        <h3
+          class="font-semibold text-[26px] leading-[32px] text-[#6F6F6F] mb-[10px]"
+        >
+          Course Detail
+        </h3>
+        <p
+          class="font-normal text-[18px] leading-[115%] text-black"
+          v-html="courseDescription.description"
+        ></p>
+      </div>
+      <div>
+        <h3
+          class="font-semibold text-[26px] leading-[32px] text-[#6F6F6F] mb-[10px]"
+        >
+          Educational Goals
+        </h3>
+        <p
+          class="font-normal text-[18px] leading-[115%] text-black"
+          v-html="courseDescription.description"
+        ></p>
+      </div>
+      <div>
+        <h3
+          class="font-semibold text-[26px] leading-[32px] text-[#6F6F6F] mb-[10px]"
+        >
+          Materials + Supplies
+        </h3>
+        <p
+          class="font-normal text-[18px] leading-[115%] text-black"
+          v-html="courseDescription.description"
+        ></p>
+      </div>
+      <div>
+        <h3
+          class="font-semibold text-[26px] leading-[32px] text-[#6F6F6F] mb-[10px]"
+        >
+          Grading
+        </h3>
+        <p
+          class="font-normal text-[18px] leading-[115%] text-black"
+          v-html="courseDescription.description"
+        ></p>
       </div>
     </div>
   </div>
