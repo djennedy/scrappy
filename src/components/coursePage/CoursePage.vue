@@ -166,17 +166,17 @@ export default {
       </div> -->
     <!-- </div> -->
 
-    <!-- <div class="mt-[24px] space-y-[35.57px]">
+    <div class="mt-[24px] space-y-[35.57px]">
       <CourseParagraph
         header="Calendar Description"
-        :rawHtml="courseDescription.description"
+        :rawHtml="currentCourse.calendarDescription"
       />
       <CourseParagraph
         header="Pre-requisites"
-        :rawHtml="courseDescription.description"
+        :rawHtml="currentCourse.prerequisites"
       />
 
-      <v-tabs v-model="section" color="#D3001F" class="rounded-lg">
+      <!-- <v-tabs v-model="section" color="#D3001F" class="rounded-lg">
         <v-tab value="D100" class="ma-0 pa-0 w-[38px]">
           <div class="text-[16px] leading-[115%]">D100</div>
         </v-tab>
@@ -207,7 +207,7 @@ export default {
             :rawHtml="courseDescription.description"
           />
         </div>
-      </v-window>
-    </div> -->
+      </v-window> -->
+    </div>
   </div>
 </template>
