@@ -50,4 +50,4 @@ const getWQBDesignation = (designationString) => {
     return result;
 }
 
-export {BASE_URL, BASE_OUTLINE_URL, parseInput, getWQBDesignation};
+export {BASE_URL,BASE_CALENDAR_URL, BASE_OUTLINE_URL, parseInput, getWQBDesignation};

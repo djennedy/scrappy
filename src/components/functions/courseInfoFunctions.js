@@ -1,5 +1,5 @@
 import { Terms } from "./termEnum";
-import { BASE_URL, BASE_OUTLINE_URL, parseInput, getWQBDesignation } from "./commonFunctions";
+import { BASE_URL, BASE_OUTLINE_URL, BASE_CALENDAR_URL, parseInput, getWQBDesignation } from "./commonFunctions";
 
 /** Class representing course outline information for course page */
 class CourseInfo {
