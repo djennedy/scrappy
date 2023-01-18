@@ -60,7 +60,7 @@ export default {
         instructor:{
           title:"Instructor",
           options:[]
-        }
+        },
         campus:{
           title:"Campus",
           options:[
