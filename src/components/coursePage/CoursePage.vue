@@ -36,20 +36,21 @@ export default {
   data() {
     return {
       defaultTerm: "Spring 2023",
-      defaultCourse: "CMPT 120",
+      defaultCourseNumber: "CMPT 120",
       defaultWQB: "B-Sci/Q",
       defaultCredits: 3,
-      currentCourse: [CourseInfo],
+      defaultCourseName: "Introduction to Computing Science and Programming I",
+      currentCourse: {},
     };
   },
   methods: {
     initData() {
-      getCourseInfo(this.defaultCourse)
+      getCourseInfo(this.defaultCourseNumber)
         .then((data) => {
           this.currentCourse = data;
-          console.log(`initData`);
+          console.log(`initData: ${JSON.stringify(this.currentCourse)}`);
         })
-        .catch((err) => console.log(err))
+        .catch((err) => console.log(err));
     },
   },
 };
@@ -59,7 +60,11 @@ export default {
   <div class="mb-[150px]">
     <GoBack />
     <div class="flex flex-row items-center justify-between pt-[19px] pb-[12px]">
-      <CourseInfoUI />
+      <CourseInfoUI
+        :courseNumber="currentCourse.courseNumber"
+        :term="currentCourse.term"
+        :courseName="currentCourse.courseName"
+      />
       <SaveCourse />
     </div>
     <div class="flex flex-row gap-x-[10px]">
@@ -67,8 +72,7 @@ export default {
       <WQB />
     </div>
 
-    <!--  Course Offerings Component -->
-    <div class="flex flex-row mt-[35px]">
+    <!-- <div class="flex flex-row mt-[35px]">
       <div class="w-[614px]">
         <div class="flex flex-row items-center justify-between h-[46px] mb-2">
           <p class="font-semibold text-[26px] leading-[32px] text-[#302A40]">
@@ -115,7 +119,6 @@ export default {
         </v-carousel>
       </div>
 
-      <!-- Previous Semester Component -->
       <div class="w-[450px] justify-end ml-[150px] box-border">
         <div class="flex flex-row items-center justify-between h-[46px] mb-2">
           <p class="font-semibold text-[26px] leading-[32px] text-[#302A40]">
@@ -160,11 +163,10 @@ export default {
             />
           </div>
         </v-carousel>
-      </div>
-    </div>
+      </div> -->
+    <!-- </div> -->
 
-    <!-- Course Details  -->
-    <div class="mt-[24px] space-y-[35.57px]">
+    <!-- <div class="mt-[24px] space-y-[35.57px]">
       <CourseParagraph
         header="Calendar Description"
         :rawHtml="courseDescription.description"
@@ -206,6 +208,6 @@ export default {
           />
         </div>
       </v-window>
-    </div>
+    </div> -->
   </div>
 </template>
