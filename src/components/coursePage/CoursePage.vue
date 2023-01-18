@@ -200,6 +200,8 @@ export default {
       <NumCredits />
       <WQB />
     </div>
+
+    <!--  Course Offerings Component -->
     <div class="flex flex-row mt-[35px]">
       <div class="w-[614px]">
         <div class="flex flex-row items-center justify-between h-[46px] mb-2">
@@ -246,6 +248,8 @@ export default {
           </div>
         </v-carousel>
       </div>
+
+      <!-- Previous Semester Component -->
       <div class="w-[450px] justify-end ml-[150px] box-border">
         <div class="flex flex-row items-center justify-between h-[46px] mb-2">
           <p class="font-semibold text-[26px] leading-[32px] text-[#302A40]">
@@ -292,6 +296,8 @@ export default {
         </v-carousel>
       </div>
     </div>
+
+    <!-- Course Details  -->
     <div class="mt-[24px] space-y-[35.57px]">
       <CourseParagraph
         header="Calendar Description"
@@ -301,22 +307,39 @@ export default {
         header="Pre-requisites"
         :rawHtml="courseDescription.description"
       />
-      <CourseParagraph
-        header="Course Details"
-        :rawHtml="courseDescription.description"
-      />
-      <CourseParagraph
-        header="Educational Goals"
-        :rawHtml="courseDescription.description"
-      />
-      <CourseParagraph
-        header="Materials + Supplies"
-        :rawHtml="courseDescription.description"
-      />
-      <CourseParagraph
-        header="Grading"
-        :rawHtml="courseDescription.description"
-      />
+
+      <v-tabs v-model="section" color="#D3001F" class="rounded-lg">
+        <v-tab value="D100" class="ma-0 pa-0 w-[38px]">
+          <div class="text-[16px] leading-[115%]">D100</div>
+        </v-tab>
+        <v-tab value="D200" class="ma-0 pa-0 w-[38px]">
+          <div class="text-[16px] leading-[115%]">D200</div>
+        </v-tab>
+        <v-tab value="D300" class="ma-0 pa-0 w-[38px]">
+          <div class="text-[16px] leading-[115%]">D300</div>
+        </v-tab>
+      </v-tabs>
+
+      <v-window v-model="section">
+        <div class="space-y-[35.57px]">
+          <CourseParagraph
+            header="Course Details"
+            :rawHtml="courseDescription.description"
+          />
+          <CourseParagraph
+            header="Educational Goals"
+            :rawHtml="courseDescription.description"
+          />
+          <CourseParagraph
+            header="Materials + Supplies"
+            :rawHtml="courseDescription.description"
+          />
+          <CourseParagraph
+            header="Grading"
+            :rawHtml="courseDescription.description"
+          />
+        </div>
+      </v-window>
     </div>
   </div>
 </template>
