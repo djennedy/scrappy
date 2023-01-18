@@ -3,188 +3,54 @@ import "iconify-icon";
 import InstructorsCard from "./components/InstructorsCard.vue";
 import PrevSemesterCard from "./components/PrevSemesterCard.vue";
 import GoBack from "./components/GoBack.vue";
-import CourseInfo from "./components/CourseInfo.vue";
+import CourseInfoUI from "./components/CourseInfoUI.vue";
 import SaveCourse from "./components/SaveCourse.vue";
 import NumCredits from "./components/NumCredits.vue";
 import WQB from "./components/WQB.vue";
 import CourseParagraph from "./components/CourseParagraph.vue";
+import {
+  CourseInfo,
+  GradingScheme,
+  SectionSpecificInfo,
+  InstructorCampus,
+  InstructorCardInfo,
+  PreviousSemestersCardInfo,
+  getCourseInfo,
+} from "@/components/functions/courseInfoFunctions";
 
 export default {
+  name: "CoursePage",
   components: {
     InstructorsCard,
     PrevSemesterCard,
     GoBack,
-    CourseInfo,
+    CourseInfoUI,
     SaveCourse,
     NumCredits,
     WQB,
     CourseParagraph,
   },
+  beforeMount() {
+    this.initData();
+  },
   data() {
     return {
-      instructors: [
-        {
-          id: 1,
-          section: "D200",
-          instructor: "Hazra Imran",
-          timeLocations: [
-            "Mo 12:30PM - 1:20PM WMC 3520, Burnaby",
-            "Th 12:30PM - 2:20PM RCB IMAGTH, Burnaby",
-          ],
-        },
-        {
-          id: 2,
-          section: "D100",
-          instructor: "Harinder Khangura",
-          timeLocations: [
-            "We 9:30AM – 10:20AM SRYE 3016, Surrey",
-            "Fr 8:30AM – 10:20AM SRYE 3016, Surrey",
-          ],
-        },
-        {
-          id: 3,
-          section: "D200",
-          instructor: "Hazra Imran",
-          timeLocations: [
-            "Mo 12:30PM - 1:20PM WMC 3520, Burnaby",
-            "Th 12:30PM - 2:20PM RCB IMAGTH, Burnaby",
-          ],
-        },
-        {
-          id: 4,
-          section: "D100",
-          instructor: "Harinder Khangura",
-          timeLocations: [
-            "We 9:30AM – 10:20AM SRYE 3016, Surrey",
-            "Fr 8:30AM – 10:20AM SRYE 3016, Surrey",
-          ],
-        },
-        {
-          id: 5,
-          section: "D100",
-          instructor: "Harinder Khangura",
-          timeLocations: [
-            "We 9:30AM – 10:20AM SRYE 3016, Surrey",
-            "Fr 8:30AM – 10:20AM SRYE 3016, Surrey",
-          ],
-        },
-      ],
-      prevSemesters: [
-        {
-          id: 1,
-          term: "Fall 2022",
-          instructorCampus: [
-            {
-              instructor: "Hazra Imran",
-              campus: "Burnaby",
-            },
-            {
-              instructor: "Harinder Khangura",
-              campus: "Surrey",
-            },
-          ],
-          outlineLink:
-            "https://www.sfu.ca/students/calendar/2022/fall/courses/cmpt/300.html",
-        },
-        {
-          id: 2,
-          term: "Fall 2022",
-          instructorCampus: [
-            {
-              instructor: "Hazra Imran",
-              campus: "Burnaby",
-            },
-            {
-              instructor: "Harinder Khangura",
-              campus: "Surrey",
-            },
-          ],
-          outlineLink:
-            "https://www.sfu.ca/students/calendar/2022/fall/courses/cmpt/300.html",
-        },
-        {
-          id: 3,
-          term: "Fall 2022",
-          instructorCampus: [
-            {
-              instructor: "Hazra Imran",
-              campus: "Burnaby",
-            },
-            {
-              instructor: "Harinder Khangura",
-              campus: "Surrey",
-            },
-          ],
-          outlineLink:
-            "https://www.sfu.ca/students/calendar/2022/fall/courses/cmpt/300.html",
-        },
-        {
-          id: 4,
-          term: "Fall 2022",
-          instructorCampus: [
-            {
-              instructor: "Hazra Imran",
-              campus: "Burnaby",
-            },
-            {
-              instructor: "Harinder Khangura",
-              campus: "Surrey",
-            },
-          ],
-          outlineLink:
-            "https://www.sfu.ca/students/calendar/2022/fall/courses/cmpt/300.html",
-        },
-        {
-          id: 5,
-          term: "Fall 2022",
-          instructorCampus: [
-            {
-              instructor: "Hazra Imran",
-              campus: "Burnaby",
-            },
-            {
-              instructor: "Harinder Khangura",
-              campus: "Surrey",
-            },
-          ],
-          outlineLink:
-            "https://www.sfu.ca/students/calendar/2022/fall/courses/cmpt/300.html",
-        },
-        {
-          id: 6,
-          term: "Fall 2022",
-          instructorCampus: [
-            {
-              instructor: "Hazra Imran",
-              campus: "Burnaby",
-            },
-            {
-              instructor: "Harinder Khangura",
-              campus: "Surrey",
-            },
-          ],
-          outlineLink:
-            "https://www.sfu.ca/students/calendar/2022/fall/courses/cmpt/300.html",
-        },
-      ],
-      courseDescription: {
-        id: 1,
-        description:
-          "faucibus orci id gravida dui vehicula, lobortis, ipsum felis, ex. non non. placerat elementum sollicitudin. dui vel risus odio Nunc non, gravida eget laoreet quam Ut nec eget in dui. ipsum commodo Vestibulum elit odio Ut Donec sit vitae nisi odio vitae laoreet maximus odio faucibus faucibus malesuada nec ex adipiscing commodo elit dui facilisis elit at, quis vitae dui viverra non faucibus amet, Sed nisi quis fringilla ullamcorper vitae amet, vel placerat varius nec at at orci vitae Cras amet, nec placerat non elit Lorem placerat scelerisque nulla, laoreet Sed hendrerit quis elit. luctus consectetur in vitae Nunc placerat. eget faucibus non, malesuada leo. quis volutpat commodo Ut non. urna. dui. porta sit amet, vehicula, elementum elementum quis non, Morbi laoreet vehicula, eget venenatis ",
-        prereq:
-          "faucibus orci id gravida dui vehicula, lobortis, ipsum felis, ex. non non. placerat elementum sollicitudin. dui vel risus odio Nunc non, gravida eget laoreet quam Ut nec eget in dui. ipsum commodo Vestibulum elit odio Ut Donec sit vitae nisi odio vitae laoreet maximus odio faucibus faucibus malesuada nec ex adipiscing commodo elit dui facilisis elit at, quis vitae dui viverra non faucibus amet, Sed nisi quis fringilla ullamcorper vitae amet, vel placerat varius nec at at orci vitae Cras amet, nec placerat non elit Lorem placerat scelerisque nulla, laoreet Sed hendrerit quis elit. luctus consectetur in vitae Nunc placerat. eget faucibus non, malesuada leo. quis volutpat commodo Ut non. urna. dui. porta sit amet, vehicula, elementum elementum quis non, Morbi laoreet vehicula, eget venenatis ",
-        detail:
-          "faucibus orci id gravida dui vehicula, lobortis, ipsum felis, ex. non non. placerat elementum sollicitudin. dui vel risus odio Nunc non, gravida eget laoreet quam Ut nec eget in dui. ipsum commodo Vestibulum elit odio Ut Donec sit vitae nisi odio vitae laoreet maximus odio faucibus faucibus malesuada nec ex adipiscing commodo elit dui facilisis elit at, quis vitae dui viverra non faucibus amet, Sed nisi quis fringilla ullamcorper vitae amet, vel placerat varius nec at at orci vitae Cras amet, nec placerat non elit Lorem placerat scelerisque nulla, laoreet Sed hendrerit quis elit. luctus consectetur in vitae Nunc placerat. eget faucibus non, malesuada leo. quis volutpat commodo Ut non. urna. dui. porta sit amet, vehicula, elementum elementum quis non, Morbi laoreet vehicula, eget venenatis ",
-        goals:
-          "faucibus orci id gravida dui vehicula, lobortis, ipsum felis, ex. non non. placerat elementum sollicitudin. dui vel risus odio Nunc non, gravida eget laoreet quam Ut nec eget in dui. ipsum commodo Vestibulum elit odio Ut Donec sit vitae nisi odio vitae laoreet maximus odio faucibus faucibus malesuada nec ex adipiscing commodo elit dui facilisis elit at, quis vitae dui viverra non faucibus amet, Sed nisi quis fringilla ullamcorper vitae amet, vel placerat varius nec at at orci vitae Cras amet, nec placerat non elit Lorem placerat scelerisque nulla, laoreet Sed hendrerit quis elit. luctus consectetur in vitae Nunc placerat. eget faucibus non, malesuada leo. quis volutpat commodo Ut non. urna. dui. porta sit amet, vehicula, elementum elementum quis non, Morbi laoreet vehicula, eget venenatis ",
-        materials:
-          "faucibus orci id gravida dui vehicula, lobortis, ipsum felis, ex. non non. placerat elementum sollicitudin. dui vel risus odio Nunc non, gravida eget laoreet quam Ut nec eget in dui. ipsum commodo Vestibulum elit odio Ut Donec sit vitae nisi odio vitae laoreet maximus odio faucibus faucibus malesuada nec ex adipiscing commodo elit dui facilisis elit at, quis vitae dui viverra non faucibus amet, Sed nisi quis fringilla ullamcorper vitae amet, vel placerat varius nec at at orci vitae Cras amet, nec placerat non elit Lorem placerat scelerisque nulla, laoreet Sed hendrerit quis elit. luctus consectetur in vitae Nunc placerat. eget faucibus non, malesuada leo. quis volutpat commodo Ut non. urna. dui. porta sit amet, vehicula, elementum elementum quis non, Morbi laoreet vehicula, eget venenatis ",
-        grading:
-          "faucibus orci id gravida dui vehicula, lobortis, ipsum felis, ex. non non. placerat elementum sollicitudin. dui vel risus odio Nunc non, gravida eget laoreet quam Ut nec eget in dui. ipsum commodo Vestibulum elit odio Ut Donec sit vitae nisi odio vitae laoreet maximus odio faucibus faucibus malesuada nec ex adipiscing commodo elit dui facilisis elit at, quis vitae dui viverra non faucibus amet, Sed nisi quis fringilla ullamcorper vitae amet, vel placerat varius nec at at orci vitae Cras amet, nec placerat non elit Lorem placerat scelerisque nulla, laoreet Sed hendrerit quis elit. luctus consectetur in vitae Nunc placerat. eget faucibus non, malesuada leo. quis volutpat commodo Ut non. urna. dui. porta sit amet, vehicula, elementum elementum quis non, Morbi laoreet vehicula, eget venenatis ",
-      },
-      numCourses: 0,
-      numSemesters: 0,
+      defaultTerm: "Spring 2023",
+      defaultCourse: "CMPT 120",
+      defaultWQB: "B-Sci/Q",
+      defaultCredits: 3,
+      currentCourse: [CourseInfo],
     };
+  },
+  methods: {
+    initData() {
+      getCourseInfo(this.defaultCourse)
+        .then((data) => {
+          this.currentCourse = data;
+          console.log(`initData`);
+        })
+        .catch((err) => console.log(err))
+    },
   },
 };
 </script>
@@ -193,7 +59,7 @@ export default {
   <div class="mb-[150px]">
     <GoBack />
     <div class="flex flex-row items-center justify-between pt-[19px] pb-[12px]">
-      <CourseInfo />
+      <CourseInfoUI />
       <SaveCourse />
     </div>
     <div class="flex flex-row gap-x-[10px]">
