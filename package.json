@@ -8,6 +8,7 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
+    "iconify-icon": "^1.0.2",
     "vue": "^3.2.41",
     "vue-router": "^4.1.5",
     "vuetify": "^3.1.1"
