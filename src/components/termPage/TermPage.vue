@@ -8,7 +8,8 @@
     </div>
     <div class="flex flex-col items-center pt-8 gap-2 w-[80%] max-w-[1200px]">
       <TermPageOptions class="" :filters="filter"></TermPageOptions>
-      <TermPageCard class=""
+      <p v-if="current.loading"> Loading courses...</p>
+      <TermPageCard v-else class=""
           v-for="course in current.courses"
           v-bind="course"
       />
@@ -19,29 +20,27 @@
 <script>
 import TermPageCard from "./components/TermPageCard.vue";
 import TermPageOptions from "./components/filter-components/TermPageOptions.vue";
+import {Department, getDepartmentName, getTermInfo, TermInfo} from "@/components/functions/termInfoFunctions";
 export default {
   name: "TermPage",
   components: {TermPageCard,TermPageOptions},
+  beforeMount() {
+    this.initData();
+  },
   data(){
     return{
+      defaultTerm: "Spring 2023",
+      deptName:[Department],
       current: {
-        courses:[
-          {courseNumber: "CMPT 272", courseName: "Web I - Client-side Development", instructor: "Bobby Chan", campusLocation:"Burnaby",wqbDesignation:"Breadth", creditsNum:"3"},
-          {courseNumber: "CMPT 272", courseName: "Web I - Client-side Development", instructor: "Bobby Chan", campusLocation:"Burnaby",wqbDesignation:"Breadth", creditsNum:"3"},
-          {courseNumber: "CMPT 272", courseName: "Web I - Client-side Development", instructor: "Bobby Chan", campusLocation:"Burnaby",wqbDesignation:"Breadth", creditsNum:"3"},
-          {courseNumber: "CMPT 272", courseName: "Web I - Client-side Development", instructor: "Bobby Chan", campusLocation:"Burnaby",wqbDesignation:"Breadth", creditsNum:"3"},
-          {courseNumber: "CMPT 272", courseName: "Web I - Client-side Development", instructor: "Bobby Chan", campusLocation:"Burnaby",wqbDesignation:"Breadth", creditsNum:"3"},
-      ],
-        term: "Fall 2022"
+        loading: true,
+        courses:[TermInfo],
+        term: "Spring 2023"
       },
       filter:{
         department:{
           title: "Department",
           options:[
-            {href:".",label:"Computing Science"},
-            {href:".",label:"Computing Science"},
-            {href:".",label:"Computing Science"},
-            {href:".",label:"Computing Science"},
+            this.deptName,
           ]},
 
         level:{
@@ -51,8 +50,17 @@ export default {
             {href:".",label:"200"},
             {href:".",label:"300"},
             {href:".",label:"400"},
+            {href:".",label:"500"},
+            {href:".",label:"600"},
+            {href:".",label:"700"},
+            {href:".",label:"800"},
+            {href:".",label:"900"},
           ]
         },
+        instructor:{
+          title:"Instructor",
+          options:[]
+        }
         campus:{
           title:"Campus",
           options:[
@@ -71,7 +79,21 @@ export default {
         }
       }
     }
-  }
+  },
+  methods: {
+    initData(){
+      getDepartmentName("Spring 2023").then(data => this.deptName = data)
+          .then(()=>this.filter.department.options = this.deptName)
+          .catch(err => console.log(err));
+
+      getTermInfo(this.defaultTerm, ["CMPT"])
+          .then(data => {
+            this.current.courses = data;
+            console.log(`initData`)})
+          .catch(err => console.log(err))
+          .finally(() => this.current.loading = false);
+    }
+  },
 }
 </script>
 

@@ -12,7 +12,8 @@
                       @mouseover="e => e.target.classList.toggle('bg-gray-300')"
                       @mouseleave="e => e.target.classList.toggle('bg-gray-300')"
                       class="p-4 transition-colors">
-              <a href="#">{{ option.label }}</a>
+              <a href="#" v-if="isDepartment"><span class="font-bold">{{option.text}}</span> {{ option.name }}</a>
+              <a href="#" v-else>{{ option.label }}</a>
             </MenuItem>
         </div>
       </MenuItems>
@@ -27,7 +28,8 @@ import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
     components:{Menu, MenuButton, MenuItems, MenuItem},
     props: {
       title: String,
-      options: Array
+      options: Array,
+      isDepartment: false
     },
     created() {
       this.menuTitle = this.title;
