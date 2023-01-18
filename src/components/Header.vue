@@ -103,9 +103,7 @@ header {
   align-items: center;
 }
 
-
-  justify-content: center;
-}
+ 
 .header-container:first-child {
   margin-right: auto;
   justify-content: flex-start;
