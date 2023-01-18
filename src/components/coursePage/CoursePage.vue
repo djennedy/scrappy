@@ -68,8 +68,8 @@ export default {
       <SaveCourse />
     </div>
     <div class="flex flex-row gap-x-[10px]">
-      <NumCredits />
-      <WQB />
+      <NumCredits :numCredits="currentCourse.credits" />
+      <WQB :wqb="currentCourse.wqb" />
     </div>
 
     <!-- <div class="flex flex-row mt-[35px]">
