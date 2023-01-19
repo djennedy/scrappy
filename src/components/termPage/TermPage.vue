@@ -81,16 +81,32 @@ export default {
     }
   },
   methods: {
+    getInstructorName: function () {
+      this.filter.instructor.options = this.current.courses.reduce((accumulator, curr) => {
+        if (accumulator.includes(curr["instructor"])) {
+          return accumulator;
+        }
+        console.log(curr["instructor"]);
+        accumulator.push(curr["instructor"]);
+        return accumulator;
+      }, []).reduce((accumulator, curr) => {
+        accumulator.push(Object.create({href: ".", label: curr}));
+        return accumulator;
+      }, []);
+    },
     initData(){
       getDepartmentName("Spring 2023").then(data => this.deptName = data)
-          .then(()=>this.filter.department.options = this.deptName)
+          .then(()=> {
+            this.filter.department.options = this.deptName;
+          })
           .catch(err => console.log(err));
+
 
       getTermInfo(this.defaultTerm, ["CMPT"])
           .then(data => {
             this.current.courses = data;
-            console.log(`initData`)})
-          .catch(err => console.log(err))
+            this.getInstructorName();
+          }).catch(err => console.log(err))
           .finally(() => this.current.loading = false);
     }
   },
