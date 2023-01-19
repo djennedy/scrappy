@@ -1,14 +1,14 @@
 const BASE_URL = "https://www.sfu.ca/bin/wcm/course-outlines?";
-
-const BASE_OUTLINE_URL = "https://www.sfu.ca/outlines.html?"
+const BASE_OUTLINE_URL = "https://www.sfu.ca/outlines.html?";
+const BASE_CALENDAR_URL = "https://www.sfu.ca/students/calendar/";
 
 // Parses a course number or term and year to it's letters and numbers
-// Assumes correct input
-// Input: course number or term + year String(eg: CMPT 120 or 2019 Fall)
-// Output: Tuple of strings [dept, number] (eg: [cmpt, 120] or [fall, 2019])
+// Assumes correct input and in term-year order
+// Input: course number or term + year String(eg: CMPT 105w or Fall 2019)
+// Output: Tuple of strings [dept, number] (eg: [cmpt, 105w] or [fall, 2019])
 const parseInput = (input) => {
-    let alpha = input.toLowerCase().replace(/[0-9 \t]/g,'')
-    let number = input.toLowerCase().replace(/[a-z \t]/g,'');
+    let alpha = input.toLowerCase().slice(0, input.search(/[0-9]/g)).trim();
+    let number = input.toLowerCase().slice(input.search(/[0-9]/g)).trim();
     return [alpha, number];
 }
 
@@ -50,4 +50,4 @@ const getWQBDesignation = (designationString) => {
     return result;
 }
 
-export {BASE_URL, BASE_OUTLINE_URL, parseInput, getWQBDesignation};
+export {BASE_URL,BASE_CALENDAR_URL, BASE_OUTLINE_URL, parseInput, getWQBDesignation};
