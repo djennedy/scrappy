@@ -73,7 +73,7 @@ export default {
 </script>
 
 <template>
-  <div class="mb-[150px]">
+  <div class="mb-[150px] max-w-[1280px] p-10 mx-auto mt-12">
     <GoBack />
     <div class="flex flex-row items-center justify-between pt-[19px] pb-[12px]">
       <CourseInfoUI
