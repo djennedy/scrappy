@@ -8,8 +8,9 @@
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "@headlessui/tailwindcss": "^0.1.2",
-    "@headlessui/vue": "^1.7.7",
+    "@headlessui/tailwindcss": "^0.1.1",
+    "@headlessui/vue": "^1.7.4",
+    "iconify-icon": "^1.0.2",
     "vue": "^3.2.41",
     "vue-router": "^4.1.5",
     "vuetify": "^3.1.1"

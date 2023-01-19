@@ -7,10 +7,10 @@ const BASE_CALENDAR_URL = "https://www.sfu.ca/students/calendar/";
 // Input: course number or term + year String(eg: CMPT 105w or Fall 2019)
 // Output: Tuple of strings [dept, number] (eg: [cmpt, 105w] or [fall, 2019])
 const parseInput = (input) => {
-  let alpha = input.toLowerCase().slice(0, input.search(/[0-9]/g)).trim();
-  let number = input.toLowerCase().slice(input.search(/[0-9]/g)).trim();
-  return [alpha, number];
-};
+    let alpha = input.toLowerCase().slice(0, input.search(/[0-9]/g)).trim();
+    let number = input.toLowerCase().slice(input.search(/[0-9]/g)).trim();
+    return [alpha, number];
+}
 
 const getWQBDesignation = (designationString) => {
   let result = "";
@@ -54,10 +54,4 @@ const getWQBDesignation = (designationString) => {
   return result;
 };
 
-export {
-  BASE_URL,
-  BASE_OUTLINE_URL,
-  BASE_CALENDAR_URL,
-  parseInput,
-  getWQBDesignation,
-};
+export {BASE_URL,BASE_CALENDAR_URL, BASE_OUTLINE_URL, parseInput, getWQBDesignation};

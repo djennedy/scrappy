@@ -1,9 +1,23 @@
 <script setup>
-import CoursePage from "./components/coursePage/CoursePage.vue";
+import { RouterLink, RouterView } from 'vue-router'
+// import HelloWorld from './components/HelloWorld.vue'
+import Header from './components/Header.vue'
 </script>
 
 <template>
-  <CoursePage />
+  <Header/>
+  <div class="container bg-slate-300">
+    <RouterView/>
+  </div>
+
 </template>
 
-<style scoped></style>
+<style scoped>
+.container {
+  max-width: var(--page-width);
+  margin: 0 auto;
+  height: 100vh;
+  color: black
+}
+
+</style>

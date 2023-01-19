@@ -143,13 +143,33 @@ const getTermInfoFromCourseSection = async (
     );
 };
 
-/**
- * Retrieves all courses in a given subject and term
+export class Department{
+    constructor(text, value, name){
+        this.text = text;
+        this.value = value;
+        this.name = name;
+    }
+}
+
+const getDepartmentName = (termString)=>{
+    let [term,year] = parseInput(termString)
+    let url = `${BASE_URL}${year}/${term}`;
+    return fetch(url)
+        .then(response => response.json())
+        .then(result => {
+            let departments = [];
+            result.forEach(dept => departments.push(new Department(dept["text"], dept["value"], dept["name"])));
+            return departments;
+        })
+}
+
+/** 
+ * Retrieves all courses in a given subject and term 
  * IMPORTANT NOTE: This function cascades errors, please do error handling when calling this function with a .catch block
  * @param {string} termString - string of term + year (eg: "Spring 2023", "2022 Fall")
- * @param {string} deptList - list of departments to search (eg: "IAT", "cmpt")
- * @returns {Promise<TermInfo>} A promise of lists containing information for term cards in the term page
- */
+ * @param {string[]} deptList - list of departments to search (eg: "IAT", "cmpt")
+ * @returns {Promise<TermInfo>} A promise of lists containing information for term cards in the term page 
+ */ 
 const getTermInfo = async (termString, deptList) => {
   let [term, year] = parseInput(termString);
 
@@ -198,4 +218,4 @@ const getTermInfo = async (termString, deptList) => {
     });
 };
 
-export { TermInfo, getTermInfo };
+export {TermInfo,getDepartmentName, getTermInfo}
