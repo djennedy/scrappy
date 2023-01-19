@@ -19,13 +19,15 @@ export default {
       <p
         class="font-semibold text-[22px] leading-[27px] text-white w-[169px] max-h-[25px] ml-[11px] my-[5px]"
       >
-        {{ prevSemester.term.toUpperCase() }}
+        {{ prevSemester.termString.toUpperCase() }}
       </p>
     </div>
     <div class="ml-[11px] text-[16px] leading-[115%] my-[5px] space-y-4">
       <InstructorCampus
-        v-for="instructorCampus in prevSemester.instructorCampus"
-        :key="instructorCampus.id"
+        v-for="(
+          instructorCampus, index
+        ) in prevSemester.instructorCampusList.slice(0, 2)"
+        :key="index"
         :instructorCampus="instructorCampus"
       />
     </div>

@@ -42,13 +42,29 @@ export default {
       defaultCourseName: "Introduction to Computing Science and Programming I",
       currentCourse: {},
       numCourses: 0,
+      numSemesters: 0,
+      dividedPrevSemesters: [],
     };
   },
   methods: {
+    // getDividedPrevSemesters() {
+    //   let numPrevSemestersPerTab = 6;
+    //   let dividedPrevSemesters = [];
+    //   let prevSemesters = this.currentCourse.previousSemesters;
+    //   let numPrevSemesters = prevSemesters.length;
+    //   for (let i = 0; i < numPrevSemesters; i += numPrevSemestersPerTab) {
+    //     dividedPrevSemesters.push(
+    //       prevSemesters.slice(i, i + numPrevSemestersPerTab)
+    //     );
+    //   }
+    //   return dividedPrevSemesters;
+    // },
     initData() {
       getCourseInfo(this.defaultCourseNumber)
         .then((data) => {
           this.currentCourse = data;
+          // this.dividedPrevSemesters = this.getDividedPrevSemesters();
+          console.log(this.dividedPrevSemesters);
         })
         .catch((err) => console.log(err));
     },
@@ -122,7 +138,7 @@ export default {
         </v-carousel>
       </div>
 
-      <!-- <div class="w-[450px] justify-end ml-[150px] box-border">
+      <div class="w-[450px] justify-end ml-[150px] box-border">
         <div class="flex flex-row items-center justify-between h-[46px] mb-2">
           <p class="font-semibold text-[26px] leading-[32px] text-[#302A40]">
             Previous Semesters
@@ -140,11 +156,14 @@ export default {
                 height="21"
               />
             </v-btn>
-            {{ numCourses }}
+            {{ numSemesters }}
             <v-btn
               variant="plain"
               @click="
-                model = Math.min(numCourses + 1, prevSemesters.length / 6 - 1)
+                model = Math.min(
+                  numCourses + 1,
+                  currentCourse.previousSemestersCards.length / 6 - 1
+                )
               "
               size="x-small"
             >
@@ -160,13 +179,13 @@ export default {
         <v-carousel hide-delimiters :show-arrows="false" v-model="numSemesters">
           <div class="flex flex-wrap gap-x-[30px] gap-y-[18px]">
             <PrevSemesterCard
-              v-for="prevSemester in prevSemesters"
-              :key="prevSemester.id"
+              v-for="prevSemester in currentCourse.previousSemestersCards.slice(0,6)"
+              :key="prevSemester.courseSection"
               :prevSemester="prevSemester"
             />
           </div>
         </v-carousel>
-      </div> -->
+      </div>
     </div>
 
     <div class="mt-[24px] space-y-[35.57px]">
