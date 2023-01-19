@@ -7,7 +7,7 @@ export default {
   },
   computed: {
     courseNameUpper: function () {
-      return this.courseName.toUpperCase();
+      return this.courseName ? this.courseName.toUpperCase() : "";
     },
   },
 };
