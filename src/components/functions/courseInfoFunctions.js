@@ -95,16 +95,16 @@ class InstructorCardInfo {
     /**
      * Creates a new InstructorCardInfo object
      * @param {string} courseSection Course Section, eg: D100
-     * @param {string[]} instrcutorList List of instructor names, eg: [Yagiz Aksoy, Xue Bin Jason Peng]
+     * @param {string[]} instructorList List of instructor names, eg: [Yagiz Aksoy, Xue Bin Jason Peng]
      * @param {string[]} timeLocationList List of time and location of the course, eg: [Mo 16:30 - 17:20 ... , Th 16:30 - 18:20 ...]
      */
     constructor(
         courseSection,
-        instrcutorList,
+        instructorList,
         timeLocationList
     ) {
         this.courseSection = courseSection;
-        this.instrcutorList = instrcutorList;
+        this.instructorList = instructorList;
         this.timeLocationList = timeLocationList;
     }
 
