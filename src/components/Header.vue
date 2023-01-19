@@ -1,9 +1,11 @@
 <script>
 import SearchBar from "./SearchBar.vue";
+import { Icon } from '@iconify/vue';
 
 export default {
   components: {
     SearchBar,
+    Icon
   },
   data() {
     return {
@@ -30,15 +32,8 @@ export default {
       </div>
       <div class="header-container">
         <div class="dropdown-btn">
-          <img
-            src="../assets/svg/account_circle.svg"
-            alt="dropdown icon"
-          />
-          <img
-            src="../assets/svg/arrow_dropdown.svg"
-            alt="user image"
-          />
-          
+          <Icon icon="material-symbols:account-circle"  color="rgba(28, 27, 31, 1)" width="20"></Icon>
+          <Icon icon="material-symbols:arrow-drop-down" color="rgba(28, 27, 31, 1)" width="20"></Icon>
         </div>
       </div>
     </div>
@@ -53,6 +48,7 @@ export default {
 .header-container {
   display: flex;
 
+  
   justify-content: center;
 }
 .header-container:first-child {
@@ -68,13 +64,15 @@ export default {
 
 header {
   background-color: white;
-  height: 75px;
+  height: 88px;
   display: flex;
   justify-content: center;
   top: 0;
   z-index: 1;
   position: fixed;
   width: 100%;
+  color: black
+  /* border-bottom: 1px solid blue; */
 }
 
 .dropdown-btn {
@@ -83,15 +81,12 @@ header {
   padding: 0 5px;
   border-radius: 5px;
   height: 30px;
-  max-width: 120px;
+  max-width: 60px;
   font-size: 11px;
   cursor: pointer;
   align-items: center;
 }
-.dropdown-btn > img {
-  height: 30px;
-  width: auto;
-}
+
 .header {
   height: 100%;
   width: 100%;
@@ -133,7 +128,7 @@ header {
   border-radius: 5px;
   height: 30px;
   width: 100%;
-  max-width: 120px;
+  max-width: 60px;
   font-size: 11px;
   cursor: pointer;
   align-items: center;
