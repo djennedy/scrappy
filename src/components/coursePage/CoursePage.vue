@@ -48,7 +48,6 @@ export default {
       getCourseInfo(this.defaultCourseNumber)
         .then((data) => {
           this.currentCourse = data;
-          console.log(`initData: ${JSON.stringify(this.currentCourse)}`);
         })
         .catch((err) => console.log(err));
     },
@@ -176,38 +175,40 @@ export default {
         :rawHtml="currentCourse.prerequisites"
       />
 
-      <!-- <v-tabs v-model="section" color="#D3001F" class="rounded-lg">
-        <v-tab value="D100" class="ma-0 pa-0 w-[38px]">
-          <div class="text-[16px] leading-[115%]">D100</div>
-        </v-tab>
-        <v-tab value="D200" class="ma-0 pa-0 w-[38px]">
-          <div class="text-[16px] leading-[115%]">D200</div>
-        </v-tab>
-        <v-tab value="D300" class="ma-0 pa-0 w-[38px]">
-          <div class="text-[16px] leading-[115%]">D300</div>
+      <v-tabs v-model="section" color="#D3001F" class="rounded-lg">
+        <v-tab
+          class="ma-0 pa-0 w-[38px]"
+          v-for="section in currentCourse.sectionSpecificInfo"
+          :key="section.courseSection"
+        >
+          <div class="text-[16px] leading-[115%]">
+            {{ section.courseSection }}
+          </div>
         </v-tab>
       </v-tabs>
 
       <v-window v-model="section">
-        <div class="space-y-[35.57px]">
-          <CourseParagraph
-            header="Course Details"
-            :rawHtml="courseDescription.description"
-          />
-          <CourseParagraph
-            header="Educational Goals"
-            :rawHtml="courseDescription.description"
-          />
-          <CourseParagraph
-            header="Materials + Supplies"
-            :rawHtml="courseDescription.description"
-          />
-          <CourseParagraph
-            header="Grading"
-            :rawHtml="courseDescription.description"
-          />
-        </div>
-      </v-window> -->
+        <v-window-item
+          v-for="section in currentCourse.sectionSpecificInfo"
+          :key="section.courseSection"
+        >
+          <div class="space-y-[35.57px]">
+            <CourseParagraph
+              header="Course Details"
+              :rawHtml="section.courseDetail"
+            />
+            <CourseParagraph
+              header="Educational Goals"
+              :rawHtml="section.educationalGoals"
+            />
+            <CourseParagraph
+              header="Materials + Supplies"
+              :rawHtml="section.materialSupplies"
+            />
+            <CourseParagraph header="Grading" :rawHtml="section.gradingNotes" />
+          </div>
+        </v-window-item>
+      </v-window>
     </div>
   </div>
 </template>
