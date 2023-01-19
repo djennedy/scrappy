@@ -41,6 +41,7 @@ export default {
       defaultCredits: 3,
       defaultCourseName: "Introduction to Computing Science and Programming I",
       currentCourse: {},
+      numCourses: 0,
     };
   },
   methods: {
@@ -71,7 +72,7 @@ export default {
       <WQB :wqb="currentCourse.wqb" />
     </div>
 
-    <!-- <div class="flex flex-row mt-[35px]">
+    <div class="flex flex-row mt-[35px]">
       <div class="w-[614px]">
         <div class="flex flex-row items-center justify-between h-[46px] mb-2">
           <p class="font-semibold text-[26px] leading-[32px] text-[#302A40]">
@@ -94,7 +95,10 @@ export default {
             <v-btn
               variant="plain"
               @click="
-                model = Math.min(numCourses + 1, instructors.length / 6 - 1)
+                model = Math.min(
+                  numCourses + 1,
+                  currentCourse.instructorsCards.length / 6 - 1
+                )
               "
               size="x-small"
             >
@@ -110,15 +114,15 @@ export default {
         <v-carousel hide-delimiters :show-arrows="false" v-model="numCourses">
           <div class="flex flex-wrap flext-start gap-x-[18px] gap-y-[25px]">
             <InstructorsCard
-              v-for="instructor in instructors"
-              :key="instructor.id"
+              v-for="instructor in currentCourse.instructorsCards"
+              :key="instructor.courseSection"
               :instructor="instructor"
             />
           </div>
         </v-carousel>
       </div>
 
-      <div class="w-[450px] justify-end ml-[150px] box-border">
+      <!-- <div class="w-[450px] justify-end ml-[150px] box-border">
         <div class="flex flex-row items-center justify-between h-[46px] mb-2">
           <p class="font-semibold text-[26px] leading-[32px] text-[#302A40]">
             Previous Semesters
@@ -163,7 +167,7 @@ export default {
           </div>
         </v-carousel>
       </div> -->
-    <!-- </div> -->
+    </div>
 
     <div class="mt-[24px] space-y-[35.57px]">
       <CourseParagraph
