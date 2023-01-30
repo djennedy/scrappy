@@ -25,12 +25,12 @@ export default {
   <header>
     <div class="header">
       <div class="header-container ">
-        <div class="scrappy text-black text-4xl font-bold cursor-pointer" @click="goHome">Scrappy</div>
+        <div class="scrappy text-black text-4xl font-bold cursor-pointer mr-10" @click="goHome">Scrappy</div>
       </div>
       <div class="header-container middle">
         <SearchBar v-if="showSearchBar" />
       </div>
-      <div class="header-container">
+      <div class="header-container ml-10">
         <div class="dropdown-btn">
           <Icon icon="material-symbols:account-circle"  color="rgba(28, 27, 31, 1)" width="20"></Icon>
           <Icon icon="material-symbols:arrow-drop-down" color="rgba(28, 27, 31, 1)" width="20"></Icon>

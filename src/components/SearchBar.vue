@@ -48,6 +48,7 @@ div.search-bar {
   height: 31px;
   max-width: 675px;
   width: 100%;
+  z-index: 1;
 }
 input {
   border: none;

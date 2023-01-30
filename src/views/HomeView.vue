@@ -4,27 +4,38 @@ import SearchBar from "../components/SearchBar.vue";
 
 <template>
   <main>
-    <h1 class="text-5xl mb-16 font-bold">Search for a <span class="text-sfu-red font-bold">SFU course</span></h1>
-    <SearchBar />
-    <a class="mt-6 text-black underline">Search courses by term</a>
-    <v-container class="info rounded-lg mt-20">
+    <div class="search-wrapper">
+      <h1 class="text-5xl mb-16 font-bold">
+        Search for a <span class="text-sfu-red font-bold">SFU course</span>
+      </h1>
+      <SearchBar />
+      <a class="mt-6 text-black underline">Search courses by term</a>
+    </div>
+    <v-container class="info rounded-lg">
       <v-row>
         <v-col sm="6" cols="12" class="sep">
           <h2 class="text-lg font-bold">About Scrappy</h2>
-          <p>Scrappy is an information hub for SFU courses to help you make the most of your university courses.</p>
+          <p>
+            Scrappy is an information hub for SFU courses to help you make the
+            most of your university courses.
+          </p>
         </v-col>
         <v-col sm="6" cols="12">
-          <h2 class="text-lg font-bold">Don't know your degree requirements?</h2>
-          <v-btn variant="outlined" color="red" class="mt-7 degree-button" block>
-            <span class="font-bold">
-              Find your degree requirements
-            </span>
+          <h2 class="text-lg font-bold">
+            Don't know your degree requirements?
+          </h2>
+          <v-btn
+            variant="outlined"
+            color="red"
+            class="mt-7 degree-button"
+            block
+          >
+            <span class="font-bold text-sm">Find your degree requirements </span>
           </v-btn>
         </v-col>
       </v-row>
     </v-container>
-    <img class="mountains" src="../assets/svg/mountains.svg"/>
-    
+    <img class="mountains" src="../assets/svg/mountains.svg" />
   </main>
 </template>
 <style scoped>
@@ -35,49 +46,71 @@ main {
   padding-top: 188px;
   position: relative;
   height: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
 }
-degree-button {
-  border-width: 20px!important;
-} 
+.degree-button {
+  overflow:hidden;
+  text-overflow: ellipsis;
+}
 .sep {
   border-right: 1px solid rgba(172, 181, 191, 1);
 }
-.search {
+
+.search-wrapper {
   display: flex;
   align-items: center;
+  flex-direction: column;
   justify-content: center;
   margin-top: 1rem;
+  z-index: 1;
+  width: 100%;
+  padding: 0 20px;
 }
-h1,h2,h3,h4,h5,h6 {
-  /* text-align: center; */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  z-index: 1;
 }
 .info {
   z-index: 1;
   background-color: white;
   max-width: 800px;
-  height: 200px;
   display: flex;
-  position: absolute;
-  top:500px;
+  margin-top: 200px;
   box-shadow: 0 5px 5px #00000037;
 }
 .info > div {
-  /* background-color: red; */
   margin: 5px 0;
- 
 }
 .info > div > div:first-child {
-  /* background-color: red; */
   padding-right: 50px;
 }
 .info > div > div:last-child {
-  /* background-color: red; */
   padding-left: 50px;
 }
 .mountains {
   position: absolute;
-  top: 267px;
-  /* background-color: red; */
+  top:300px;
+  width: 100%;
+  width: 100%;
+  min-width: 1440px;
+  max-width: 100%;
+  
+  
 }
-
+@media (max-width: 576px) {
+  .sep {
+    border-right: none;
+  }
+  .info > div > div:first-child {
+  padding-right: 10px;
+}
+.info > div > div:last-child {
+  padding-left: 10px;
+}
+}
 </style>
