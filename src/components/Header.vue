@@ -23,8 +23,35 @@ export default {
 
 <template>
   <header>
-    <div class="header">
-      <div class="header-container">
+    <v-container class="header-container fill-height">
+      <v-row class="row-wrapper" align="center">
+        <v-col md="2" cols="6" order-md="1" order="1">
+          <div
+            class="scrappy text-black text-4xl font-bold cursor-pointer"
+            @click="goHome"
+          >
+            Scrappy
+          </div>
+        </v-col>
+        <v-col md="8" cols="12" order-md="2" order="3" class="center">
+          <SearchBar v-if="showSearchBar" />
+        </v-col>
+        <v-col md="2" cols="6" order-md="3" order="2" class="right">
+          <div class="dropdown-btn">
+            <Icon
+              icon="material-symbols:account-circle"
+              color="rgba(28, 27, 31, 1)"
+              width="20"
+            ></Icon>
+            <Icon
+              icon="material-symbols:arrow-drop-down"
+              color="rgba(28, 27, 31, 1)"
+              width="20"
+            ></Icon></div
+        ></v-col>
+      </v-row>
+    </v-container>
+    <!-- <div class="header-container">
         <div
           class="scrappy text-black text-4xl font-bold cursor-pointer mr-10"
           @click="goHome"
@@ -48,84 +75,45 @@ export default {
             width="20"
           ></Icon>
         </div>
-      </div>
-    </div>
+      </div> -->
   </header>
 </template>
 
 <style scoped>
-.middle {
-  max-width: 675px;
-  width: 100%;
-}
-.header-container {
-  display: flex;
-  justify-content: center;
-}
-.header-container:first-child {
-  margin-right: auto;
-  justify-content: flex-start;
-  flex: 1;
-}
-.header-container:last-child {
-  flex: 1;
-  margin-left: auto;
-  justify-content: flex-end;
-}
-
 header {
-  height: 88px;
+  /* height: 88px; */
   display: flex;
   justify-content: center;
-  top: 0;
   background-color: white;
   position: fixed;
   width: 100%;
   color: black;
   z-index: 5;
+  border-bottom: 1px solid rgba(149, 149, 149, 0.4);
+}
 
-  /* border-bottom: 1px solid blue; */
+.header-container {
+  max-width: var(--page-width);
+}
+.center {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+.right {
+  display: flex;
+  justify-content: end;
 }
 
 .dropdown-btn {
   display: flex;
   justify-content: center;
-  padding: 0 5px;
   border-radius: 5px;
   height: 30px;
-  max-width: 60px;
-  font-size: 11px;
+  width: 80px;
   cursor: pointer;
   align-items: center;
 }
-.dropdown-btn > img {
-  height: 20px;
-  width: auto;
-}
-
-.header {
-  height: 100%;
-  width: 100%;
-  max-width: var(--page-width);
-  background-color: #fff;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 1rem;
-  align-items: center;
-}
-
-.header-container:first-child {
-  margin-right: auto;
-  justify-content: flex-start;
-  flex: 1;
-}
-.header-container:last-child {
-  flex: 1;
-  margin-left: auto;
-  justify-content: flex-end;
-}
-
-
 
 .username {
   /* border: 1px solid red; */
