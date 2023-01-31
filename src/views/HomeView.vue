@@ -98,9 +98,10 @@ h6 {
   width: 100%;
   width: 100%;
   min-width: 1440px;
-  max-width: 100%;
-  
-  
+  max-width: 100vw;
+  width: 100vw;
+  height: 450px;
+  object-fit: cover;
 }
 @media (max-width: 576px) {
   .sep {
