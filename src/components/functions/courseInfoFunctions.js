@@ -83,7 +83,8 @@ class SectionSpecificInfo {
         requiredReadings,
         materialSupplies,
         gradingSchemesList,
-        gradingNotes
+        gradingNotes,
+        outlineLink
     ) {
         this.courseSection = courseSection;
         this.courseDetail = courseDetail;
@@ -92,6 +93,7 @@ class SectionSpecificInfo {
         this.materialSupplies = materialSupplies;
         this.gradingScehemesList = gradingSchemesList;
         this.gradingNotes = gradingNotes;
+        this.outlineLink = outlineLink;
     }
 }
 /** Class to represent information located in Instructor Card Components */
@@ -286,7 +288,8 @@ const getCourseInfo = async (courseString) => {
         courseInfo.hasOwnProperty("requiredText") ? courseInfo["requiredText"]["details"] : "",
         courseInfo["info"].hasOwnProperty("materials") ? courseInfo["info"]["materials"] : "",
         courseInfo.hasOwnProperty("grades") ? courseInfo["grades"] : [],
-        courseInfo["info"].hasOwnProperty("gradingNotes") ? courseInfo["info"]["gradingNotes"] : ""
+        courseInfo["info"].hasOwnProperty("gradingNotes") ? courseInfo["info"]["gradingNotes"] : "",
+        `${BASE_OUTLINE_URL}${courseInfo["info"]["outlinePath"]}`
         ));
 
     let instructorCards = courseInfos.map(courseInfo => new InstructorCardInfo(
