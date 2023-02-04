@@ -9,7 +9,7 @@ import SearchBar from "../components/SearchBar.vue";
         Search for a <span class="text-sfu-red font-bold">SFU course</span>
       </h1>
       <SearchBar />
-      <a class="mt-6 text-black underline">Search courses by term</a>
+      <a class="mt-6 text-black underline cursor-pointer">Search courses by term</a>
     </div>
     <v-container class="info rounded-lg">
       <v-row>
