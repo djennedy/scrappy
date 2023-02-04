@@ -11,6 +11,18 @@ class Terms {
         return this.name;
     }
 
+    static stringToTerm(string){
+        string = string.toLowerCase();
+        switch(string) {
+            case "spring":
+                return this.Spring;
+            case "summer":
+                return this.Summer;
+            case "fall":
+                return this.Fall;
+        }
+    }
+
     static getTermFromMonth = (month) => {
         if (month <= 4) {
             return this.Spring; // Jan - Apr
@@ -34,6 +46,19 @@ class Terms {
         }
     }
 
+    static getPrevTerm = (term) => {
+        switch (term) {
+            case this.Spring:
+                return this.Fall;
+            case this.Summer:
+                return this.Spring;
+            case this.Fall:
+                return this.Summer;
+            default:
+                break;
+        }
+    }
+
     static getCurrentTerm = () => {
         let currentDate = new Date();
         let currentMonth = currentDate.getMonth;
@@ -42,4 +67,7 @@ class Terms {
     }
 }
 
-export {Terms};
+const STARTING_TERM = Terms.Summer;
+const STARTING_YEAR = 2014;
+
+export {Terms, STARTING_TERM, STARTING_YEAR};
