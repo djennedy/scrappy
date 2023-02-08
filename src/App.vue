@@ -6,7 +6,7 @@ import Header from './components/Header.vue'
 
 <template>
   <Header/>
-  <div class="container bg-slate-300">
+  <div class="container bg-white">
     <RouterView/>
   </div>
 
