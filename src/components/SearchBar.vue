@@ -3,14 +3,23 @@ export default {
   width: 100,
   data() {
     return {
-      search: "",
+      search: '',
+      suggestions: ['apple', 'banana', 'cherry', 'date', 'elderberry', 'fig']
     };
   },
-  methods: {
+  computed: {
+      filteredSuggestions() {
+        return this.suggestions.filter(suggestion => suggestion.toLowerCase().includes(this.search.toLowerCase()));
+      }
+    },
+    methods: {
     searchText() {
       console.log(this.search);
       this.$router.push({ name: this.search });
     },
+    selectSuggestion(suggestion) {
+      this.search = suggestion;
+    }
   },
 };
 </script>
@@ -29,7 +38,17 @@ export default {
       @input="$emit('input', search)"
       @keyup.enter="searchText"
     />
+    <!-- <ul v-if="search.length && filteredSuggestions.length">
+        <li v-for="(suggestion, index) in filteredSuggestions" :key="index" @click="selectSuggestion(suggestion)">
+          {{ suggestion }}
+        </li>
+    </ul> -->
   </div>
+  <ul v-if="search.length && filteredSuggestions.length">
+      <li v-for="(suggestion, index) in filteredSuggestions" :key="index" @click="selectSuggestion(suggestion)">
+        {{ suggestion }}
+      </li>
+  </ul>
 </template>
 
 <style scoped>
