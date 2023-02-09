@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import TermPage from "@/components/termPage/TermPage.vue";
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,8 +9,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView
-    },
-    {
+    }, {
+      path:"/termpage",
+      name:'termpage',
+      component: TermPage
+      }, {
       path: '/about',
       name: 'about',
       // route level code-splitting
