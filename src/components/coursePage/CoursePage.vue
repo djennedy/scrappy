@@ -205,7 +205,6 @@ export default {
         header="Pre-requisites"
         :rawHtml="currentCourse.prerequisites"
       />
-      <v-card></v-card>
       <v-tabs v-model="section" color="#D3001F" class="rounded-lg">
         <v-tab
           class="ma-0 pa-0 w-[38px]"
@@ -225,6 +224,7 @@ export default {
         >
           <div class="space-y-[35.57px]">
             <CourseParagraph
+              v-if="section.courseDetail"
               header="Course Details"
               :rawHtml="section.courseDetail"
             />
@@ -234,10 +234,15 @@ export default {
               :rawHtml="section.educationalGoals"
             />
             <CourseParagraph
+              v-if="section.materialSupplies"
               header="Materials + Supplies"
               :rawHtml="section.materialSupplies"
             />
-            <CourseParagraph header="Grading" :rawHtml="section.gradingNotes" />
+            <CourseParagraph
+              v-if="section.gradingNotes"
+              header="Grading"
+              :rawHtml="section.gradingNotes"
+            />
           </div>
         </v-window-item>
       </v-window>
