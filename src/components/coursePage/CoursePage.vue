@@ -226,6 +226,7 @@ export default {
               :rawHtml="section.courseDetail"
             />
             <CourseParagraph
+              v-if="section.educationalGoals"
               header="Educational Goals"
               :rawHtml="section.educationalGoals"
             />
