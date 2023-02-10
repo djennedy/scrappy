@@ -42,17 +42,17 @@ export default {
       @input="$emit('input', search)"
       @keyup.enter="searchText"
     />
-    <!-- <ul v-if="search.length && filteredSuggestions.length">
+    <ul class="suggestions" v-if="search.length && filteredSuggestions.length">
         <li v-for="(suggestion, index) in filteredSuggestions" :key="index" @click="selectSuggestion(suggestion)">
           {{ suggestion }}
         </li>
-    </ul> -->
+    </ul>
   </div>
-  <ul v-if="search.length && filteredSuggestions.length">
+  <!-- <ul class="suggestions" v-if="search.length && filteredSuggestions.length">
       <li v-for="(suggestion, index) in filteredSuggestions" :key="index" @click="selectSuggestion(suggestion)">
         {{ suggestion }}
       </li>
-  </ul>
+  </ul> -->
 </template>
 
 <style scoped>
@@ -81,5 +81,16 @@ input {
 input:focus {
   border: none;
   outline: none;
+}
+
+.suggestions {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 47px;
+  right: 0;
+  background-color: white;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 </style>
