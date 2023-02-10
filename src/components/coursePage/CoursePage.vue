@@ -139,7 +139,9 @@ export default {
       </div>
 
       <div class="w-[450px] justify-end ml-[140px] box-border">
-        <div class="flex flex-row items-center justify-between h-[46px] mb-2">
+        <div
+          class="flex flex-auto flex-row items-center justify-between h-[46px] mb-2"
+        >
           <p class="font-semibold text-[26px] leading-[32px] text-[#302A40]">
             Previous Semesters
           </p>
@@ -179,7 +181,10 @@ export default {
         <v-carousel hide-delimiters :show-arrows="false" v-model="numSemesters">
           <div class="flex flex-wrap gap-x-[30px] gap-y-[18px]">
             <PrevSemesterCard
-              v-for="prevSemester in currentCourse.previousSemestersCards.slice(0,6)"
+              v-for="prevSemester in currentCourse.previousSemestersCards.slice(
+                0,
+                6
+              )"
               :key="prevSemester.courseSection"
               :prevSemester="prevSemester"
             />
