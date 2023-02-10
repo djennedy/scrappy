@@ -23,6 +23,10 @@ export default {
     },
     selectSuggestion(suggestion) {
       this.search = suggestion;
+    },
+    fetchSuggestions() {
+      // PUT THE DAMN API CALL HERE
+
     }
   },
 };
@@ -48,11 +52,6 @@ export default {
         </li>
     </ul>
   </div>
-  <!-- <ul class="suggestions" v-if="search.length && filteredSuggestions.length">
-      <li v-for="(suggestion, index) in filteredSuggestions" :key="index" @click="selectSuggestion(suggestion)">
-        {{ suggestion }}
-      </li>
-  </ul> -->
 </template>
 
 <style scoped>
@@ -69,6 +68,7 @@ div.search-bar {
   width: 100%;
   z-index: 1;
 }
+
 input {
   border: none;
   outline: none;
