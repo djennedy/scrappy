@@ -22,7 +22,7 @@ export default {
     </div>
     <p
       class="font-medium text-[18px] leading-[22px] mt-0 mb-6"
-      v-for="instructor in instructor.instrcutorList"
+      v-for="instructor in instructor.instructorList"
       :key="instructor"
     >
       {{ instructor }}
