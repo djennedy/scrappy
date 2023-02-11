@@ -41,7 +41,7 @@ export default {
     <div class="flex flex-row gap-x-[10px]">
       <NumCredits v-if="loading" numCredits="3" />
       <NumCredits v-else :numCredits="currentCourse.credits" />
-      <WQB v-if="loading" wqb="B-Sci/Q" />
+      <WQB v-if="loading" wqb="Q,B-Sci" />
       <WQB v-else :wqb="currentCourse.wqb" />
     </div>
   </div>

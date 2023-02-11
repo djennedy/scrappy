@@ -3,7 +3,7 @@ import "iconify-icon";
 import CourseHeader from "./components/CourseHeader.vue";
 import InstructorsCard from "./components/InstructorsCard.vue";
 import PrevSemesterCard from "./components/PrevSemesterCard.vue";
-import CourseParagraph from "./components/CourseParagraph.vue";
+import CourseDetails from "./components/CourseDetails.vue";
 import { getCourseInfo } from "@/components/functions/courseInfoFunctions";
 
 export default {
@@ -12,7 +12,7 @@ export default {
     CourseHeader,
     InstructorsCard,
     PrevSemesterCard,
-    CourseParagraph,
+    CourseDetails,
   },
   beforeMount() {
     this.initData();
@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       defaultTerm: "Spring 2023",
-      defaultCourseNumber: "CMPT 125",
+      defaultCourseNumber: "CMPT 120",
       defaultWQB: "B-Sci/Q",
       defaultCredits: 3,
       defaultCourseName: "Introduction to Computing Science and Programming I",
@@ -151,58 +151,8 @@ export default {
           </div>
         </v-carousel>
       </div>
-    </div>
-
-    <div class="mt-[24px] space-y-[35.57px]">
-      <CourseParagraph
-        header="Calendar Description"
-        :rawHtml="currentCourse.calendarDescription"
-      />
-      <CourseParagraph
-        header="Pre-requisites"
-        :rawHtml="currentCourse.prerequisites"
-      />
-      <v-tabs v-model="section" color="#D3001F" class="rounded-lg">
-        <v-tab
-          class="ma-0 pa-0 w-[38px]"
-          v-for="section in currentCourse.sectionSpecificInfo"
-          :key="section.courseSection"
-        >
-          <div class="text-[16px] leading-[115%]">
-            {{ section.courseSection }}
-          </div>
-        </v-tab>
-      </v-tabs>
-
-      <v-window v-model="section" class="h-[750px]">
-        <v-window-item
-          v-for="section in currentCourse.sectionSpecificInfo"
-          :key="section.courseSection"
-        >
-          <div class="space-y-[35.57px]">
-            <CourseParagraph
-              v-if="section.courseDetail"
-              header="Course Details"
-              :rawHtml="section.courseDetail"
-            />
-            <CourseParagraph
-              v-if="section.educationalGoals"
-              header="Educational Goals"
-              :rawHtml="section.educationalGoals"
-            />
-            <CourseParagraph
-              v-if="section.materialSupplies"
-              header="Materials + Supplies"
-              :rawHtml="section.materialSupplies"
-            />
-            <CourseParagraph
-              v-if="section.gradingNotes"
-              header="Grading"
-              :rawHtml="section.gradingNotes"
-            />
-          </div>
-        </v-window-item>
-      </v-window>
     </div> -->
+
+    <CourseDetails :currentCourse="currentCourse" :loading="loading" />
   </div>
 </template>
