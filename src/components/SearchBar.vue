@@ -11,6 +11,9 @@ export default {
       suggestions: ['apple', 'banana', 'cherry', 'date', 'elderberry', 'fig']
     };
   },
+  created() {
+    this.fetchSuggestions();
+  },
   computed: {
     filteredSuggestions() {
       return this.suggestions.filter(suggestion => suggestion.toLowerCase().includes(this.search.toLowerCase()));
@@ -26,7 +29,9 @@ export default {
     },
     async fetchSuggestions() {
       // PUT THE DAMN API CALL HERE
-      let x =fetch("http://www.sfu.ca/bin/wcm/course-outlines").then(response => response.json());
+      console.log("this is working");
+      let x = fetch("http://www.sfu.ca/bin/wcm/course-outlines").then(response => response.json());
+      console.log(x)
     }
   },
 };
