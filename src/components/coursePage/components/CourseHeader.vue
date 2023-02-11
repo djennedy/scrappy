@@ -25,7 +25,7 @@ export default {
     <GoBack />
     <div class="flex flex-row items-center justify-between pt-[19px] pb-[12px]">
       <CourseInfoUI
-        v-if="loading"
+        v-if="loading || currentCourse.courseNumber === undefined"
         courseNumber="CMPT 120"
         term="Spring 2023"
         courseName="Introduction to Computing Science and Programming I"
@@ -39,9 +39,12 @@ export default {
       <SaveCourse />
     </div>
     <div class="flex flex-row gap-x-[10px]">
-      <NumCredits v-if="loading" numCredits="3" />
+      <NumCredits
+        v-if="loading || currentCourse.numCredits === undefined"
+        numCredits="3"
+      />
       <NumCredits v-else :numCredits="currentCourse.credits" />
-      <WQB v-if="loading" wqb="Q,B-Sci" />
+      <WQB v-if="loading || currentCourse.wqb === undefined" wqb="Q,B-Sci" />
       <WQB v-else :wqb="currentCourse.wqb" />
     </div>
   </div>

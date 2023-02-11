@@ -21,7 +21,7 @@ export default {
 <template>
   <div class="mt-[24px] space-y-[35.57px]">
     <CourseParagraph
-      v-if="loading"
+      v-if="loading || currentCourse.calendarDescription === undefined"
       header="Calendar Description"
       :rawHtml="lorem"
     />
@@ -30,13 +30,17 @@ export default {
       header="Calendar Description"
       :rawHtml="currentCourse.calendarDescription"
     />
-    <CourseParagraph v-if="loading" header="Pre-requisites" :rawHtml="lorem" />
+    <CourseParagraph
+      v-if="loading || currentCourse.prerequisites === undefined"
+      header="Pre-requisites"
+      :rawHtml="lorem"
+    />
     <CourseParagraph
       v-else
       header="Pre-requisites"
       :rawHtml="currentCourse.prerequisites"
     />
-    <div v-if="currentCourse && !loading">
+    <div v-if="currentCourse.sectionSpecificInfo !== undefined && !loading">
       <v-tabs v-model="section" color="#D3001F" class="rounded-lg">
         <v-tab
           class="ma-0 pa-0 w-[38px]"
@@ -60,7 +64,12 @@ export default {
               header="Course Details"
               :rawHtml="section.courseDetail"
             />
-            <p v-else>Course details not available</p>
+            <p
+              v-else
+              class="bg-[#E9E9E9] p-12 flex flex-row justify-center text-[18px] leading-[115%] text-[#616161] font-normal"
+            >
+              Course details not available
+            </p>
             <CourseParagraph
               v-if="section.educationalGoals"
               header="Educational Goals"

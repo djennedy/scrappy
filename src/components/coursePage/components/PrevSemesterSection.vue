@@ -16,15 +16,23 @@ export default {
   computed: {
     slides() {
       let slides = [];
-      for (let i = 0; i < this.prevSemesterList.length; i += 6) {
+      let numSemesters;
+      try {
+        numSemesters = this.prevSemesterList.length;
+      } catch (e) {
+        numSemesters = 0;
+      }
+      for (let i = 0; i < numSemesters; i += 6) {
         slides.push(this.prevSemesterList.slice(i, i + 6));
       }
-      console.log(slides);
       return slides;
     },
     numSlides() {
-      console.log(this.slides.length);
-      return this.slides.length;
+      try {
+        return this.slides.length;
+      } catch (e) {
+        return 0;
+      }
     },
   },
 };
@@ -67,7 +75,7 @@ export default {
       </div>
     </div>
     <p
-      v-if="loading"
+      v-if="loading || prevSemesterList === undefined"
       class="bg-[#E9E9E9] p-12 flex flex-row justify-center text-[18px] leading-[115%] text-[#616161] font-normal"
     >
       No Previous Offerings

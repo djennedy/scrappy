@@ -19,14 +19,8 @@ export default {
   },
   data() {
     return {
-      defaultTerm: "Spring 2023",
-      defaultCourseNumber: "CMPT 276",
-      defaultWQB: "B-Sci/Q",
-      defaultCredits: 3,
-      defaultCourseName: "Introduction to Computing Science and Programming I",
+      defaultCourseNumber: "CMPT 120",
       currentCourse: {},
-      numCourses: 0,
-      numSemesters: 0,
       section: null,
       loading: true,
     };
@@ -38,7 +32,7 @@ export default {
           this.currentCourse = data;
         })
         .catch((err) => console.log(err))
-      .finally(() => (this.loading = false));
+        .finally(() => (this.loading = false));
     },
   },
 };

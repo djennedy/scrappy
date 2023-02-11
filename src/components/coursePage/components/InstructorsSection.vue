@@ -16,15 +16,23 @@ export default {
   computed: {
     slides() {
       let slides = [];
-      for (let i = 0; i < this.instructorList.length; i += 6) {
+      let numSlides;
+      try {
+        numSlides = this.instructorList.length;
+      } catch (e) {
+        numSlides = 0;
+      }
+      for (let i = 0; i < numSlides; i += 6) {
         slides.push(this.instructorList.slice(i, i + 6));
       }
-      console.log(slides);
       return slides;
     },
     numSlides() {
-      console.log(this.slides.length);
-      return this.slides.length;
+      try {
+        return this.slides.length;
+      } catch (e) {
+        return 0;
+      }
     },
   },
 };
@@ -64,7 +72,7 @@ export default {
       </div>
     </div>
     <p
-      v-if="loading"
+      v-if="loading || instructorList === undefined"
       class="bg-[#E9E9E9] p-12 flex flex-row justify-center text-[18px] leading-[115%] text-[#616161] font-normal"
     >
       Unavailable This Semester
