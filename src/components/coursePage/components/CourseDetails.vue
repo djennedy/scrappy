@@ -36,7 +36,7 @@ export default {
       header="Pre-requisites"
       :rawHtml="currentCourse.prerequisites"
     />
-    <div v-if="currentCourse">
+    <div v-if="currentCourse && !loading">
       <v-tabs v-model="section" color="#D3001F" class="rounded-lg">
         <v-tab
           class="ma-0 pa-0 w-[38px]"

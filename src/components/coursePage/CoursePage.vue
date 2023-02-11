@@ -1,8 +1,7 @@
 <script>
 import "iconify-icon";
 import CourseHeader from "./components/CourseHeader.vue";
-import InstructorsCard from "./components/InstructorsCard.vue";
-import PrevSemesterCard from "./components/PrevSemesterCard.vue";
+import PrevSemesterSection from "./components/PrevSemesterSection.vue";
 import CourseDetails from "./components/CourseDetails.vue";
 import InstructorsSection from "./components/InstructorsSection.vue";
 import { getCourseInfo } from "@/components/functions/courseInfoFunctions";
@@ -12,7 +11,7 @@ export default {
   components: {
     CourseHeader,
     InstructorsSection,
-    PrevSemesterCard,
+    PrevSemesterSection,
     CourseDetails,
   },
   beforeMount() {
@@ -21,7 +20,7 @@ export default {
   data() {
     return {
       defaultTerm: "Spring 2023",
-      defaultCourseNumber: "BUS 478",
+      defaultCourseNumber: "CMPT 276",
       defaultWQB: "B-Sci/Q",
       defaultCredits: 3,
       defaultCourseName: "Introduction to Computing Science and Programming I",
@@ -39,7 +38,7 @@ export default {
           this.currentCourse = data;
         })
         .catch((err) => console.log(err))
-        .finally(() => (this.loading = false));
+      .finally(() => (this.loading = false));
     },
   },
 };
@@ -55,59 +54,10 @@ export default {
         :loading="loading"
       />
 
-      <!-- <div class="w-[450px] justify-end ml-[140px] box-border">
-        <div
-          class="flex flex-auto flex-row items-center justify-between h-[46px] mb-2"
-        >
-          <p class="font-semibold text-[26px] leading-[32px] text-[#302A40]">
-            Previous Semesters
-          </p>
-          <div class="flex flex-row items-center">
-            <v-btn
-              variant="plain"
-              @click="model = Math.max(numCourses - 1, 0)"
-              size="x-small"
-            >
-              <iconify-icon
-                icon="fluent:triangle-left-48-filled"
-                color="#d9d9d9"
-                width="21"
-                height="21"
-              />
-            </v-btn>
-            {{ numSemesters }}
-            <v-btn
-              variant="plain"
-              @click="
-                model = Math.min(
-                  numCourses + 1,
-                  currentCourse.previousSemestersCards.length / 6 - 1
-                )
-              "
-              size="x-small"
-            >
-              <iconify-icon
-                icon="fluent:triangle-right-48-filled"
-                color="#d9d9d9"
-                width="21"
-                height="21"
-              />
-            </v-btn>
-          </div>
-        </div>
-        <v-carousel hide-delimiters :show-arrows="false" v-model="numSemesters">
-          <div class="flex flex-wrap gap-x-[30px] gap-y-[18px]">
-            <PrevSemesterCard
-              v-for="prevSemester in currentCourse.previousSemestersCards.slice(
-                0,
-                6
-              )"
-              :key="prevSemester.courseSection"
-              :prevSemester="prevSemester"
-            />
-          </div>
-        </v-carousel>
-      </div> -->
+      <PrevSemesterSection
+        :prevSemesterList="currentCourse.previousSemestersCards"
+        :loading="loading"
+      />
     </div>
 
     <CourseDetails :currentCourse="currentCourse" :loading="loading" />
