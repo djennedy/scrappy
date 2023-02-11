@@ -60,6 +60,7 @@ export default {
               header="Course Details"
               :rawHtml="section.courseDetail"
             />
+            <p v-else>Course details not available</p>
             <CourseParagraph
               v-if="section.educationalGoals"
               header="Educational Goals"
