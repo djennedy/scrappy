@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       defaultTerm: "Spring 2023",
-      defaultCourseNumber: "CMPT 120",
+      defaultCourseNumber: "CMPT 125",
       defaultWQB: "B-Sci/Q",
       defaultCredits: 3,
       defaultCourseName: "Introduction to Computing Science and Programming I",
@@ -48,7 +48,7 @@ export default {
   <div class="mb-[150px] max-w-[1280px] p-10 mx-auto mt-12">
     <CourseHeader :currentCourse="currentCourse" :loading="loading" />
 
-    <!-- <div class="flex flex-row mt-[35px]">
+    <div class="flex flex-row mt-[35px]">
       <div class="w-[614px]">
         <div class="flex flex-row items-center justify-between h-[46px] mb-2">
           <p class="font-semibold text-[26px] leading-[32px] text-[#302A40]">
@@ -151,7 +151,7 @@ export default {
           </div>
         </v-carousel>
       </div>
-    </div> -->
+    </div>
 
     <CourseDetails :currentCourse="currentCourse" :loading="loading" />
   </div>

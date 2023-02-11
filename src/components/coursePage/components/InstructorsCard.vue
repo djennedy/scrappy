@@ -21,13 +21,13 @@ export default {
       <iconify-icon icon="bi:question-circle" />
     </div>
     <p
-      class="font-medium text-[18px] leading-[22px] mt-0 mb-6"
+      class="font-medium text-[18px] leading-[22px] mt-0"
       v-for="instructor in instructor.instructorList"
       :key="instructor"
     >
       {{ instructor }}
     </p>
-    <div class="space-y-4">
+    <div class="space-y-4 mt-6">
       <TimeLocation
         v-for="timeLocation in instructor.timeLocationList"
         :key="timeLocation"
