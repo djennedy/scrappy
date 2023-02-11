@@ -1,4 +1,4 @@
-import { BASE_URL, BASE_OUTLINE_URL , parseInput, getWQBDesignation} from "./commonFunctions.js";
+import { BASE_URL, BASE_OUTLINE_URL , parseInput, getCourseListFromDepartment, getDepartmentListFromTerm, getDepartmentListFromTerm, getWQBDesignation} from "./commonFunctions.js";
 
 /** Class representing term information, contains information for term info cards in term page */ 
 class TermInfo {
@@ -40,42 +40,6 @@ class TermInfo {
     }
 }
 
-const getDepartmentListFromTerm = async (year, term) => {
-    let url = `${BASE_URL}${year}/${term}/`;
-    return fetch(url)
-        .then(response => {
-            if (response.status == 404) {
-                throw new Error ("Error: Invalid year or term!")
-            } else if(!response.ok) {
-                throw new Error("Error: Unable to process request, please try again later.")
-            } else {
-                return response.json();          
-            }
-        })
-}
-
-const getCourseListFromDepartment = async (department, year, term) => {
-    let url = `${BASE_URL}${year}/${term}/${department}`;
-    let resultJson = await fetch(url)
-        .then(response => response.json())
-    if (!resultJson.hasOwnProperty("errorMessage")) {
-        resultJson.map((course) => course["dept"] = department);
-    }
-    return resultJson;
-}
-
-const getCourseSectionListFromCourseNum = async (courseNumber, department, year, term) => {
-    let url = `${BASE_URL}${year}/${term}/${department}/${courseNumber}`;
-    let resultJson = await fetch(url)
-        .then(response => response.json())
-    if (!resultJson.hasOwnProperty("errorMessage")) {
-        resultJson.map(section => {
-            section["dept"] = department;
-            section["number"] = courseNumber;
-        });
-    }
-    return resultJson;
-}
 
 const getTermInfoFromCourseSection = async (courseSection, courseNumber, department, year, term) => {
 
