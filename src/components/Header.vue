@@ -1,9 +1,11 @@
 <script>
 import SearchBar from "./SearchBar.vue";
+import { Icon } from "@iconify/vue";
 
 export default {
   components: {
     SearchBar,
+    Icon,
   },
   data() {
     return {
@@ -15,141 +17,101 @@ export default {
     goHome() {
       this.$router.push({ name: "home" });
     },
-  }
+  },
 };
 </script>
 
 <template>
   <header>
-    <div class="header">
-      <div class="header-container ">
-        <div class="scrappy text-black text-4xl font-bold cursor-pointer" @click="goHome">Scrappy</div>
+    <v-container class="header-container fill-height">
+      <v-row class="row-wrapper" align="center">
+        <v-col md="2" cols="6" order-md="1" order="1">
+          <div
+            class="scrappy text-black text-4xl font-bold cursor-pointer"
+            @click="goHome"
+          >
+            Scrappy
+          </div>
+        </v-col>
+        <v-col md="8" cols="12" order-md="2" order="3" class="center">
+          <SearchBar v-if="showSearchBar" />
+        </v-col>
+        <v-col md="2" cols="6" order-md="3" order="2" class="right">
+          <div class="dropdown-btn">
+            <Icon
+              icon="material-symbols:account-circle"
+              color="rgba(28, 27, 31, 1)"
+              width="20"
+            ></Icon>
+            <Icon
+              icon="material-symbols:arrow-drop-down"
+              color="rgba(28, 27, 31, 1)"
+              width="20"
+            ></Icon></div
+        ></v-col>
+      </v-row>
+    </v-container>
+    <!-- <div class="header-container">
+        <div
+          class="scrappy text-black text-4xl font-bold cursor-pointer mr-10"
+          @click="goHome"
+        >
+          Scrappy
+        </div>
       </div>
       <div class="header-container middle">
         <SearchBar v-if="showSearchBar" />
       </div>
       <div class="header-container">
-        <div class="dropdown-btn">
-          <img
-            src="../assets/svg/account_circle.svg"
-            alt="dropdown icon"
-          />
-          <img
-            src="../assets/svg/arrow_dropdown.svg"
-            alt="user image"
-          />
-          
+        <div class="dropdown-btn ml-10">
+          <Icon
+            icon="material-symbols:account-circle"
+            color="rgba(28, 27, 31, 1)"
+            width="20"
+          ></Icon>
+          <Icon
+            icon="material-symbols:arrow-drop-down"
+            color="rgba(28, 27, 31, 1)"
+            width="20"
+          ></Icon>
         </div>
-      </div>
-    </div>
+      </div> -->
   </header>
 </template>
 
 <style scoped>
-.middle {
-  max-width: 675px;
+header {
+  /* height: 88px; */
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  position: fixed;
   width: 100%;
+  color: black;
+  z-index: 5;
+  border-bottom: 1px solid rgba(149, 149, 149, 0.4);
 }
+
 .header-container {
-  display: flex;
-
+  max-width: var(--page-width);
+}
+.center {
+  align-items: center;
   justify-content: center;
+  display: flex;
 }
-.header-container:first-child {
-  margin-right: auto;
-  justify-content: flex-start;
-  flex: 1;
-}
-.header-container:last-child {
-  flex: 1;
-  margin-left: auto;
+.right {
+  display: flex;
   justify-content: flex-end;
-}
-
-header {
-  background-color: white;
-  height: 75px;
-  display: flex;
-  justify-content: center;
-  top: 0;
-  z-index: 1;
-  position: fixed;
-  width: 100%;
 }
 
 .dropdown-btn {
   display: flex;
   justify-content: center;
-  padding: 0 5px;
   border-radius: 5px;
   height: 30px;
-  max-width: 120px;
-  font-size: 11px;
+  width: 80px;
   cursor: pointer;
-  align-items: center;
-}
-.dropdown-btn > img {
-  height: 30px;
-  width: auto;
-}
-.header {
-  height: 100%;
-  width: 100%;
-  max-width: var(--page-width);
-  background-color: #fff;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 1rem;
-  align-items: center;
-}
-
- 
-.header-container:first-child {
-  margin-right: auto;
-  justify-content: flex-start;
-  flex: 1;
-}
-.header-container:last-child {
-  flex: 1;
-  margin-left: auto;
-  justify-content: flex-end;
-}
-
-header {
-  background-color: white;
-  height: 75px;
-  display: flex;
-  justify-content: center;
-  top: 0;
-  z-index: 1;
-  position: fixed;
-  width: 100%;
-}
-
-.dropdown-btn {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 5px;
-  border-radius: 5px;
-  height: 30px;
-  width: 100%;
-  max-width: 120px;
-  font-size: 11px;
-  cursor: pointer;
-  align-items: center;
-}
-.dropdown-btn > img {
-  height: 20px;
-  width: auto;
-}
-.header {
-  height: 100%;
-  width: 100%;
-  max-width: var(--page-width);
-  background-color: #fff;
-  display: flex;
-  justify-content: space-between;
-  padding: 0 1rem;
   align-items: center;
 }
 
