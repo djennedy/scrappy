@@ -8,15 +8,7 @@ import SaveCourse from "./components/SaveCourse.vue";
 import NumCredits from "./components/NumCredits.vue";
 import WQB from "./components/WQB.vue";
 import CourseParagraph from "./components/CourseParagraph.vue";
-import {
-  CourseInfo,
-  GradingScheme,
-  SectionSpecificInfo,
-  InstructorCampus,
-  InstructorCardInfo,
-  PreviousSemestersCardInfo,
-  getCourseInfo,
-} from "@/components/functions/courseInfoFunctions";
+import { getCourseInfo } from "@/components/functions/courseInfoFunctions";
 
 export default {
   name: "CoursePage",
@@ -50,23 +42,10 @@ export default {
     };
   },
   methods: {
-    // getDividedPrevSemesters() {
-    //   let numPrevSemestersPerTab = 6;
-    //   let dividedPrevSemesters = [];
-    //   let prevSemesters = this.currentCourse.previousSemesters;
-    //   let numPrevSemesters = prevSemesters.length;
-    //   for (let i = 0; i < numPrevSemesters; i += numPrevSemestersPerTab) {
-    //     dividedPrevSemesters.push(
-    //       prevSemesters.slice(i, i + numPrevSemestersPerTab)
-    //     );
-    //   }
-    //   return dividedPrevSemesters;
-    // },
     initData() {
       getCourseInfo(this.defaultCourseNumber)
         .then((data) => {
           this.currentCourse = data;
-          // this.dividedPrevSemesters = this.getDividedPrevSemesters();
           console.log(this.dividedPrevSemesters);
         })
         .catch((err) => console.log(err));
