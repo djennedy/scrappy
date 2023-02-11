@@ -56,7 +56,7 @@ export default {
             height="21"
           />
         </v-btn>
-        {{ model }}
+        {{ model + 1 }}
         <v-btn
           variant="plain"
           @click="model = Math.min(model + 1, numSlides - 1)"
