@@ -4,13 +4,14 @@ import CourseHeader from "./components/CourseHeader.vue";
 import InstructorsCard from "./components/InstructorsCard.vue";
 import PrevSemesterCard from "./components/PrevSemesterCard.vue";
 import CourseDetails from "./components/CourseDetails.vue";
+import InstructorsSection from "./components/InstructorsSection.vue";
 import { getCourseInfo } from "@/components/functions/courseInfoFunctions";
 
 export default {
   name: "CoursePage",
   components: {
     CourseHeader,
-    InstructorsCard,
+    InstructorsSection,
     PrevSemesterCard,
     CourseDetails,
   },
@@ -49,7 +50,7 @@ export default {
     <CourseHeader :currentCourse="currentCourse" :loading="loading" />
 
     <div class="flex flex-row mt-[35px]">
-      <div class="w-[614px]">
+      <!-- <div class="w-[614px]">
         <div class="flex flex-row items-center justify-between h-[46px] mb-2">
           <p class="font-semibold text-[26px] leading-[32px] text-[#302A40]">
             Course Offerings
@@ -96,9 +97,10 @@ export default {
             />
           </div>
         </v-carousel>
-      </div>
+      </div> -->
+      <InstructorsSection :currentCourse="currentCourse"/>
 
-      <div class="w-[450px] justify-end ml-[140px] box-border">
+      <!-- <div class="w-[450px] justify-end ml-[140px] box-border">
         <div
           class="flex flex-auto flex-row items-center justify-between h-[46px] mb-2"
         >
@@ -150,7 +152,7 @@ export default {
             />
           </div>
         </v-carousel>
-      </div>
+      </div> -->
     </div>
 
     <CourseDetails :currentCourse="currentCourse" :loading="loading" />
