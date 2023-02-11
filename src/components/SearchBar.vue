@@ -24,9 +24,9 @@ export default {
     selectSuggestion(suggestion) {
       this.search = suggestion;
     },
-    fetchSuggestions() {
+    async fetchSuggestions() {
       // PUT THE DAMN API CALL HERE
-
+      let x =fetch("http://www.sfu.ca/bin/wcm/course-outlines").then(response => response.json());
     }
   },
 };
