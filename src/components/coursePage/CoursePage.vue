@@ -1,25 +1,17 @@
 <script>
 import "iconify-icon";
+import CourseHeader from "./components/CourseHeader.vue";
 import InstructorsCard from "./components/InstructorsCard.vue";
 import PrevSemesterCard from "./components/PrevSemesterCard.vue";
-import GoBack from "./components/GoBack.vue";
-import CourseInfoUI from "./components/CourseInfoUI.vue";
-import SaveCourse from "./components/SaveCourse.vue";
-import NumCredits from "./components/NumCredits.vue";
-import WQB from "./components/WQB.vue";
 import CourseParagraph from "./components/CourseParagraph.vue";
 import { getCourseInfo } from "@/components/functions/courseInfoFunctions";
 
 export default {
   name: "CoursePage",
   components: {
+    CourseHeader,
     InstructorsCard,
     PrevSemesterCard,
-    GoBack,
-    CourseInfoUI,
-    SaveCourse,
-    NumCredits,
-    WQB,
     CourseParagraph,
   },
   beforeMount() {
@@ -28,17 +20,15 @@ export default {
   data() {
     return {
       defaultTerm: "Spring 2023",
-      defaultCourseNumber: "CMPT 120",
+      defaultCourseNumber: "CMPT 125",
       defaultWQB: "B-Sci/Q",
       defaultCredits: 3,
       defaultCourseName: "Introduction to Computing Science and Programming I",
       currentCourse: {},
       numCourses: 0,
       numSemesters: 0,
-      dividedPrevSemesters: [],
       section: null,
-      items: ["web", "shopping", "videos", "images", "news"],
-      text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      loading: true,
     };
   },
   methods: {
@@ -46,9 +36,9 @@ export default {
       getCourseInfo(this.defaultCourseNumber)
         .then((data) => {
           this.currentCourse = data;
-          console.log(this.dividedPrevSemesters);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log(err))
+        .finally(() => (this.loading = false));
     },
   },
 };
@@ -56,21 +46,9 @@ export default {
 
 <template>
   <div class="mb-[150px] max-w-[1280px] p-10 mx-auto mt-12">
-    <GoBack />
-    <div class="flex flex-row items-center justify-between pt-[19px] pb-[12px]">
-      <CourseInfoUI
-        :courseNumber="currentCourse.courseNumber"
-        :term="currentCourse.term"
-        :courseName="currentCourse.courseName"
-      />
-      <SaveCourse />
-    </div>
-    <div class="flex flex-row gap-x-[10px]">
-      <NumCredits :numCredits="currentCourse.credits" />
-      <WQB :wqb="currentCourse.wqb" />
-    </div>
+    <CourseHeader :currentCourse="currentCourse" :loading="loading" />
 
-    <div class="flex flex-row mt-[35px]">
+    <!-- <div class="flex flex-row mt-[35px]">
       <div class="w-[614px]">
         <div class="flex flex-row items-center justify-between h-[46px] mb-2">
           <p class="font-semibold text-[26px] leading-[32px] text-[#302A40]">
@@ -225,6 +203,6 @@ export default {
           </div>
         </v-window-item>
       </v-window>
-    </div>
+    </div> -->
   </div>
 </template>
