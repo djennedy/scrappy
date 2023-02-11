@@ -16,7 +16,7 @@ export default {
         return this.suggestions.filter(suggestion => suggestion.toLowerCase().includes(this.search.toLowerCase()));
       }
     },
-    methods: {
+  methods: {
     searchText() {
       console.log(this.search);
       this.$router.push({ name: this.search });
