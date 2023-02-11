@@ -12,10 +12,10 @@ export default {
     };
   },
   computed: {
-      filteredSuggestions() {
-        return this.suggestions.filter(suggestion => suggestion.toLowerCase().includes(this.search.toLowerCase()));
-      }
-    },
+    filteredSuggestions() {
+      return this.suggestions.filter(suggestion => suggestion.toLowerCase().includes(this.search.toLowerCase()));
+    }
+  },
   methods: {
     searchText() {
       console.log(this.search);
