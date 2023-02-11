@@ -137,4 +137,4 @@ const getWQBDesignation = (designationString) => {
     return result;
 }
 
-export {BASE_URL,BASE_CALENDAR_URL, BASE_OUTLINE_URL, getCourseListFromDepartment, getDepartmentListFromTerm, getDepartmentListFromTerm,parseInput, getWQBDesignation};
+export {BASE_URL,BASE_CALENDAR_URL, BASE_OUTLINE_URL, getCourseListFromDepartment, getDepartmentListFromTerm, getCourseSectionListFromCourseNum,parseInput, getWQBDesignation};
