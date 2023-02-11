@@ -2,15 +2,30 @@
 import InstructorsCard from "./InstructorsCard.vue";
 export default {
   props: {
-    currentCourse: Object,
+    instructorList: Array,
+    loading: Boolean,
   },
   components: {
     InstructorsCard,
   },
   data() {
     return {
-      numCourses: 0,
+      model: 0,
     };
+  },
+  computed: {
+    slides() {
+      let slides = [];
+      for (let i = 0; i < this.instructorList.length; i += 6) {
+        slides.push(this.instructorList.slice(i, i + 6));
+      }
+      console.log(slides);
+      return slides;
+    },
+    numSlides() {
+      console.log(this.slides.length);
+      return this.slides.length;
+    },
   },
 };
 </script>
@@ -23,7 +38,7 @@ export default {
       <div class="flex flex-row items-center">
         <v-btn
           variant="plain"
-          @click="model = Math.max(numCourses - 1, 0)"
+          @click="model = Math.max(model - 1, 0)"
           size="x-small"
         >
           <iconify-icon
@@ -33,15 +48,10 @@ export default {
             height="21"
           />
         </v-btn>
-        {{ numCourses }}
+        {{ model }}
         <v-btn
           variant="plain"
-          @click="
-            model = Math.min(
-              numCourses + 1,
-              currentCourse.instructorsCards.length / 6 - 1
-            )
-          "
+          @click="model = Math.min(model + 1, numSlides - 1)"
           size="x-small"
         >
           <iconify-icon
@@ -53,14 +63,22 @@ export default {
         </v-btn>
       </div>
     </div>
-    <v-carousel hide-delimiters :show-arrows="false" v-model="numCourses">
-      <div class="flex flex-wrap flext-start gap-x-[18px] gap-y-[25px]">
-        <InstructorsCard
-          v-for="instructor in currentCourse.instructorsCards"
-          :key="instructor.courseSection"
-          :instructor="instructor"
-        />
-      </div>
+    <p
+      v-if="loading"
+      class="bg-[#E9E9E9] p-12 flex flex-row justify-center text-[18px] leading-[115%] text-[#616161] font-normal"
+    >
+      Unavailable This Semester
+    </p>
+    <v-carousel v-else hide-delimiters :show-arrows="false" v-model="model">
+      <v-carousel-item v-for="slide in slides" :key="slide.id">
+        <div class="flex flex-wrap flext-start gap-x-[18px] gap-y-[25px]">
+          <InstructorsCard
+            v-for="instructor in slide"
+            :key="instructor.courseSection"
+            :instructor="instructor"
+          />
+        </div>
+      </v-carousel-item>
     </v-carousel>
   </div>
 </template>
