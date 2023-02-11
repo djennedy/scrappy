@@ -7,7 +7,7 @@ const BASE_CALENDAR_URL = "https://www.sfu.ca/students/calendar/";
  * Gets a promise containing a list of department names ("CMPT". "IAT") from an input term
  * @param {string} year Year to search, eg: "2023"
  * @param {string} term Term to search, eg: "Spring"
- * @returns A promise containing a list of JSONs of the department names. Eg:
+ * @returns {Promise<JSON[]>} A promise containing a list of JSONs of the department names. Eg:
  * [
  *  ...
     {
@@ -37,7 +37,7 @@ const getDepartmentListFromTerm = async (year, term) => {
  * @param {string} department Department to search, eg: "CMPT"
  * @param {string} year Year to search, eg: "2023"
  * @param {string} term Term to search, eg: "Spring"
- * @returns A promise containing a list of JSONs of courses. Eg:
+ * @returns {Promise<JSON[]>} A promise containing a list of JSONs of courses. Eg:
  * [
     {
         "text": "105W",
@@ -63,7 +63,7 @@ const getCourseListFromDepartment = async (department, year, term) => {
  * @param {string} department Department to search, eg: "CMPT"
  * @param {string} year Year to search, eg: "2023"
  * @param {string} term Term to search, eg: "Spring"
- * @returns A promise containing a list of JSONs of course sections. Eg:
+ * @returns {Promise<JSON[]>} A promise containing a list of JSONs of course sections. Eg:
  * [
     {
         "text": "D100",
