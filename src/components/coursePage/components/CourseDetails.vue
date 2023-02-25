@@ -11,8 +11,8 @@ export default {
   data() {
     return {
       section: 0,
-      lorem:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper ullamcorper iaculis. Morbi at quam et eros tempor pellentesque. Donec porttitor, leo ut porttitor interdum, tortor ex tincidunt justo, at malesuada felis dolor vitae nulla. Mauris mauris sem, posuere eu sollicitudin a, tempus pulvinar eros. Proin sed ligula eu nunc viverra fermentum sed suscipit urna. Nullam condimentum luctus ligula rhoncus hendrerit. Sed nulla sem, volutpat et finibus ut, scelerisque ac urna. Cras hendrerit a elit non ultricies. Aliquam in eros nisi.",
+      loadingText:
+        "Loading...",
     };
   },
 };
@@ -23,7 +23,7 @@ export default {
     <CourseParagraph
       v-if="loading || currentCourse.calendarDescription === undefined"
       header="Calendar Description"
-      :rawHtml="lorem"
+      :rawHtml="loadingText"
     />
     <CourseParagraph
       v-else
@@ -33,7 +33,7 @@ export default {
     <CourseParagraph
       v-if="loading || currentCourse.prerequisites === undefined"
       header="Pre-requisites"
-      :rawHtml="lorem"
+      :rawHtml="loadingText"
     />
     <CourseParagraph
       v-else
