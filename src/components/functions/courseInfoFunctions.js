@@ -1,5 +1,5 @@
 import { Terms, STARTING_TERM, STARTING_YEAR} from "./termEnum";
-import { BASE_URL, BASE_OUTLINE_URL, BASE_CALENDAR_URL, parseInput, getWQBDesignation } from "./commonFunctions";
+import { BASE_URL, BASE_OUTLINE_URL, BASE_CALENDAR_URL, parseInput, getWQBDesignation, getRegistrationTermString } from "./commonFunctions";
 
 /** Class representing course outline information for course page */
 class CourseInfo {
@@ -251,13 +251,6 @@ let getCourseInfoListFromLastOffering = async (year, term, department, number) =
         return getCourseInfoListFromSections(courseSectionJsons, urlString);
     }
     throw new Error("Error: Invalid Course Number!")
-}
-
-const getRegistrationTermString = async () => {
-    let urlString = `${BASE_URL}registration/registration/cmpt/120`;
-    let courseSections = await fetch(urlString).then(response => response.json());
-    let courseInfo = await fetch(urlString + '/' + courseSections[0]["value"]).then(response => response.json());
-    return courseInfo["info"]["term"]
 }
 
 /**
