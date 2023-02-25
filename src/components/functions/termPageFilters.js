@@ -1,5 +1,9 @@
 import { TermInfo } from "./termInfoFunctions";
 
+const filterByLevel = (termInfoList, level) => {
+    return termInfoList.filter(termInfo => termInfo.courseNumber.replace(/[^0-9]/g, '') >= level && termInfo.courseNumber.replace(/[^0-9]/g, '') < level+100);
+}
+
 /**
  * Function to filter a list of TermInfo objects according to it's level (100 level, 200 level, etc.)
  * @param {TermInfo[]} termInfoList List of TermInfo objects to filter
@@ -23,6 +27,16 @@ const filterByLevels = (termInfoList, levelList) => {
  */
 const filterByInstructor = (termInfoList, instructor) => {
     return termInfoList.filter(termInfo => termInfo.instructor.toLowerCase().includes(instructor.toLowerCase()));
+}
+
+const filterByCampus = (termInfoList, campus) => {
+    if (campus.toLowerCase() == "online") {
+        return termInfoList.filter(termInfo => termInfo.courseSection.toLowerCase().includes("ol"));
+    } else if (campus.toLowerCase() == "other") {
+        return termInfoList.filter(termInfo => termInfo.campus.toLowerCase() != "burnaby" && termInfo.campus.toLowerCase() != "surrey" && termInfo.courseSection.toLowerCase().indexOf("ol") === -1);
+    } else {
+        return termInfoList.filter(termInfo => termInfo.campus.toLowerCase() == campus.toLowerCase());
+    }
 }
 
 /**
@@ -69,3 +83,5 @@ const filterByWqbs = (termInfoList, wqbList) => {
 const filterByCredits = (termInfoList, credits) => {
     return termInfoList.filter(termInfo => termInfo.credits == credits);
 }
+
+export {filterByLevels, filterByCampuses, filterByWqbs, filterByInstructor, filterByCredits};
