@@ -1,17 +1,13 @@
 import { TermInfo } from "./termInfoFunctions";
 
-const filterByLevel = (termInfoList, level) => {
-    return termInfoList.filter(termInfo => termInfo.courseNumber.replace(/[^0-9]/g, '') >= level && termInfo.courseNumber.replace(/[^0-9]/g, '') < level+100);
-}
-
 /**
  * Function to filter a list of TermInfo objects according to it's level (100 level, 200 level, etc.)
  * @param {TermInfo[]} termInfoList List of TermInfo objects to filter
- * @param {number[]} levelList List of course levels to filter (100 level, 200 level, etc.)
+ * @param {number} level Course level to filter (100 level, 200 level, etc.)
  * @returns {TermInfo[]} List of filtered TermInfo objects
  */
-const filterByLevels = (termInfoList, levelList) => {
-    return levelList.map(level => filterByLevel(termInfoList, level)).reduce((accum, currVal) => accum.concat(currVal), [])
+const filterByLevel = (termInfoList, level) => {
+    return termInfoList.filter(termInfo => termInfo.courseNumber >= level && termInfo.courseNumber < level+100);
 }
 
 /**
@@ -25,28 +21,14 @@ const filterByInstructor = (termInfoList, instructor) => {
     return termInfoList.filter(termInfo => termInfo.instructor.toLowerCase().includes(instructor.toLowerCase()));
 }
 
-const filterByCampus = (termInfoList, campus) => {
-    if (campus.toLowerCase() == "online") {
-        return termInfoList.filter(termInfo => termInfo.courseSection.toLowerCase().includes("ol"));
-    } else if (campus.toLowerCase() == "other") {
-        return termInfoList.filter(termInfo => termInfo.campus.toLowerCase() != "burnaby" && termInfo.campus.toLowerCase() != "surrey" && termInfo.courseSection.toLowerCase().indexOf("ol") === -1);
-    } else {
-        return termInfoList.filter(termInfo => termInfo.campus.toLowerCase() == campus.toLowerCase());
-    }
-}
-
 /**
  * Function to filter a list of TermInfo objects according to it's campus
  * @param {TermInfo[]} termInfoList List of TermInfo objects to filter
- * @param {String[]} campusList List of campus locations to filter (eg: "Burnaby")
+ * @param {String} campus Campus location to filter (eg: "Burnaby")
  * @returns {TermInfo[]} List of filtered TermInfo objects
  */
-const filterByCampuses = (termInfoList, campusList) => {
-    return campusList.map(campus => filterByCampus(termInfoList, campus)).reduce((accum, currVal) => accum.concat(currVal), [])
-}
-
-const filterByWqb = (termInfoList, wqb) => {
-    return termInfoList.filter(termInfo => termInfo.wqb.toLowerCase().includes(wqb.toLowerCase().replace(/b-/g, "")));
+const filterByCampus = (termInfoList, campus) => {
+    return termInfoList.filter(termInfo => termInfo.campus.toLowerCase() == campus.toLowerCase());
 }
 
 /**
@@ -54,11 +36,11 @@ const filterByWqb = (termInfoList, wqb) => {
  * Note: Function assumes only one designation as input (eg: "B-Sci" will work but "Q/W/B-Sci" might not work)
  * In the term page, filter wqbs one by one
  * @param {TermInfo[]} termInfoList List of TermInfo objects to filter 
- * @param {String[]} wqbList List of WQB designations to filter
+ * @param {String} wqb WQB designation to filter
  * @returns {TermInfo[]} List of filtered TermInfo objects
  */
-const filterByWqbs = (termInfoList, wqbList) => {
-    return [... new Set(wqbList.map(wqb => filterByWqb(termInfoList, wqb)).reduce((accum, currVal) => accum.concat(currVal), []))] // Set notation removes duplicates
+const filterByWqb = (termInfoList, wqb) => {
+    return termInfoList.filter(termInfo => termInfo.wqb.toLowerCase().includes(wqb.toLowerCase().replace(/b-/g, "")));
 }
 
 /**
@@ -70,5 +52,3 @@ const filterByWqbs = (termInfoList, wqbList) => {
 const filterByCredits = (termInfoList, credits) => {
     return termInfoList.filter(termInfo => termInfo.credits == credits);
 }
-
-export {filterByLevels, filterByCampuses, filterByWqbs, filterByInstructor, filterByCredits};
