@@ -21,7 +21,7 @@ export default {
         this.initData(toParams.coursenum);
       }
     )
-    //this.initData();
+    this.initData(this.$route.params.coursenum);
   },
   data() {
     return {
