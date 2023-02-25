@@ -7,11 +7,15 @@ const filterByLevel = (termInfoList, level) => {
 /**
  * Function to filter a list of TermInfo objects according to it's level (100 level, 200 level, etc.)
  * @param {TermInfo[]} termInfoList List of TermInfo objects to filter
- * @param {number[]} levelList List of course levels to filter (100 level, 200 level, etc.)
+ * @param {number[]} levelList List of course levels to filter (100 level, 200 level, etc.). Pass in an empty list to not filter any courses
  * @returns {TermInfo[]} List of filtered TermInfo objects
  */
 const filterByLevels = (termInfoList, levelList) => {
-    return levelList.map(level => filterByLevel(termInfoList, level)).reduce((accum, currVal) => accum.concat(currVal), [])
+    if (levelList.length == 0) {
+        return termInfoList;
+    } else {
+        return levelList.map(level => filterByLevel(termInfoList, level)).reduce((accum, currVal) => accum.concat(currVal), []);
+    }
 }
 
 /**
@@ -38,11 +42,16 @@ const filterByCampus = (termInfoList, campus) => {
 /**
  * Function to filter a list of TermInfo objects according to it's campus
  * @param {TermInfo[]} termInfoList List of TermInfo objects to filter
- * @param {String[]} campusList List of campus locations to filter (eg: "Burnaby")
+ * @param {String[]} campusList List of campus locations to filter (eg: "Burnaby"). Pass in an empty list to not filter any courses
  * @returns {TermInfo[]} List of filtered TermInfo objects
  */
 const filterByCampuses = (termInfoList, campusList) => {
-    return campusList.map(campus => filterByCampus(termInfoList, campus)).reduce((accum, currVal) => accum.concat(currVal), [])
+    if (campusList.length == 0) {
+        return termInfoList;
+    }
+    else {
+        return campusList.map(campus => filterByCampus(termInfoList, campus)).reduce((accum, currVal) => accum.concat(currVal), []);
+    }
 }
 
 const filterByWqb = (termInfoList, wqb) => {
@@ -54,11 +63,15 @@ const filterByWqb = (termInfoList, wqb) => {
  * Note: Function assumes only one designation as input (eg: "B-Sci" will work but "Q/W/B-Sci" might not work)
  * In the term page, filter wqbs one by one
  * @param {TermInfo[]} termInfoList List of TermInfo objects to filter 
- * @param {String[]} wqbList List of WQB designations to filter
+ * @param {String[]} wqbList List of WQB designations to filter. Pass in an empty list to not filter any courses
  * @returns {TermInfo[]} List of filtered TermInfo objects
  */
 const filterByWqbs = (termInfoList, wqbList) => {
-    return [... new Set(wqbList.map(wqb => filterByWqb(termInfoList, wqb)).reduce((accum, currVal) => accum.concat(currVal), []))] // Set notation removes duplicates
+    if (wqbList.length == 0) {
+        return termInfoList;
+    } else {
+        return [... new Set(wqbList.map(wqb => filterByWqb(termInfoList, wqb)).reduce((accum, currVal) => accum.concat(currVal), []))]; // Set notation removes duplicates
+    }
 }
 
 /**
