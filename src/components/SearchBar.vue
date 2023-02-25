@@ -1,6 +1,10 @@
 <script>
+import { Icon } from '@iconify/vue';
 export default {
   width: 100,
+  components:{
+    Icon
+  },
   data() {
     return {
       search: "",
@@ -18,7 +22,7 @@ export default {
 <template>
   <div class="search-bar">
     <button class="search-btn mr-2">
-      <img src="https://via.placeholder.com/15" alt="search icon" />
+      <Icon icon="material-symbols:search" width="18" color='#ACB5BF'/>
     </button>
 
     <input
@@ -44,6 +48,7 @@ div.search-bar {
   height: 31px;
   max-width: 675px;
   width: 100%;
+  z-index: 1;
 }
 input {
   border: none;

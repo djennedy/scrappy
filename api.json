@@ -1,0 +1,407 @@
+initData: {
+    "term": "Spring 2023",
+    "courseNumber": "CMPT 120",
+    "courseName": "Introduction to Computing Science and Programming I",
+    "credits": "3",
+    "wqb": "Q, B-Sci",
+    "calendarDescription": "An elementary introduction to computing science and computer programming, suitable for students with little or no programming background. Students will learn fundamental concepts and terminology of computing science, acquire elementary skills for programming in a high-level language, e.g. Python. The students will be exposed to diverse fields within, and applications of computing science. Topics will include: pseudocode; data types and control structures; fundamental algorithms; recursion; reading and writing files; measuring performance of algorithms; debugging tools; basic terminal navigation using shell commands. Treatment is informal and programming is presented as a problem-solving tool. ",
+    "prerequisites": "BC Math 12 or equivalent is recommended.",
+    "sectionSpecificInfo": [
+        {
+            "courseSection": "D100",
+            "courseDetail": "* CMPT 120 PLACEMENT TEST &ndash; do you have enough computing knowledge to pass our placement test? Have you taken Computing Science courses in High School or elsewhere? Have you worked in a business or volunteered as a computer programmer? Have you written programs of 200-300 lines of code or more? IF YES you may NOT have to take CMPT 120 and could enroll directly into the next required courses &ndash; CMPT 125 and 127. Challenge yourself and take our placement test. https://courses.cs.sfu.ca/forms/cmpt-cmpt-120-placement-test/ IF NO &ndash; please go ahead and enroll in CMPT 120.&nbsp;<br /><br />This course will be offered in person, face-to-face. Details of technology and tools needed in class and for tests will be provided in the first class of the semester. All the course information and communication will be centralized in the Canvas course website which will be available by the first day of class, including class materials, readings, assignments, and points. Students should ensure that they receive notifications when announcements are posted on Canvas.&nbsp;<br /><br />\r\n<h2 class=\"ParagraphTitle\">Topics</h2>\r\n<ul>\r\n<li>Algorithms and computational thinking</li>\r\n<li>Procedural programming in Python</li>\r\n<li>Data types and control structures</li>\r\n<li>Application areas within computing science</li>\r\n<li>Fundamental algorithms, including searching, sorting, basics of recursion</li>\r\n<li>Computability and complexity, introduction</li>\r\n<li>Basics of binary encoding</li>\r\n</ul>",
+            "educationalGoals": "",
+            "materialSupplies": "<h2 class=\"ParagraphTitle\">Reference Books</h2>\r\n<ul>\r\n<li>Computer Science Illuminated, Nell Dale, John Lewis, Jones &amp; Bartlett, 2012, 9781449672843</li>\r\n<li>Starting out with Programming Logic and Design, Tony Gaddis, Pearson, 2015, 9780133985078</li>\r\n<li>Starting Out with Python-4th Edition, Tony Gaddis, Pearson, 2017, 9780134543666</li>\r\n</ul>",
+            "gradingScehemesList": [],
+            "gradingNotes": "There will be assignments and multiple quizzes/exams. A more detailed marking scheme and technology details will be provided in the first class of the semester."
+        },
+        {
+            "courseSection": "D200",
+            "courseDetail": "* CMPT 120 PLACEMENT TEST &ndash; do you have enough computing knowledge to pass our placement test? Have you taken Computing Science courses in High School or elsewhere? Have you worked in a business or volunteered as a computer programmer? Have you written programs of 200-300 lines of code or more? IF YES you may NOT have to take CMPT 120 and could enroll directly into the next required courses &ndash; CMPT 125 and 127. Challenge yourself and take our placement test. https://courses.cs.sfu.ca/forms/cmpt-cmpt-120-placement-test/ IF NO &ndash; please go ahead and enroll in CMPT 120.&nbsp;<br /><br />This course will be offered in person, face-to-face. Details of technology and tools needed in class and for tests will be provided the first class of the semester. All the course information and communication will be centralized in the Canvas course website which will be available by the first day of class, including class materials, readings, assignments, and points. Students should ensure that they receive notifications when announcements are posted on Canvas.&nbsp;<br />\r\n<h2 class=\"ParagraphTitle\">Topics</h2>\r\n<ul>\r\n<li>Algorithms and computational thinking</li>\r\n<li>Procedural programming in Python</li>\r\n<li>Data types and control structures</li>\r\n<li>Application areas within computing science</li>\r\n<li>Fundamental algorithms, including searching, sorting, basics of recursion</li>\r\n<li>Computability and complexity, introduction</li>\r\n<li>Basics of binary encoding</li>\r\n</ul>",
+            "educationalGoals": "",
+            "materialSupplies": "<h2 class=\"ParagraphTitle\">Reference Books</h2>\r\n<ul>\r\n<li>Computer Science Illuminated, Nell Dale, John Lewis, Jones &amp; Bartlett, 2012, 9781449672843</li>\r\n<li>Starting out with Programming Logic and Design, Tony Gaddis, Pearson, 2015, 9780133985078</li>\r\n<li>Starting Out with Python-4th Edition, Tony Gaddis, Pearson, 2017, 9780134543666</li>\r\n</ul>",
+            "gradingScehemesList": [],
+            "gradingNotes": "There will be assignments and multiple quizzes/exams. A more detailed marking scheme and technology details will be provided in the first class of the semester."
+        },
+        {
+            "courseSection": "D300",
+            "courseDetail": "An elementary introduction to computing science and computer programming, suitable for students with little or no programming background. Students will learn fundamental concepts and terminology of computing science, acquire elementary skills for programming in a high-level language, e.g. Python. The students will be exposed to diverse fields within, and applications of computing science. Topics will include: pseudocode; data types and control structures; fundamental algorithms; recursion; reading and writing files; measuring performance of algorithms; debugging tools; basic terminal navigation using shell commands. Treatment is informal and programming is presented as a problem-solving tool.",
+            "educationalGoals": "",
+            "materialSupplies": "",
+            "gradingScehemesList": [],
+            "gradingNotes": "There will be assignments and multiple quizzes/exams. A more detailed marking scheme and technology details will be provided in the first class of the semester."
+        },
+        {
+            "courseSection": "D400",
+            "courseDetail": "An elementary introduction to computing science and computer programming, suitable for students with little or no programming background. Students will learn fundamental concepts and terminology of computing science, acquire elementary skills for programming in a high-level language and be exposed to diverse fields within, and applications of computing science. ------------------------- i-Clickers will be used regularly in class from the beginning of the semester as will be explained in class. The three i-Clicker 1 i-Clicker 2, and i-Clicker+ may be used. SFU Bookstore will be supplying i-Clickers - Each student needs to have his/her own i-Clicker, but they can be used for different courses. ------------------------- CMPT 120 PLACEMENT TEST &ndash; do you have enough computing knowledge to pass our placement test? Have you taken Computing Science courses in High School or elsewhere? Have you worked in a business or volunteered as a computer programmer? Have you written programs of 200-300 lines of code or more? IF YES you may NOT have to take CMPT 120 and could enroll directly into the next required courses &ndash; CMPT 125 and 127. Challenge yourself and take our placement test. https://courses.cs.sfu.ca/forms/cmpt-cmpt-120-placement-test/ IF NO &ndash; please go ahead and enroll in CMPT 120.<br />\r\n<h2 class=\"ParagraphTitle\">Topics</h2>\r\n<ul>\r\n<li>Algorithms, flowcharts, pseudocode</li>\r\n<li>Procedural programming in Python</li>\r\n<li>Data types and control structures</li>\r\n<li>Fundamental algorithms, including searching, sorting, basics of recursion</li>\r\n<li>Computability and complexity, introduction</li>\r\n<li>Basics of binary encoding</li>\r\n</ul>",
+            "educationalGoals": "",
+            "materialSupplies": "",
+            "gradingScehemesList": [],
+            "gradingNotes": "To be discussed during the first week of classes"
+        }
+    ],
+    "instructorsCards": [
+        {
+            "courseSection": "D100",
+            "instrcutorList": [
+                "Hazra Imran"
+            ],
+            "timeLocationList": [
+                "Mo 8:30 - 9:20 AQ3182, Burnaby",
+                "Th 8:30 - 10:20 RCBIMAGTH, Burnaby"
+            ]
+        },
+        {
+            "courseSection": "D200",
+            "instrcutorList": [
+                "Hazra Imran"
+            ],
+            "timeLocationList": [
+                "Mo 12:30 - 13:20 DFA300, Burnaby",
+                "Th 12:30 - 14:20 RCBIMAGTH, Burnaby"
+            ]
+        },
+        {
+            "courseSection": "D300",
+            "instrcutorList": [
+                "Mohammad Tayebi"
+            ],
+            "timeLocationList": [
+                "Mo 10:30 - 12:20 SSCC9002, Burnaby",
+                "We 10:30 - 11:20 undefinedundefined, undefined"
+            ]
+        },
+        {
+            "courseSection": "D400",
+            "instrcutorList": [
+                "Bobby Chan"
+            ],
+            "timeLocationList": [
+                "Mo 8:30 - 9:20 SRYE1002, Surrey",
+                "Th 8:30 - 10:20 SRYE1002, Surrey"
+            ]
+        }
+    ],
+    "previousSemestersCards": [
+        {
+            "termString": "Fall 2022",
+            "instructorCampusList": [
+                {
+                    "instructor": "",
+                    "campus": "Burnaby"
+                },
+                {
+                    "instructor": "Diana Cukierman",
+                    "campus": "Burnaby"
+                },
+                {
+                    "instructor": "Toby Donaldson",
+                    "campus": "Surrey"
+                },
+                {
+                    "instructor": "Diana Cukierman",
+                    "campus": ""
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2022/fall/courses/cmpt/120"
+        },
+        {
+            "termString": "Summer 2022",
+            "instructorCampusList": [
+                {
+                    "instructor": "Diana Cukierman",
+                    "campus": "Burnaby"
+                },
+                {
+                    "instructor": "Matthew Amy",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2022/summer/courses/cmpt/120"
+        },
+        {
+            "termString": "Spring 2022",
+            "instructorCampusList": [
+                {
+                    "instructor": "Diana Cukierman",
+                    "campus": "Burnaby"
+                },
+                {
+                    "instructor": "John Edgar",
+                    "campus": "Surrey"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2022/spring/courses/cmpt/120"
+        },
+        {
+            "termString": "Fall 2021",
+            "instructorCampusList": [
+                {
+                    "instructor": "Victor Cheung",
+                    "campus": "Burnaby"
+                },
+                {
+                    "instructor": "Diana Cukierman",
+                    "campus": "Burnaby"
+                },
+                {
+                    "instructor": "Angelica Lim",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2021/fall/courses/cmpt/120"
+        },
+        {
+            "termString": "Summer 2021",
+            "instructorCampusList": [
+                {
+                    "instructor": "Diana Cukierman",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2021/summer/courses/cmpt/120"
+        },
+        {
+            "termString": "Spring 2021",
+            "instructorCampusList": [
+                {
+                    "instructor": "Angelica Lim",
+                    "campus": "Burnaby"
+                },
+                {
+                    "instructor": "Harinder Khangura",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2021/spring/courses/cmpt/120"
+        },
+        {
+            "termString": "Fall 2020",
+            "instructorCampusList": [
+                {
+                    "instructor": "Diana Cukierman",
+                    "campus": "Burnaby"
+                },
+                {
+                    "instructor": "Angelica Lim",
+                    "campus": "Burnaby"
+                },
+                {
+                    "instructor": "Harinder Khangura & Valentine Kabanets",
+                    "campus": "Burnaby"
+                },
+                {
+                    "instructor": "",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2020/fall/courses/cmpt/120"
+        },
+        {
+            "termString": "Summer 2020",
+            "instructorCampusList": [
+                {
+                    "instructor": "Hazra Imran",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2020/summer/courses/cmpt/120"
+        },
+        {
+            "termString": "Spring 2020",
+            "instructorCampusList": [
+                {
+                    "instructor": "Diana Cukierman",
+                    "campus": "Burnaby"
+                },
+                {
+                    "instructor": "Bobby Chan",
+                    "campus": "Surrey"
+                },
+                {
+                    "instructor": "",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2020/spring/courses/cmpt/120"
+        },
+        {
+            "termString": "Fall 2019",
+            "instructorCampusList": [
+                {
+                    "instructor": "",
+                    "campus": "Burnaby"
+                },
+                {
+                    "instructor": "Diana Cukierman",
+                    "campus": "Burnaby"
+                },
+                {
+                    "instructor": "Harinder Khangura",
+                    "campus": "Surrey"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2019/fall/courses/cmpt/120"
+        },
+        {
+            "termString": "Summer 2019",
+            "instructorCampusList": [
+                {
+                    "instructor": "Anne Lavergne",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2019/summer/courses/cmpt/120"
+        },
+        {
+            "termString": "Spring 2019",
+            "instructorCampusList": [
+                {
+                    "instructor": "Angelica Lim",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2019/spring/courses/cmpt/120"
+        },
+        {
+            "termString": "Fall 2018",
+            "instructorCampusList": [
+                {
+                    "instructor": "Diana Cukierman",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2018/fall/courses/cmpt/120"
+        },
+        {
+            "termString": "Summer 2018",
+            "instructorCampusList": [
+                {
+                    "instructor": "",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2018/summer/courses/cmpt/120"
+        },
+        {
+            "termString": "Spring 2018",
+            "instructorCampusList": [
+                {
+                    "instructor": "Angelica Lim",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2018/spring/courses/cmpt/120"
+        },
+        {
+            "termString": "Fall 2017",
+            "instructorCampusList": [
+                {
+                    "instructor": "Diana Cukierman",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2017/fall/courses/cmpt/120"
+        },
+        {
+            "termString": "Summer 2017",
+            "instructorCampusList": [
+                {
+                    "instructor": "Anne Lavergne",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2017/summer/courses/cmpt/120"
+        },
+        {
+            "termString": "Spring 2017",
+            "instructorCampusList": [
+                {
+                    "instructor": "Anne Lavergne",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2017/spring/courses/cmpt/120"
+        },
+        {
+            "termString": "Fall 2016",
+            "instructorCampusList": [
+                {
+                    "instructor": "Diana Cukierman",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2016/fall/courses/cmpt/120"
+        },
+        {
+            "termString": "Summer 2016",
+            "instructorCampusList": [
+                {
+                    "instructor": "Diana Cukierman",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2016/summer/courses/cmpt/120"
+        },
+        {
+            "termString": "Spring 2016",
+            "instructorCampusList": [
+                {
+                    "instructor": "Anne Lavergne",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2016/spring/courses/cmpt/120"
+        },
+        {
+            "termString": "Fall 2015",
+            "instructorCampusList": [
+                {
+                    "instructor": "Anne Lavergne",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2015/fall/courses/cmpt/120"
+        },
+        {
+            "termString": "Summer 2015",
+            "instructorCampusList": [
+                {
+                    "instructor": "Anne Lavergne",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2015/summer/courses/cmpt/120"
+        },
+        {
+            "termString": "Spring 2015",
+            "instructorCampusList": [
+                {
+                    "instructor": "Diana Cukierman",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2015/spring/courses/cmpt/120"
+        },
+        {
+            "termString": "Fall 2014",
+            "instructorCampusList": [
+                {
+                    "instructor": "Diana Cukierman",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2014/fall/courses/cmpt/120"
+        },
+        {
+            "termString": "Summer 2014",
+            "instructorCampusList": [
+                {
+                    "instructor": "",
+                    "campus": "Burnaby"
+                }
+            ],
+            "outlineLink": "https://www.sfu.ca/students/calendar/2014/summer/courses/cmpt/120"
+        }
+    ]
+}
