@@ -54,4 +54,11 @@ const getWQBDesignation = (designationString) => {
   return result;
 };
 
-export {BASE_URL,BASE_CALENDAR_URL, BASE_OUTLINE_URL, parseInput, getWQBDesignation};
+const getRegistrationTermString = async () => {
+  let urlString = `${BASE_URL}registration/registration/cmpt/120`;
+  let courseSections = await fetch(urlString).then(response => response.json());
+  let courseInfo = await fetch(urlString + '/' + courseSections[0]["value"]).then(response => response.json());
+  return courseInfo["info"]["term"]
+}
+
+export {BASE_URL,BASE_CALENDAR_URL, BASE_OUTLINE_URL, parseInput, getWQBDesignation, getRegistrationTermString};
