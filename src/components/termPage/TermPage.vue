@@ -29,12 +29,12 @@ export default {
   },
   data(){
     return{
-      defaultTerm: "Spring 2023",
+      defaultTerm: "Summer 2023",
       deptName:[Department],
       current: {
         loading: true,
         courses:[TermInfo],
-        term: "Spring 2023"
+        term: "Summer 2023"
       },
       filter:{
         department:{
@@ -95,14 +95,14 @@ export default {
       }, []);
     },
     initData(){
-      getDepartmentName("Spring 2023").then(data => this.deptName = data)
+      getDepartmentName(this.defaultTerm).then(data => this.deptName = data)
           .then(()=> {
             this.filter.department.options = this.deptName;
           })
           .catch(err => console.log(err));
 
 
-      getTermInfo(this.defaultTerm, ["CMPT"])
+      getTermInfo(this.defaultTerm, ["CMPT", "IAT"])
           .then(data => {
             this.current.courses = data;
             this.getInstructorName();

@@ -15,19 +15,25 @@ export default {
     CourseDetails,
   },
   beforeMount() {
-    this.initData();
+    this.$watch(
+      () => this.$route.params,
+      (toParams, previousParams) => {
+        this.initData(toParams.coursenum);
+      }
+    )
+    this.initData(this.$route.params.coursenum);
   },
   data() {
     return {
-      defaultCourseNumber: "CMPT 120",
+      courseNumber: this.$route.params.coursenum,
       currentCourse: {},
       section: null,
       loading: true,
     };
   },
   methods: {
-    initData() {
-      getCourseInfo(this.defaultCourseNumber)
+    initData(courseNum) {
+      getCourseInfo(courseNum)
         .then((data) => {
           this.currentCourse = data;
         })
@@ -39,7 +45,7 @@ export default {
 </script>
 
 <template>
-  <div class="mb-[150px] max-w-[1280px] p-10 mx-auto mt-12">
+  <div class="mb-[150px] max-w-[1280px] p-10 mx-auto padded">
     <CourseHeader :currentCourse="currentCourse" :loading="loading" />
 
     <div class="flex flex-row mt-[35px]">
@@ -57,3 +63,9 @@ export default {
     <CourseDetails :currentCourse="currentCourse" :loading="loading" />
   </div>
 </template>
+
+<style scoped>
+.padded {
+  padding-top: 100px;
+}
+</style>
