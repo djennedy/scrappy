@@ -18,7 +18,9 @@ export default {
   >
     <div class="flex items-center space-x-2.5 text-[20px] leading-[24px] mb-2">
       <p>{{ instructor.courseSection }}</p>
-      <iconify-icon icon="bi:question-circle" />
+      <a href="https://www.sfu.ca/students/enrollment/terminology.html">
+        <iconify-icon icon="bi:question-circle" />
+      </a>
     </div>
     <p
       class="font-medium text-[18px] leading-[22px] mt-0"
