@@ -27,7 +27,9 @@ export default {
       v-for="instructor in instructor.instructorList"
       :key="instructor"
     >
-      {{ instructor }}
+      <a :href = "`https://www.ratemyprofessors.com/search/teachers?sid=1482&query=${instructor}`">
+        {{ instructor }}
+      </a>
     </p>
     <div class="space-y-4 mt-6">
       <TimeLocation
