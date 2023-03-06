@@ -1,11 +1,16 @@
 <script>
+import RequirementNumber from './RequirementNumber.vue'
+
 export default {
-    name: 'DegreeRequirements',
+    name: "DegreeRequirements",
+    components: {
+        RequirementNumber 
+    }
 }
 </script>
 
 <template>
-    this is the requirements page
+    <RequirementNumber number="1." />
 </template>
 
 <style scoped>
