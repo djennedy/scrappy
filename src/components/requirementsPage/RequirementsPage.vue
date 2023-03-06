@@ -16,6 +16,7 @@ components: {
     <div class="flex-container">
         <DegreeRequirements class="flex-items" />
         <GoButton class="flex-items" />
+        <!-- <div class="flex-items">temporary text</div> -->
     </div>
 </template>
 
