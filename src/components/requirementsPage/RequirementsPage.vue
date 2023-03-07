@@ -29,6 +29,7 @@ components: {
   align-items: normal;
   align-content: normal;
   padding-top: 100px;
+  height: 100vh;
 }
 
 .flex-items:nth-child(1) {
@@ -38,6 +39,7 @@ components: {
   flex-basis: auto;
   align-self: auto;
   order: 0;
+  flex: 1 1 50%;
 }
 
 .flex-items:nth-child(2) {
@@ -47,5 +49,6 @@ components: {
   flex-basis: auto;
   align-self: auto;
   order: 0;
+  flex: 1 1 50%;
 }
 </style>

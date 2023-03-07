@@ -21,6 +21,7 @@ export default {
   justify-content: space-around;
   align-items: center;
   align-content: center;
+  background-color:blueviolet
 }
 
 .flex-items:nth-child(1) {
