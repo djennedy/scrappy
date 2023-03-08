@@ -5,13 +5,13 @@
   grid grid-rows-1 grid-cols-9 justify-between border-[1px] border-[#E4E4E4]
    rounded-[8px] px-4 py-6">
     <div class=" col-span-5 flex flex-row justify-start gap-4 items-center flex-1">
-      <FilterButton v-bind="filters.department" v-bind:is-department="true"></FilterButton>
+      <FilterButton v-bind="filters.department" v-bind:is-department="true" @filter-event="setFilter"></FilterButton>
       <FilterButton v-bind="filters.level"></FilterButton>
     </div>
     <div class=" col-span-3 flex flex-row justify-center items-center gap-4 flex-1">
-      <FilterButton v-bind="filters.instructor"></FilterButton>
-      <FilterButton v-bind="filters.campus"></FilterButton>
-      <FilterButton v-bind=filters.wqbDesignation></FilterButton>
+      <FilterButton v-bind="filters.instructor" @filter-event="setFilter"></FilterButton>
+      <FilterButton v-bind="filters.campus" @filter-event="setFilter"></FilterButton>
+      <FilterButton v-bind=filters.wqbDesignation @filter-event="setFilter"></FilterButton>
       <p>Credits</p>
 
     </div>
@@ -21,13 +21,19 @@
 <script>
 import "../../../../assets/main.css";
 import FilterButton from "./FilterButton.vue";
+import {TermInfo} from "@/components/functions/termInfoFunctions";
 export default {
   name: "TermPageOption",
   components: {FilterButton},
-
+  emits:['filterTermInfo'],
   props: {
-    filters: Object
+    filters: Object,
   },
+  methods:{
+    setFilter(type, params){
+      this.$emit('setFilter',type,params);
+    }
+  }
 };
 </script>
 

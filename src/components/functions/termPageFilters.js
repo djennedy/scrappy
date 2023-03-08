@@ -29,6 +29,18 @@ const filterByInstructor = (termInfoList, instructor) => {
     return termInfoList.filter(termInfo => termInfo.instructor.toLowerCase().includes(instructor.toLowerCase()));
 }
 
+/**
+ * Function to filter a list of TermInfo objects according to its instructor
+ * Filters according to characters matched, so the input doesn't have to be the complete instructor name
+ * @param {TermInfo[]} termInfoList List of TermInfo objects to filter
+ * @param {String[]} instructors Instructor name to filter (can be full instructor name or any string of characters that match the instructor name)
+ * @returns {TermInfo[]} List of filtered TermInfo objects
+ */
+const filterByInstructors = (termInfoList, instructors)=>{
+    if(instructors.length === 0) return termInfoList;
+    return termInfoList.filter(course => instructors.includes(course.instructor));
+}
+
 const filterByCampus = (termInfoList, campus) => {
     if (campus.toLowerCase() == "online") {
         return termInfoList.filter(termInfo => termInfo.courseSection.toLowerCase().includes("ol"));
@@ -84,4 +96,4 @@ const filterByCredits = (termInfoList, credits) => {
     return termInfoList.filter(termInfo => termInfo.credits == credits);
 }
 
-export {filterByLevels, filterByCampuses, filterByWqbs, filterByInstructor, filterByCredits};
+export {filterByLevels, filterByCampuses, filterByWqbs, filterByInstructors, filterByCredits};

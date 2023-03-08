@@ -144,10 +144,9 @@ const getTermInfoFromCourseSection = async (
 };
 
 export class Department{
-    constructor(text, value, name){
-        this.text = text;
-        this.value = value;
-        this.name = name;
+    constructor(text, name){
+        this.abbr = text;
+        this.fullName = name;
     }
 }
 
@@ -164,7 +163,7 @@ const getDepartmentName = (termString)=>{
 }
 
 /** 
- * Retrieves all courses in a given subject and term 
+ * Retrieves all filteredInfo in a given subject and term
  * IMPORTANT NOTE: This function cascades errors, please do error handling when calling this function with a .catch block
  * @param {string} termString - string of term + year (eg: "Spring 2023", "2022 Fall")
  * @param {string[]} deptList - list of departments to search (eg: "IAT", "cmpt")
