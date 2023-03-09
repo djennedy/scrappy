@@ -9,7 +9,9 @@ export default {
 <template>
   <div class="flex-container">
     <RequirementsButton text="Go to your requirements" class="flex-items" />
-    <img src="../../../assets/svg/mountains.svg" class="flex-items">
+    <div class="flex-items">
+      <img src="../../../assets/svg/mountains.svg" alt="mountain" id="image">
+    </div>
   </div>
 </template>
 
@@ -21,25 +23,16 @@ export default {
   justify-content: space-around;
   align-items: center;
   align-content: center;
-  background-color:blueviolet
 }
 
 .flex-items:nth-child(1) {
   display: block;
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  align-self: center;
-  order: 0;
   margin: auto;
+  margin-top: 10%;
 }
 
 .flex-items:nth-child(2) {
-  display: block;
-  flex-grow: 0;
-  flex-shrink: 1;
-  flex-basis: auto;
-  align-self: stretch;
-  order: 0;
+  width: 1400px;
+  margin-top: -2%l
 }
 </style>
