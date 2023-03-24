@@ -19,12 +19,12 @@ export default {
         <br>
         <p>Choose your program</p>
         <RequirementNumber number="1." text="Program" class="question" />
-        <p>Choose your Major/Minor/Joint Major</p>
-        <RequirementNumber number="2." text="Major/Minor/Joint Major" class="question" />
+        <!-- <p>Choose your Major/Minor/Joint Major</p>
+        <RequirementNumber number="2." text="Major/Minor/Joint Major" class="question" /> -->
         <p>Select the year you first enrolled in selected program</p>
-        <RequirementNumber number="3." text="Enrollment Year" class="question" />
+        <RequirementNumber number="2." text="Enrollment Year" class="question" />
         <p>Select the term you first enrolled in selected program</p>
-        <RequirementNumber number="4." text="Enrollment Term" class="question" />
+        <RequirementNumber number="3." text="Enrollment Term" class="question" />
     </div>
 </template>
 

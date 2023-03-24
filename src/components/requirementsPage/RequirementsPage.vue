@@ -30,7 +30,6 @@ components: {
   align-content: normal;
   padding-top: 100px;
   height: 100vh;
-  overflow: hidden;
 }
 
 .flex-items:nth-child(1) {
@@ -51,5 +50,6 @@ components: {
   align-self: auto;
   order: 0;
   flex: 1 1 55%;
+  overflow: hidden;
 }
 </style>

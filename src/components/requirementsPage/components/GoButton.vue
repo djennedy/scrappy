@@ -33,6 +33,6 @@ export default {
 
 .flex-items:nth-child(2) {
   width: 1400px;
-  margin-top: -2%l
+  margin-top: -2%;
 }
 </style>
