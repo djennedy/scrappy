@@ -41,7 +41,7 @@ export default {
         </v-tab>
       </v-tabs>
 
-      <v-window v-model="section">
+      <v-window v-model="section" class="min-h-[750px]">
         <v-window-item
           v-for="section in currentCourse.sectionSpecificInfo"
           :key="section.courseSection"
