@@ -13,3 +13,5 @@ const getAreaOfStudyPage = (year, term, areaOfStudy) => {
     areaOfStudy = areaOfStudy.toLowerCase().replace(" ", "-");
     return `${BASE_CALENDAR_URL}/${year}/${term}/areas-of-study/${areaOfStudy}.html`;
 }
+
+export { getAreaOfStudyPage };
