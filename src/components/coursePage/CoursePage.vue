@@ -19,7 +19,7 @@ export default {
   },
   data() {
     return {
-      defaultCourseNumber: "CMPT 276",
+      defaultCourseNumber: "CMPT 310",
       currentCourse: {},
       section: null,
       loading: true,

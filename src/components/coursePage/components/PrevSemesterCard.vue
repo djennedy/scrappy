@@ -13,7 +13,7 @@ export default {
 
 <template>
   <div
-    class="box-border w-[207px] h-[142px] flex flex-col border-[1px] border-[#000000] border-solid rounded-[10px] font-normal"
+    class="box-border w-[207px] min-h-[142px] flex flex-col border-[1px] border-black border-solid rounded-[10px] font-normal"
   >
     <div class="w-[207px] h-[35px] bg-[#616161] flex flex-col rounded-t-[10px]">
       <p
@@ -22,7 +22,7 @@ export default {
         {{ prevSemester.termString.toUpperCase() }}
       </p>
     </div>
-    <div class="ml-[11px] text-[16px] leading-[115%] my-[5px] space-y-4">
+    <div class="mx-[11px] text-[16px] leading-[115%] my-[5px] space-y-4">
       <InstructorCampus
         v-for="(
           instructorCampus, index
