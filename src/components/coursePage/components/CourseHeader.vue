@@ -36,7 +36,7 @@ export default {
         :term="currentCourse.term"
         :courseName="currentCourse.courseName"
       />
-      <SaveCourse />
+      <!-- <SaveCourse /> -->
     </div>
     <div class="flex flex-row gap-x-[10px]">
       <NumCredits
