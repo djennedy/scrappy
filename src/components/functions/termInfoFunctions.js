@@ -157,7 +157,7 @@ const getDepartmentName = (termString)=>{
         .then(response => response.json())
         .then(result => {
             let departments = [];
-            result.forEach(dept => departments.push(new Department(dept["text"], dept["value"], dept["name"])));
+            result.forEach(dept => departments.push(new Department(dept["text"],(dept["name"] ? dept["name"] : ""))));
             return departments;
         })
 }
