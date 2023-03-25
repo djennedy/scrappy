@@ -83,8 +83,14 @@ h6 {
   margin-top: 200px;
   box-shadow: 0 5px 5px #00000037;
 }
-.info > div {
+.info > div > div {
   margin: 5px 0;
+}
+
+@media (min-width: 576px) {
+  .info > div {
+    padding: 10px;
+  }
 }
 .info > div > div:first-child {
   padding-right: 50px;
@@ -96,17 +102,31 @@ h6 {
   position: absolute;
   top:300px;
   width: 100%;
-  width: 100%;
-  min-width: 1440px;
-  max-width: 100vw;
+  /* min-width: 1440px;
   width: 100vw;
+  max-width: 100vw; */
   height: 450px;
   object-fit: cover;
 }
+@media (min-width: 576px) {
+  .mountains {
+    min-width: 1440px;
+    width: 100vw;
+    
+    max-width: 100vw;
+  }
+}
+
 @media (max-width: 576px) {
   .sep {
     border-right: none;
   }
+  /* .mountains {
+    height: 500px;
+    width: 100%;
+    
+    
+  } */
   .info > div > div:first-child {
   padding-right: 10px;
 }
