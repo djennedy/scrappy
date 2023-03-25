@@ -15,19 +15,25 @@ export default {
     CourseDetails,
   },
   beforeMount() {
-    this.initData();
+    this.$watch(
+      () => this.$route.params,
+      (toParams, previousParams) => {
+        this.initData(toParams.coursenum);
+      }
+    )
+    this.initData(this.$route.params.coursenum);
   },
   data() {
     return {
-      defaultCourseNumber: "CMPT 120",
+      courseNumber: this.$route.params.coursenum,
       currentCourse: {},
       section: null,
       loading: true,
     };
   },
   methods: {
-    initData() {
-      getCourseInfo(this.defaultCourseNumber)
+    initData(courseNum) {
+      getCourseInfo(courseNum)
         .then((data) => {
           this.currentCourse = data;
         })
