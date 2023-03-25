@@ -16,10 +16,10 @@ let generateCourseNames = async () => {
 
     // Note: Change to STARTING_TERM and STARTING_YEAR later
     let iterateTerm = Terms.Spring;
-    let iterateYear = 2018;
+    let iterateYear = 2023;
     let iterateTermString = iterateTerm.toString();
 
-    while(iterateTerm != endTerm || iterateYear != endYear) {
+    while(true) {
         console.log(iterateTermString + " " + iterateYear);
         let deptList = await getDepartmentListFromTerm(iterateYear, iterateTermString);
         for (let dept of deptList) {
@@ -34,6 +34,11 @@ let generateCourseNames = async () => {
 
         console.log(courseMap);
         console.log(courseMap.size);
+
+        if (iterateTerm == endTerm && iterateYear == endYear) {
+          break;
+        }
+
         iterateTerm = Terms.getNextTerm(iterateTerm);
         iterateTermString = iterateTerm.toString();
         if (iterateTerm == Terms.Spring) {
@@ -41,7 +46,28 @@ let generateCourseNames = async () => {
         }
     }
 
-    for (let [courseNumber, courseName] of courseMap.entries()) {
+    let sortedCourseMap = courseMap;
+
+    sortedCourseMap = new Map([...sortedCourseMap].sort((a, b) => {
+      let [aLetters, aDigits] = parseInput(a[0]);
+      let [bLetters, bDigits] = parseInput(b[0]);
+
+      if (aLetters === bLetters) {
+        return 0;
+      }
+
+      return parseInt(aDigits) - parseInt(bDigits);
+    }));
+
+    sortedCourseMap = new Map([...sortedCourseMap].sort((a, b) => {
+      let [aLetters, aDigits] = parseInput(a[0]);
+      let [bLetters, bDigits] = parseInput(b[0]);
+
+      return String(aLetters).localeCompare(bLetters);
+    }))
+
+
+    for (let [courseNumber, courseName] of sortedCourseMap.entries()) {
         let content = "\"" + courseNumber + " - " + courseName + "\"" + ", \n";
 
         fs.appendFile('./courseNames.txt', content, err => {
@@ -56,6 +82,9 @@ let generateCourseNames = async () => {
 }
 
 //------------------------------------------------------
+// Required modules from commonFunctions.js, termEnum.js, and termInfoFunctions.js
+// Note: Will need to refactor all these functions to be .mjs functions so we can import to this script.
+// Temporary fix is copy and pasting the modules needed below this line.
 
 class Terms {
     static Spring = new Terms('spring');
@@ -234,9 +263,7 @@ class TermInfo {
     // Eg: For CMPT 419, it returns "Affective Programming" instead of "Special Topics in Artificial Intelligence"
     // Eg: For CMPT 120, it returns "Intro to Computer Science and Programming"
     const getCourseName = (courseSectionResult) => {
-      return courseSectionResult["info"]["specialTopic"].length != 0
-        ? courseSectionResult["info"]["specialTopic"]
-        : courseSectionResult["info"]["title"];
+      return courseSectionResult["info"]["title"];
     };
   
     // Helper function to get the first instructor's name from the result
