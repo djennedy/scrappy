@@ -12,8 +12,10 @@ export default {
 </script>
 
 <template>
-  <div
+  <a
     class="box-border w-[207px] min-h-[142px] flex flex-col border-[1px] border-black border-solid rounded-[10px] font-normal"
+    :href="prevSemester.outlineLink"
+    target="_blank"
   >
     <div class="w-[207px] h-[35px] bg-[#616161] flex flex-col rounded-t-[10px]">
       <p
@@ -31,5 +33,5 @@ export default {
         :instructorCampus="instructorCampus"
       />
     </div>
-  </div>
+  </a>
 </template>
