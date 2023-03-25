@@ -1,5 +1,6 @@
 <script>
 import CourseParagraph from "./CourseParagraph.vue";
+import SectionLink from "./SectionLink.vue";
 export default {
   props: {
     currentCourse: Object,
@@ -7,6 +8,7 @@ export default {
   },
   components: {
     CourseParagraph,
+    SectionLink,
   },
   data() {
     return {
@@ -47,6 +49,14 @@ export default {
           :key="section.courseSection"
         >
           <div class="space-y-[35.57px]">
+            <!-- <p>
+              SFU Outline:
+              <a :href="section.outlineLink" target="_blank">{{
+                section.outlineLink
+              }}</a>
+            </p> -->
+            <SectionLink :outlineLink="section.outlineLink" />
+
             <CourseParagraph
               v-if="section.courseDetail"
               header="Course Details"
