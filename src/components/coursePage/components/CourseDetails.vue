@@ -21,7 +21,7 @@ export default {
 </script>
 
 <template>
-  <div class="mt-[24px] space-y-[35.57px]">
+  <div class="space-y-[35.57px] mt-16">
     <CourseParagraph
       header="Calendar Description"
       :rawHtml="currentCourse.calendarDescription || lorem"
@@ -49,12 +49,6 @@ export default {
           :key="section.courseSection"
         >
           <div class="space-y-[35.57px]">
-            <!-- <p>
-              SFU Outline:
-              <a :href="section.outlineLink" target="_blank">{{
-                section.outlineLink
-              }}</a>
-            </p> -->
             <SectionLink :outlineLink="section.outlineLink" />
 
             <CourseParagraph

@@ -1,7 +1,7 @@
 <script>
 import GoBack from "./GoBack.vue";
 import CourseInfoUI from "./CourseInfoUI.vue";
-import SaveCourse from "./SaveCourse.vue";
+// import SaveCourse from "./SaveCourse.vue";
 import NumCredits from "./NumCredits.vue";
 import WQB from "./WQB.vue";
 
@@ -13,7 +13,7 @@ export default {
   components: {
     GoBack,
     CourseInfoUI,
-    SaveCourse,
+    // SaveCourse,
     NumCredits,
     WQB,
   },
