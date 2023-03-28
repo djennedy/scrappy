@@ -19,7 +19,7 @@ export default {
   },
   data() {
     return {
-      defaultCourseNumber: "BUS 217w",
+      defaultCourseNumber: "COGS 100",
       currentCourse: {},
       section: null,
       loading: true,
