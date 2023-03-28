@@ -16,7 +16,7 @@ let generateCourseNames = async () => {
 
     // Note: Change to STARTING_TERM and STARTING_YEAR later
     let iterateTerm = Terms.Spring;
-    let iterateYear = 2023;
+    let iterateYear = 2018;
     let iterateTermString = iterateTerm.toString();
 
     while(true) {
