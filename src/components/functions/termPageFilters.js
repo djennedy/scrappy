@@ -93,6 +93,9 @@ const filterByWqbs = (termInfoList, wqbList) => {
  * @returns {TermInfo[]} List of filtered TermInfo objects
  */
 const filterByCredits = (termInfoList, credits) => {
+    if(credits.length === 0){
+        return termInfoList;
+    }
     return termInfoList.filter(termInfo => termInfo.credits == credits);
 }
 

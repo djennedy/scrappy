@@ -1,6 +1,6 @@
 <template>
   <div
-    class="w-full grid grid-rows-1 grid-cols-9 justify-between border-[1px] border-[#E4E4E4] rounded-[8px] px-4 py-6"
+    class="w-full grid grid-rows-1 grid-cols-9 gap-4 justify-between border-[1px] border-[#E4E4E4] rounded-[8px] px-4 py-6"
   >
     <div
       class="col-span-3 flex flex-row justify-start gap-4 items-center flex-1"
@@ -11,7 +11,6 @@
         @filter-event="setFilter"
       ></FilterButton>
       <FilterButton
-        class="w-28"
         v-bind="filters.level">
         @filter-event="setFilter"
       </FilterButton>
@@ -24,16 +23,17 @@
         @filter-event="setFilter"
       ></FilterButton>
       <FilterButton
-        class="w-28"
         v-bind="filters.campus"
         @filter-event="setFilter"
       ></FilterButton>
       <FilterButton
-        class="w-40"
         v-bind="filters.wqb"
         @filter-event="setFilter"
       ></FilterButton>
-      <p>Credits</p>
+      <FilterButton
+        v-bind="filters.credits"
+        @filter-event="setFilter"
+      ></FilterButton>
     </div>
   </div>
 </template>
