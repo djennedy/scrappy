@@ -11,6 +11,7 @@ export default {
   data() {
     return {
       model: 0,
+      screenWidth: window.innerWidth,
     };
   },
   computed: {
@@ -22,8 +23,20 @@ export default {
       } catch (e) {
         numSlides = 0;
       }
-      for (let i = 0; i < numSlides; i += 6) {
-        slides.push(this.instructorList.slice(i, i + 6));
+      let slidesPerRow;
+
+      if (this.screenWidth < 510) {
+        slidesPerRow = 1;
+      } else if (this.screenWidth < 900 && this.screenWidth >= 510) {
+        slidesPerRow = 2;
+      } else if (this.screenWidth < 1024 && this.screenWidth >= 900) {
+        slidesPerRow = 4;
+      } else {
+        slidesPerRow = 6;
+      }
+
+      for (let i = 0; i < numSlides; i += slidesPerRow) {
+        slides.push(this.instructorList.slice(i, i + slidesPerRow));
       }
       return slides;
     },
@@ -35,11 +48,22 @@ export default {
       }
     },
   },
+  created() {
+    window.addEventListener("resize", this.handleResize);
+  },
+  unmounted() {
+    window.removeEventListener("resize", this.handleResize);
+  },
+  methods: {
+    handleResize() {
+      this.screenWidth = window.innerWidth;
+    },
+  },
 };
 </script>
 <template>
-  <div class="w-[614px]">
-    <div class="flex flex-row items-center justify-between h-[46px] mb-2">
+  <div class="sm:w-[614px]">
+    <div class="flex flex-row items-center justify-between mb-2">
       <p class="font-semibold text-[26px] leading-[32px] text-[#302A40]">
         Course Offerings
       </p>
@@ -77,9 +101,18 @@ export default {
     >
       Unavailable This Semester
     </p>
-    <v-carousel v-else hide-delimiters :show-arrows="false" v-model="model">
+    <v-carousel
+      v-else
+      hide-delimiters
+      :show-arrows="false"
+      v-model="model"
+      height="auto"
+      class="mb-4 sm:mb-0"
+    >
       <v-carousel-item v-for="slide in slides" :key="slide.id">
-        <div class="flex flex-wrap flext-start gap-x-[18px] gap-y-[25px]">
+        <div
+          class="flex flex-row sm:flex-wrap flex-start gap-x-[18px] gap-y-[25px]"
+        >
           <InstructorsCard
             v-for="instructor in slide"
             :key="instructor.courseSection"

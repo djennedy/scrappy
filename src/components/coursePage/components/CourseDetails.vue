@@ -1,5 +1,6 @@
 <script>
 import CourseParagraph from "./CourseParagraph.vue";
+import SectionLink from "./SectionLink.vue";
 export default {
   props: {
     currentCourse: Object,
@@ -7,6 +8,7 @@ export default {
   },
   components: {
     CourseParagraph,
+    SectionLink,
   },
   data() {
     return {
@@ -19,28 +21,16 @@ export default {
 </script>
 
 <template>
-  <div class="mt-[24px] space-y-[35.57px]">
+  <div class="space-y-[35.57px] mt-16">
     <CourseParagraph
-      v-if="loading || currentCourse.calendarDescription === undefined"
       header="Calendar Description"
-      :rawHtml="lorem"
+      :rawHtml="currentCourse.calendarDescription || lorem"
     />
     <CourseParagraph
-      v-else
-      header="Calendar Description"
-      :rawHtml="currentCourse.calendarDescription"
-    />
-    <CourseParagraph
-      v-if="loading || currentCourse.prerequisites === undefined"
       header="Pre-requisites"
-      :rawHtml="lorem"
+      :rawHtml="currentCourse.prerequisites || lorem"
     />
-    <CourseParagraph
-      v-else
-      header="Pre-requisites"
-      :rawHtml="currentCourse.prerequisites"
-    />
-    <div v-if="currentCourse.sectionSpecificInfo !== undefined && !loading">
+    <template v-if="currentCourse.sectionSpecificInfo && !loading">
       <v-tabs v-model="section" color="#D3001F" class="rounded-lg">
         <v-tab
           class="ma-0 pa-0 w-[38px]"
@@ -53,12 +43,14 @@ export default {
         </v-tab>
       </v-tabs>
 
-      <v-window v-model="section" class="h-[750px]">
+      <v-window v-model="section" class="min-h-[750px]">
         <v-window-item
           v-for="section in currentCourse.sectionSpecificInfo"
           :key="section.courseSection"
         >
           <div class="space-y-[35.57px]">
+            <SectionLink :outlineLink="section.outlineLink" />
+
             <CourseParagraph
               v-if="section.courseDetail"
               header="Course Details"
@@ -88,6 +80,6 @@ export default {
           </div>
         </v-window-item>
       </v-window>
-    </div>
+    </template>
   </div>
 </template>

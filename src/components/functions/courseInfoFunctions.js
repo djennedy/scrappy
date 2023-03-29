@@ -1,23 +1,25 @@
-import { Terms } from "./termEnum";
-import { BASE_URL, BASE_OUTLINE_URL, BASE_CALENDAR_URL, parseInput, getWQBDesignation } from "./commonFunctions";
+import { Terms, STARTING_TERM, STARTING_YEAR} from "./termEnum";
+import { BASE_URL, BASE_OUTLINE_URL, BASE_CALENDAR_URL, parseInput, getWQBDesignation, getRegistrationTermString } from "./commonFunctions";
 
 /** Class representing course outline information for course page */
 class CourseInfo {
     /**
      * Create a CourseInfo object
      * @param {string} term Term string of the course. Usually contains the upcoming registration term. Eg: Spring 2023
+     * @param {boolean} isInRegistrationTerm True if in current registration term, false otherwise
      * @param {string} courseNumber Course identifier, eg: CMPT 120
      * @param {string} courseName Name of the course, eg: Introduction to Computer Science and Programming 
      * @param {string} credits Number of credits given for the course, eg: 3
      * @param {string} wqb WQB Designation of the course, eg: Q, B-Sci
      * @param {string} calendarDescription Calendar description of the course, eg: "An elementary introduction to ... "
      * @param {string} prerequisites Prerequisites of the course, eg: BC Math 12 or equivalent is recommended.
-     * @param {SectionSpecificInfo} sectionSpecificInfo // SectionSpecificInfo object which contains Course Detail, Educational Goals (if available), Required Reading, Materials, and Grading. Class definition below
-     * @param {InstructorCardInfo[]} instructorsCards // List of InstructorCardInfo objects which contains Course Section, List of all instructors teaching the course, and List of course times. Class definition below
-     * @param {PreviousSemestersCardInfo[]} previousSemestersCards // List of PreviousSemestersCardInfo objects which contains the Term, List of InstructorCampus objects (to pair instructor to campus), and Link to official outline. Class definition below
+     * @param {SectionSpecificInfo} sectionSpecificInfo SectionSpecificInfo object which contains Course Detail, Educational Goals (if available), Required Reading, Materials, and Grading. Class definition below
+     * @param {InstructorCardInfo[]} instructorsCards List of InstructorCardInfo objects which contains Course Section, List of all instructors teaching the course, and List of course times. Class definition below
+     * @param {PreviousSemestersCardInfo[]} previousSemestersCards List of PreviousSemestersCardInfo objects which contains the Term, List of InstructorCampus objects (to pair instructor to campus), and Link to official outline. Class definition below
      */
     constructor(
         term, // term string, eg: Spring 2023
+        isInRegistrationTerm, // True if in current registration term, false otherwise
         courseNumber, // eg: CMPT 120
         courseName, // eg: Introduction to Computer Science and Programming 
         credits, // eg: 3
@@ -29,6 +31,7 @@ class CourseInfo {
         previousSemestersCards,
     ) {
         this.term = term;
+        this.isInRegistrationTerm = isInRegistrationTerm;
         this.courseNumber = courseNumber;
         this.courseName = courseName;
         this.credits = credits;
@@ -71,6 +74,7 @@ class SectionSpecificInfo {
      * @param {string} materialSupplies Materials and supplies, eg: "<p>For this term you will need access to:"
      * @param {GradingScheme[]} gradingSchemesList List of GradingScheme objects which contains description and weight of grading.
      * @param {string} gradingNotes Grading Notes, must be grouped with the grading scheme in the course page. Eg: "<p class=\"list-heading\">This course uses the ... "
+     * @param {string} outlineLink Link to SFU's official course outline
      */
     constructor(
         courseSection,
@@ -79,7 +83,8 @@ class SectionSpecificInfo {
         requiredReadings,
         materialSupplies,
         gradingSchemesList,
-        gradingNotes
+        gradingNotes,
+        outlineLink
     ) {
         this.courseSection = courseSection;
         this.courseDetail = courseDetail;
@@ -88,6 +93,7 @@ class SectionSpecificInfo {
         this.materialSupplies = materialSupplies;
         this.gradingScehemesList = gradingSchemesList;
         this.gradingNotes = gradingNotes;
+        this.outlineLink = outlineLink;
     }
 }
 /** Class to represent information located in Instructor Card Components */
@@ -199,9 +205,6 @@ const getCourseInfoListFromSections = async (courseSectionJsons, urlString) => {
 }
 
 const getPreviousSemestersInfos = async (currTermString, department, number) => {
-    const STARTING_TERM = Terms.Summer;
-    const STARTING_YEAR = 2014;
-
     let [endTerm, endYear] = parseInput(currTermString);
     let iterateTerm = STARTING_TERM;
     let iterateYear = STARTING_YEAR;
@@ -228,6 +231,28 @@ const getPreviousSemestersInfos = async (currTermString, department, number) => 
     return result;
 }
 
+let getCourseInfoListFromLastOffering = async (year, term, department, number) => {
+    let iterateTerm = Terms.stringToTerm(term);
+    let iterateYear = year;
+
+    while (iterateTerm != STARTING_TERM || iterateYear != STARTING_YEAR) {
+        let urlString = `${BASE_URL}${iterateYear}/${iterateTerm}/${department}/${number}`;
+        iterateTerm = Terms.getPrevTerm(iterateTerm);
+        if (iterateTerm == Terms.Fall) {
+            iterateYear--;
+        }
+        let courseSectionsResponse = await fetch(urlString);
+        if (courseSectionsResponse.status == 404) {
+            continue;
+        } else if(!courseSectionsResponse.ok) {
+            throw new Error("Error: Unable to process request, please try again later.")
+        }
+        let courseSectionJsons = await courseSectionsResponse.json();
+        return getCourseInfoListFromSections(courseSectionJsons, urlString);
+    }
+    throw new Error("Error: Invalid Course Number!")
+}
+
 /**
  * Retrieves information required for the course page.
  * IMPORTANT NOTE: This function cascades errors, please do error handling when calling this function with a .catch block
@@ -236,21 +261,12 @@ const getPreviousSemestersInfos = async (currTermString, department, number) => 
  */
 const getCourseInfo = async (courseString) => {
     let [department, number] = parseInput(courseString);
-    let urlString = `${BASE_URL}registration/registration/${department}/${number}`;
-    let courseSectionJsons = await fetch(urlString)
-        .then(response => {
-            if (response.status == 404) {
-                throw new Error ("Error: Invalid Course Number!")
-            } else if(!response.ok) {
-                throw new Error("Error: Unable to process request, please try again later.")
-            } else {
-                return response.json();          
-            }
-        });
-
-    let courseInfos = await getCourseInfoListFromSections(courseSectionJsons, urlString);
+    let registrationTermString = await getRegistrationTermString();
+    let [registrationTerm, registrationYear] = parseInput(registrationTermString)
+    let courseInfos = await getCourseInfoListFromLastOffering(registrationYear, registrationTerm, department, number);
     
     let term = courseInfos[0]["info"]["term"];
+    let isInRegistrationTerm = term == registrationTermString;
     let courseNumber = courseInfos[0]["info"]["name"].slice(0, -5); // By default, API gives the dept + number + section. Slicing the string removes the section
     let courseName = courseInfos[0]["info"]["title"];
     let credits = courseInfos[0]["info"]["units"];
@@ -265,7 +281,8 @@ const getCourseInfo = async (courseString) => {
         courseInfo.hasOwnProperty("requiredText") ? courseInfo["requiredText"]["details"] : "",
         courseInfo["info"].hasOwnProperty("materials") ? courseInfo["info"]["materials"] : "",
         courseInfo.hasOwnProperty("grades") ? courseInfo["grades"] : [],
-        courseInfo["info"].hasOwnProperty("gradingNotes") ? courseInfo["info"]["gradingNotes"] : ""
+        courseInfo["info"].hasOwnProperty("gradingNotes") ? courseInfo["info"]["gradingNotes"] : "",
+        `${BASE_OUTLINE_URL}${courseInfo["info"]["outlinePath"]}`
         ));
 
     let instructorCards = courseInfos.map(courseInfo => new InstructorCardInfo(
@@ -278,6 +295,7 @@ const getCourseInfo = async (courseString) => {
 
     return new CourseInfo(
         term,
+        isInRegistrationTerm,
         courseNumber,
         courseName,
         credits,
