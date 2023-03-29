@@ -9,15 +9,12 @@ export default {
   data() {
     return {
       search: '',
-      suggestions: coursesList,
+      suggestions: coursesList.sort(),
     };
-  },
-  created() {
-    this.fetchSuggestions();
   },
   computed: {
     filteredSuggestions() {
-      return this.suggestions.filter(suggestion => suggestion.toLowerCase().includes(this.search.toLowerCase()));
+      return this.suggestions.filter(suggestion => suggestion.toLowerCase().includes(this.search.toLowerCase())).splice(0, 10);
     }
   },
   methods: {
@@ -28,12 +25,6 @@ export default {
     selectSuggestion(suggestion) {
       this.search = suggestion;
     },
-    async fetchSuggestions() {
-      // PUT THE DAMN API CALL HERE
-      console.log("this is working");
-      let x = fetch("http://www.sfu.ca/bin/wcm/course-outlines").then(response => response.json());
-      console.log(x)
-    }
   },
 };
 </script>
@@ -92,11 +83,25 @@ input:focus {
 .suggestions {
   position: absolute;
   top: calc(100% + 5px);
-  left: 47px;
-  right: 0;
+  left: 40px;
+  right: 40px;
   background-color: white;
   list-style-type: none;
   padding: 0;
   margin: 0;
 }
+
+.suggestions li {
+  padding-left: 10px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.suggestions li:hover {
+  background-color: #D3001F;
+  color:white;
+}
+
 </style>
