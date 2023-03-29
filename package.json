@@ -10,6 +10,8 @@
   "dependencies": {
     "@headlessui/tailwindcss": "^0.1.1",
     "@headlessui/vue": "^1.7.4",
+    "firebase": "^9.17.1",
+    "firebase-tools": "^11.23.1",
     "iconify-icon": "^1.0.2",
     "vue": "^3.2.41",
     "vue-click-outside-element": "^3.1.2",

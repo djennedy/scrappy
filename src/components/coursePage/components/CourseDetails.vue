@@ -13,8 +13,8 @@ export default {
   data() {
     return {
       section: 0,
-      lorem:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce semper ullamcorper iaculis. Morbi at quam et eros tempor pellentesque. Donec porttitor, leo ut porttitor interdum, tortor ex tincidunt justo, at malesuada felis dolor vitae nulla. Mauris mauris sem, posuere eu sollicitudin a, tempus pulvinar eros. Proin sed ligula eu nunc viverra fermentum sed suscipit urna. Nullam condimentum luctus ligula rhoncus hendrerit. Sed nulla sem, volutpat et finibus ut, scelerisque ac urna. Cras hendrerit a elit non ultricies. Aliquam in eros nisi.",
+      loadingText:
+        "Loading...",
     };
   },
 };
@@ -24,11 +24,11 @@ export default {
   <div class="space-y-[35.57px] mt-16">
     <CourseParagraph
       header="Calendar Description"
-      :rawHtml="currentCourse.calendarDescription || lorem"
+      :rawHtml="loadingText"
     />
     <CourseParagraph
       header="Pre-requisites"
-      :rawHtml="currentCourse.prerequisites || lorem"
+      :rawHtml="loadingText"
     />
     <template v-if="currentCourse.sectionSpecificInfo && !loading">
       <v-tabs v-model="section" color="#D3001F" class="rounded-lg">

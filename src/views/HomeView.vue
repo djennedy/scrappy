@@ -6,10 +6,10 @@ import SearchBar from "../components/SearchBar.vue";
   <main>
     <div class="search-wrapper">
       <h1 class="text-5xl mb-16 font-bold">
-        Search for a <span class="text-sfu-red font-bold">SFU course</span>
+        Search for an <span class="text-sfu-red font-bold">SFU course</span>
       </h1>
       <SearchBar />
-      <a class="mt-6 text-black underline cursor-pointer">Search courses by term</a>
+      <a href="/termpage" class="mt-6 text-black underline cursor-pointer">Search courses by term</a>
     </div>
     <v-container class="info rounded-lg">
       <v-row>
@@ -18,6 +18,9 @@ import SearchBar from "../components/SearchBar.vue";
           <p>
             Scrappy is an information hub for SFU courses to help you make the
             most of your university courses.
+          </p>
+          <p class="text-sm font-bold">
+            Disclaimer: Scrappy is a student-made application and not an official SFU resource.
           </p>
         </v-col>
         <v-col sm="6" cols="12">

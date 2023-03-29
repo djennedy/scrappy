@@ -24,11 +24,12 @@
       <p>{{ credits }}</p>
     </div>
     <div class="col-span-1 flex flex-row justify-end items-center">
-      <button
-        class="p-1.5 border-2 border-blue-500 rounded-[4px] bg-blue-500 text-white font-bold"
-      >
-        Details
-      </button>
+      <a :href="`../coursepage/${courseDept + courseNumber}`">
+        <button class="
+      p-1.5 border-2 border-blue-500 rounded-[4px] bg-blue-500 text-white font-bold">
+          Details
+        </button>
+      </a>
     </div>
   </div>
 </template>
