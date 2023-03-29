@@ -3,6 +3,7 @@
     v-model="chosenParams"
     :label="this.title"
     :items="options"
+    :item-title="isDepartment ? `abbr` : `title`"
     @blur="
       emitFilterParam();
       sortByChosen();
@@ -12,25 +13,14 @@
   >
     <template v-slot:selection></template>
     <template v-slot:item="{ item, props }">
-      <v-list-item v-bind="props" class="">
-        <template v-if="isDepartment" v-slot:title>
-          <v-list-item-title v-if="isDepartment" class="font-black text-xl">{{
-            item.value.abbr
-          }}</v-list-item-title>
-          <v-list-item-title v-else class="font-bold text-xl">{{
-            item.value
-          }}</v-list-item-title>
-        </template>
-        <template v-slot:subtitle>
-          <v-list-item-subtitle
-            v-if="isDepartment"
-            class="font-medium text-xl"
-            >{{ item.value.fullName }}</v-list-item-subtitle
-          >
-        </template>
-        <template v-slot:prepend>
+      <v-list-item
+        v-bind="props"
+        :subtitle="isDepartment ? item.value.fullName : false"
+        class=""
+      >
+        <template v-slot:prepend="{ isActive }">
           <v-list-item-action>
-            <v-checkbox :value="props.value" />
+            <v-checkbox :model-value="isActive" />
           </v-list-item-action>
         </template>
       </v-list-item>
@@ -40,7 +30,7 @@
 
 <script>
 import { VCombobox } from "vuetify/components";
-import { Icon } from "@iconify/vue";
+import { toRaw } from "vue";
 export default {
   name: "FilterButton",
   components: {
@@ -63,15 +53,15 @@ export default {
     };
   },
   methods: {
-    sortByChosen(){
+    sortByChosen() {
       this.params.sort((a, b) => {
         if (this.chosenParams.includes(a)) return -1;
         if (this.chosenParams.includes(b)) return 1;
-        if(!this.isDepartment){
+        if (!this.isDepartment) {
           if (a < b) return -1;
           if (a > b) return 1;
         }
-        if(this.isDepartment){
+        if (this.isDepartment) {
           if (a.abbr < b.abbr) return -1;
           if (a.abbr > b.abbr) return 1;
         }
@@ -82,7 +72,11 @@ export default {
       this.menuTitle = option.label;
     },
     emitFilterParam() {
-      this.$emit("filter-event", this.title.toLowerCase(), this.chosenParams);
+      let param = this.isDepartment
+        ? this.chosenParams.map((param) => toRaw(param))
+        : this.chosenParams;
+      console.log(`Filter emitted:${this.title.toLowerCase()}`, param);
+      this.$emit("filter-event", this.title.toLowerCase(), param);
     },
   },
 };

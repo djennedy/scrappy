@@ -14,7 +14,9 @@
       ></FilterButton>
       <FilterButton
         class="w-28"
-        v-bind="filters.level"></FilterButton>
+        v-bind="filters.level">
+        @filter-event="setFilter"
+      </FilterButton>
     </div>
     <div
       class="col-span-5 flex flex-row justify-center items-center gap-4 flex-1"
@@ -44,7 +46,7 @@ import FilterButton from "./FilterButton.vue";
 export default {
   name: "TermPageOption",
   components: { FilterButton },
-  emits: ["filterTermInfo"],
+  emits: ["setFilter"],
   props: {
     filters: Object,
   },
