@@ -1,14 +1,13 @@
 <script>
-import RequirementNumber from './RequirementNumber.vue';
+import RequirementProgram from './RequirementProgram.vue';
 import RequirementYear from './RequirementYear.vue';
 import RequirementSemester from './RequirementSemester.vue';
 import GoBack from '../../coursePage/components/GoBack.vue';
-import { getAreaOfStudyPage, generateYearArray, semesters, programs } from '../../functions/requirementsFunctions';
 
 export default {
     name: "DegreeRequirements",
     components: {
-        RequirementNumber,
+        RequirementProgram,
         RequirementYear,
         RequirementSemester,
         GoBack
@@ -46,7 +45,7 @@ export default {
         <h2 class="text-sm">Please respond to all boxes</h2>
         <br>
         <p>Choose your program</p>
-        <RequirementNumber number="1." text="Program" class="question" id="number" v-on:search-result="handleProgramResult" />
+        <RequirementProgram number="1." text="Program" class="question" id="number" v-on:search-result="handleProgramResult" />
         <p>Select the year you first enrolled in selected program</p>
         <RequirementYear number="2." text="Enrollment Year" class="question" id="year" v-on:search-result="handleYearResult" />
         <p>Select the term you first enrolled in selected program</p>
