@@ -7,14 +7,15 @@ export default {
         },
         text: {
             type: String,
+        },
+        array: {
+            type: String,
         }
     },
     data() {
         return {
             selected: '',
-            items: [
-
-            ]
+            items: this.array,
         }
     }
 }
@@ -28,10 +29,20 @@ export default {
             </div>
         </div>
         <div class="flex-items">
-            <select class="custom-select">
+            <!-- <select class="custom-select">
                 <option disable selected value="">{{ text }}</option>
                 <option v-for="item in items" :key="item.id" :value="item.name">{{ item.name }}</option>
-            </select>
+            </select> -->
+            <input
+                type="text"
+                class="custom-select"
+                v-model="selected"
+                list="options"
+            />
+            <datalist id="options">
+                <option disable selected value="">{{ text }}</option>
+                <option v-for="item in items" :key="item.id" :value="item.name">{{ item.name }}</option>
+            </datalist>
         </div>
     </div>
 </template>
