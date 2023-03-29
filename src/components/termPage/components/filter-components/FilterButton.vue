@@ -1,53 +1,85 @@
 <template>
-  <Menu as="div" class="relative inline-block text-left">
-    <MenuButton class="border-2 rounded-md p-2 font-medium">
-      {{this.menuTitle}}
-    </MenuButton>
-    <transition enter-active-class="transition ease-out duration-100" enter-from-class="transform opacity-0 scale-95" enter-to-class="transform opacity-100 scale-100" leave-active-class="transition ease-in duration-75" leave-from-class="transform opacity-100 scale-100" leave-to-class="transform opacity-0 scale-95">
-      <MenuItems as="div" class="
-      absolute left-0 z-10 mt-2 w-56 origin-top-right
-      rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-        <div class="flex flex-col">
-            <MenuItem v-for="option in this.options" :key="option.href" v-on:click="optionClicked(option)"
-                      @mouseover="e => e.target.classList.toggle('bg-gray-300')"
-                      @mouseleave="e => e.target.classList.toggle('bg-gray-300')"
-                      class="p-4 transition-colors">
-              <a href="#" v-if="isDepartment"><span class="font-bold">{{option.text}}</span> {{ option.name }}</a>
-              <a href="#" v-else>{{ option.label }}</a>
-            </MenuItem>
-        </div>
-      </MenuItems>
-    </transition>
-  </Menu>
+  <v-combobox
+    v-model="chosenParams"
+    :label="this.title"
+    :items="options"
+    :item-title="isDepartment ? `abbr` : `title`"
+    @blur="
+      emitFilterParam();
+      sortByChosen();
+    "
+    multiple
+    class="w-fit"
+  >
+    <template v-slot:selection></template>
+    <template v-slot:item="{ item, props }">
+      <v-list-item
+        v-bind="props"
+        :subtitle="isDepartment ? item.value.fullName : false"
+        class=""
+      >
+        <template v-slot:prepend="{ isActive }">
+          <v-list-item-action>
+            <v-checkbox :model-value="isActive" />
+          </v-list-item-action>
+        </template>
+      </v-list-item>
+    </template>
+  </v-combobox>
 </template>
 
 <script>
-import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue';
-  export default {
-    name:"FilterButton",
-    components:{Menu, MenuButton, MenuItems, MenuItem},
-    props: {
-      title: String,
-      options: Array,
-      isDepartment: false
+import { VCombobox } from "vuetify/components";
+import { toRaw } from "vue";
+export default {
+  name: "FilterButton",
+  components: {
+    VCombobox,
+  },
+  props: {
+    title: String,
+    options: Array,
+    isDepartment: Boolean,
+  },
+  created() {
+    this.menuTitle = this.title;
+  },
+  data() {
+    return {
+      menuTitle: String,
+      chosenParams: [],
+      params: this.options,
+      query: "",
+    };
+  },
+  methods: {
+    sortByChosen() {
+      this.params.sort((a, b) => {
+        if (this.chosenParams.includes(a)) return -1;
+        if (this.chosenParams.includes(b)) return 1;
+        if (!this.isDepartment) {
+          if (a < b) return -1;
+          if (a > b) return 1;
+        }
+        if (this.isDepartment) {
+          if (a.abbr < b.abbr) return -1;
+          if (a.abbr > b.abbr) return 1;
+        }
+        return 0;
+      });
     },
-    created() {
-      this.menuTitle = this.title;
+    optionClicked(option) {
+      this.menuTitle = option.label;
     },
-    data(){
-      return{
-        menuTitle: String,
-      }
+    emitFilterParam() {
+      let param = this.isDepartment
+        ? this.chosenParams.map((param) => toRaw(param))
+        : this.chosenParams;
+      console.log(`Filter emitted:${this.title.toLowerCase()}`, param);
+      this.$emit("filter-event", this.title.toLowerCase(), param);
     },
-    methods:{
-      optionClicked(option){
-        this.menuTitle = option.label;
-      }
-    }
-  };
-
+  },
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

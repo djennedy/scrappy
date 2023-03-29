@@ -45,10 +45,12 @@ export default {
 </script>
 
 <template>
-  <div class="mb-[150px] max-w-[1280px] p-10 mx-auto padded">
+  <div
+    class="sm:mb-[150px] max-w-[1280px] p-10 mx-auto lg:pt-[100px] pt-[150px]"
+  >
     <CourseHeader :currentCourse="currentCourse" :loading="loading" />
 
-    <div class="flex flex-row mt-[35px]">
+    <div class="flex flex-col sm:flex-row mt-[35px]">
       <InstructorsSection
         :instructorList="currentCourse.instructorsCards"
         :loading="loading"
@@ -63,9 +65,3 @@ export default {
     <CourseDetails :currentCourse="currentCourse" :loading="loading" />
   </div>
 </template>
-
-<style scoped>
-.padded {
-  padding-top: 100px;
-}
-</style>

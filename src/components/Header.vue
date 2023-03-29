@@ -37,7 +37,7 @@ export default {
           <SearchBar v-if="showSearchBar" />
         </v-col>
         <v-col md="2" cols="6" order-md="3" order="2" class="right">
-          <div class="dropdown-btn">
+          <!-- <div class="dropdown-btn">
             <Icon
               icon="material-symbols:account-circle"
               color="rgba(28, 27, 31, 1)"
@@ -47,8 +47,9 @@ export default {
               icon="material-symbols:arrow-drop-down"
               color="rgba(28, 27, 31, 1)"
               width="20"
-            ></Icon></div
-        ></v-col>
+            ></Icon>
+          </div> -->
+        </v-col>
       </v-row>
     </v-container>
     <!-- <div class="header-container">

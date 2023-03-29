@@ -22,13 +22,16 @@ export default {
         <iconify-icon icon="bi:question-circle" />
       </a>
     </div>
-    <p
-      class="font-medium text-[18px] leading-[22px] mt-0"
-      v-for="instructor in instructor.instructorList"
-      :key="instructor"
-    >
-      {{ instructor }}
-    </p>
+    <div v-for="instructor in instructor.instructorList" :key="instructor">
+      <div class="flex flex-col">
+        <p class="font-medium text-[18px] leading-[22px] mt-0">
+          {{ instructor }}
+        </p>
+        <a :href="`https://www.ratemyprofessors.com/search/teachers?sid=1482&query=${instructor}`" class=" font-bold text-[11px] text-[#D3001F] hover:underline">
+          see ratemyprof
+        </a>
+      </div>
+    </div>
     <div class="space-y-4 mt-6">
       <TimeLocation
         v-for="timeLocation in instructor.timeLocationList"

@@ -1,5 +1,6 @@
 <script>
 import { Icon } from '@iconify/vue';
+import { coursesList } from './functions/courses.js';
 export default {
   width: 100,
   components:{
@@ -7,13 +8,22 @@ export default {
   },
   data() {
     return {
-      search: "",
+      search: '',
+      suggestions: coursesList.sort(),
     };
+  },
+  computed: {
+    filteredSuggestions() {
+      return this.suggestions.filter(suggestion => suggestion.toLowerCase().includes(this.search.toLowerCase())).splice(0, 10);
+    }
   },
   methods: {
     searchText() {
       console.log(this.search);
-      this.$router.push({ name: 'coursepage', params: {coursenum: this.search} });
+      this.$router.push({ name: 'coursepage', params: {coursenum: this.search.split("-")[0]} });
+    },
+    selectSuggestion(suggestion) {
+      this.search = suggestion;
     },
   },
 };
@@ -33,6 +43,11 @@ export default {
       @input="$emit('input', search)"
       @keyup.enter="searchText"
     />
+    <ul class="suggestions" v-if="search.length && filteredSuggestions.length">
+        <li v-for="(suggestion, index) in filteredSuggestions" :key="index" @click="selectSuggestion(suggestion)">
+          {{ suggestion }}
+        </li>
+    </ul>
   </div>
 </template>
 
@@ -50,6 +65,7 @@ div.search-bar {
   width: 100%;
   z-index: 1;
 }
+
 input {
   border: none;
   outline: none;
@@ -63,4 +79,29 @@ input:focus {
   border: none;
   outline: none;
 }
+
+.suggestions {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 40px;
+  right: 40px;
+  background-color: white;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.suggestions li {
+  padding-left: 10px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  border-radius: 5px;
+}
+
+.suggestions li:hover {
+  background-color: #D3001F;
+  color:white;
+}
+
 </style>
