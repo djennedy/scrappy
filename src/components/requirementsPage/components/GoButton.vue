@@ -1,5 +1,7 @@
 <script>
 import RequirementsButton from './RequirementsButton.vue'
+import { getAreaOfStudyPage } from '../../functions/requirementsFunctions';
+
 export default {
   components: { RequirementsButton },
   name: 'GoButton',
@@ -7,13 +9,22 @@ export default {
     program: String,
     year: String,
     semester: String,
-  }
+  },
+  methods: {
+    goToPage() {
+      if (this.program !== '' && this.year !== '' && this.semester !== '')
+      {
+        const pageURL = getAreaOfStudyPage(this.year, this.semester, this.program);
+        window.open(pageURL, '_blank');
+      }
+    },
+},
 }
 </script>
 
 <template>
   <div class="flex-container">
-    <RequirementsButton text="Go to your requirements" class="flex-items" />
+    <RequirementsButton text="Go to your requirements" class="flex-items" @click="goToPage" />
     <div class="flex-items">
       <img src="../../../assets/svg/mountains.svg" alt="mountain" id="image" class="mountain">
     </div>

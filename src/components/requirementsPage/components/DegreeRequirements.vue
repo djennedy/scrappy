@@ -28,12 +28,12 @@ export default {
 
         handleYearResult(searchResult) {
             this.yearResult = searchResult;
-            this.$emit('year-result', this.programResult);
+            this.$emit('year-result', this.yearResult);
         },
 
         handleSemesterResult(searchResult) {
             this.semesterResult = searchResult;
-            this.$emit('semester-result', this.programResult);
+            this.$emit('semester-result', this.semesterResult);
         },
     }
 }

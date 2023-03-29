@@ -27,9 +27,9 @@ export function generateYearArray() {
   }
 
 export const semesters = [
-    'fall',
-    'spring',
-    'summer',
+    'Fall',
+    'Spring',
+    'Summer',
 ]
 
 export const programs = [
