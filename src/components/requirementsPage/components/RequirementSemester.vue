@@ -2,7 +2,7 @@
 import { getAreaOfStudyPage, generateYearArray, semesters, programs } from '../../functions/requirementsFunctions';
 
 export default {
-    name: 'RequirementNumber',
+    name: 'RequirementSemester',
     props: {
         number: {
             type: String,
@@ -15,7 +15,7 @@ export default {
     data() {
         return {
             search: '',
-            suggestions: programs,
+            suggestions: semesters,
         }
     },
     computed: {

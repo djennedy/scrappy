@@ -1,13 +1,18 @@
 <script>
-import RequirementNumber from './RequirementNumber.vue'
-import GoBack from '../../coursePage/components/GoBack.vue'
+import RequirementNumber from './RequirementNumber.vue';
+import RequirementYear from './RequirementYear.vue';
+import RequirementSemester from './RequirementSemester.vue';
+import GoBack from '../../coursePage/components/GoBack.vue';
+import { getAreaOfStudyPage, generateYearArray, semesters, programs } from '../../functions/requirementsFunctions';
 
 export default {
     name: "DegreeRequirements",
     components: {
         RequirementNumber,
+        RequirementYear,
+        RequirementSemester,
         GoBack
-    }
+    },
 }
 </script>
 
@@ -18,13 +23,11 @@ export default {
         <h2 class="text-sm">Please respond to all boxes</h2>
         <br>
         <p>Choose your program</p>
-        <RequirementNumber number="1." text="Program" class="question" />
-        <!-- <p>Choose your Major/Minor/Joint Major</p>
-        <RequirementNumber number="2." text="Major/Minor/Joint Major" class="question" /> -->
+        <RequirementNumber number="1." text="Program" class="question" id="number" />
         <p>Select the year you first enrolled in selected program</p>
-        <RequirementNumber number="2." text="Enrollment Year" class="question" />
+        <RequirementYear number="2." text="Enrollment Year" class="question" id="year" />
         <p>Select the term you first enrolled in selected program</p>
-        <RequirementNumber number="3." text="Enrollment Term" class="question" />
+        <RequirementSemester number="3." text="Enrollment Term" class="question" id="semester" />
     </div>
 </template>
 
@@ -32,6 +35,22 @@ export default {
 /* div {
     background-color: teal;
 } */
+
+p {
+    z-index:1;
+}
+
+#number {
+    z-index:4;
+}
+
+#year {
+    z-index:3;
+}
+
+#semester {
+    z-index:2;
+}
 
 h1 {
     margin-bottom: 1.3%;
