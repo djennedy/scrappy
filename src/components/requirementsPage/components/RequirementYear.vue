@@ -33,7 +33,7 @@ export default {
             if (this.suggestions.some((e) => e === newValue)){
                 // Remove the suggestions
                 console.log("remove the suggestion")
-                this.$emit('search-result', newValue);
+             
             }
         }
     }
@@ -67,7 +67,7 @@ export default {
   position: absolute;
   top: calc(100% + 5px);
   left: 20px;
-  right: 20px;
+  right: 10px;
   background-color: white;
   list-style-type: none;
   padding: 0;
@@ -145,10 +145,10 @@ export default {
   height: 33px;
   color: black;
   margin-left: 15px;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  /* background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23333333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 8px center;
-  background-size: 15px auto;
+  background-size: 15px auto; */
 }
 
 </style>
