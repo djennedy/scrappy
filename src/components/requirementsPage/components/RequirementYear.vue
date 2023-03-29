@@ -16,6 +16,7 @@ export default {
         return {
             search: '',
             suggestions: generateYearArray().sort(),
+            isSuggestionsRendered: true,
         }
     },
     computed: {
@@ -30,9 +31,11 @@ export default {
     },
     watch: {
         search(newValue) {
-            if (this.suggestions.some((e) => e === newValue)){
-                console.log("remove the suggestion")
+            if (this.suggestions.some(e => e === newValue)) {
+                this.isSuggestionsRendered = false;
                 this.$emit('search-result', newValue);
+            } else {
+                this.isSuggestionsRendered = true;
             }
         }
     }
@@ -52,7 +55,7 @@ export default {
                 <option v-for="item in items" :key="item.id" :value="item.name">{{ item.name }}</option>
             </select> -->
             <input class="custom-select" v-bind:placeholder="text" @input="$emit('input', search)" @keyup.enter="searchText" v-model="search">
-            <ul class="suggestions" v-if="search.length && filteredSuggestions.length">
+            <ul class="suggestions" v-if="search.length && filteredSuggestions.length && isSuggestionsRendered">
                 <li v-for="(suggestion, index) in filteredSuggestions" :key="index" @click="selectSuggestion(suggestion)">
                     {{ suggestion }}
                 </li>
