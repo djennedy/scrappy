@@ -2,7 +2,12 @@
 import RequirementsButton from './RequirementsButton.vue'
 export default {
   components: { RequirementsButton },
-    name: 'GoButton',
+  name: 'GoButton',
+  props: {
+    program: String,
+    year: String,
+    semester: String,
+  }
 }
 </script>
 

@@ -8,15 +8,33 @@ components: {
     DegreeRequirements, 
     GoButton,
 },
+data() {
+  return {
+    programResult: '',
+    yearResult: '',
+    semesterResult: '',
+  }
+},
+methods: {
+  handleProgramResult(searchResult) {
+      this.programResult = searchResult;
+  },
 
+  handleYearResult(searchResult) {
+      this.yearResult = searchResult;
+  },
+
+  handleSemesterResult(searchResult) {
+      this.semesterResult = searchResult;
+  },
+}
 }
 </script>
 
 <template>
     <div class="flex-container">
-        <DegreeRequirements class="flex-items" />
-        <GoButton class="flex-items" />
-        <!-- <div class="flex-items">temporary text</div> -->
+        <DegreeRequirements class="flex-items" v-on:program-result="handleProgramResult" v-on:year-result="handleYearResult" v-on:semester-result="handleSemesterResult"/>
+        <GoButton class="flex-items" v-bind:program="programResult" v-bind:year="yearResult" v-bind:semester="semesterResult"/>
     </div>
 </template>
 

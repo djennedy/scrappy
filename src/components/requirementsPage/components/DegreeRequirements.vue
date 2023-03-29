@@ -23,15 +23,18 @@ export default {
     methods: {
         handleProgramResult(searchResult) {
             this.programResult = searchResult;
+            this.$emit('program-result', this.programResult);
         },
 
         handleYearResult(searchResult) {
             this.yearResult = searchResult;
+            this.$emit('year-result', this.programResult);
         },
 
         handleSemesterResult(searchResult) {
             this.semesterResult = searchResult;
-        }
+            this.$emit('semester-result', this.programResult);
+        },
     }
 }
 </script>
@@ -52,9 +55,6 @@ export default {
 </template>
 
 <style scoped>
-/* div {
-    background-color: teal;
-} */
 
 p {
     z-index:1;
