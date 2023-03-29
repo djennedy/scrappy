@@ -15,7 +15,7 @@ export default {
     data() {
         return {
             search: '',
-            suggestions: programs,
+            suggestions: programs.sort(),
         }
     },
     computed: {

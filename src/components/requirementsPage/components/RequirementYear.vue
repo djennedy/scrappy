@@ -15,7 +15,7 @@ export default {
     data() {
         return {
             search: '',
-            suggestions: generateYearArray(),
+            suggestions: generateYearArray().sort(),
         }
     },
     computed: {
