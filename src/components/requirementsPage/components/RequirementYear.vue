@@ -27,8 +27,16 @@ export default {
         selectSuggestion(suggestion) {
             this.search = suggestion;
             this.$emit('search-result', suggestion);
-        },
+        }
     },
+    watch: {
+        search(newValue) {
+            if (this.suggestions.some((e) => e === newValue)){
+                // Remove the suggestions
+                console.log("remove the suggestion")
+            }
+        }
+    }
 };
 </script>
 
