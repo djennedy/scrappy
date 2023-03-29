@@ -1,5 +1,6 @@
 <script setup>
 import SearchBar from "../components/SearchBar.vue";
+import { RouterLink } from "vue-router";
 </script>
 
 <template>
@@ -9,7 +10,9 @@ import SearchBar from "../components/SearchBar.vue";
         Search for a <span class="text-sfu-red font-bold">SFU course</span>
       </h1>
       <SearchBar />
-      <a class="mt-6 text-black underline cursor-pointer">Search courses by term</a>
+      <a class="mt-6 text-black underline cursor-pointer"
+        >Search courses by term</a
+      >
     </div>
     <v-container class="info rounded-lg">
       <v-row>
@@ -24,14 +27,18 @@ import SearchBar from "../components/SearchBar.vue";
           <h2 class="text-lg font-bold">
             Don't know your degree requirements?
           </h2>
-          <v-btn
-            variant="outlined"
-            color="red"
-            class="mt-7 degree-button"
-            block
-          >
-            <span class="font-bold text-sm">Find your degree requirements </span>
-          </v-btn>
+          <RouterLink to="/requirements">
+            <v-btn
+              variant="outlined"
+              color="red"
+              class="mt-7 degree-button"
+              block
+            >
+              <span class="font-bold text-sm"
+                >Find your degree requirements
+              </span>
+            </v-btn>
+          </RouterLink>
         </v-col>
       </v-row>
     </v-container>
@@ -50,7 +57,7 @@ main {
   padding-right: 20px;
 }
 .degree-button {
-  overflow:hidden;
+  overflow: hidden;
   text-overflow: ellipsis;
 }
 .sep {
@@ -100,7 +107,7 @@ h6 {
 }
 .mountains {
   position: absolute;
-  top:300px;
+  top: 300px;
   width: 100%;
   /* min-width: 1440px;
   width: 100vw;
@@ -128,10 +135,10 @@ h6 {
     
   } */
   .info > div > div:first-child {
-  padding-right: 10px;
-}
-.info > div > div:last-child {
-  padding-left: 10px;
-}
+    padding-right: 10px;
+  }
+  .info > div > div:last-child {
+    padding-left: 10px;
+  }
 }
 </style>
