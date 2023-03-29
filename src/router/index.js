@@ -31,8 +31,8 @@ const router = createRouter({
       component: CoursePage,
     },
     {
-      path: "/requirementspage",
-      name: "requirementspage",
+      path: "/requirements",
+      name: "requirements",
       component: RequirementsPage,
     },
   ],
