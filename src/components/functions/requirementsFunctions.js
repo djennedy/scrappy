@@ -10,7 +10,7 @@ import { BASE_CALENDAR_URL } from "./commonFunctions";
  */
 export const getAreaOfStudyPage = (year, term, areaOfStudy) => {
     term = term.toLowerCase();
-    areaOfStudy = areaOfStudy.toLowerCase().replace(" ", "-").replace("(", "").replace(")", "").replace(",", "").replace("'", "");
+    areaOfStudy = areaOfStudy.toLowerCase().replaceAll(" ", "-").replaceAll("(", "").replaceAll(")", "-").replaceAll(",", "").replaceAll("'", "-");
     return `${BASE_CALENDAR_URL}/${year}/${term}/areas-of-study/${areaOfStudy}.html`;
 }
 
