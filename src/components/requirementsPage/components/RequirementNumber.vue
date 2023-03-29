@@ -26,6 +26,7 @@ export default {
     methods: {
         selectSuggestion(suggestion) {
             this.search = suggestion;
+            this.$emit('search-result', suggestion);
         },
     },
 };

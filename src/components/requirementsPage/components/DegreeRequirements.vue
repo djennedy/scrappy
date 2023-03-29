@@ -13,6 +13,26 @@ export default {
         RequirementSemester,
         GoBack
     },
+    data() {
+        return {
+            programResult: '',
+            yearResult: '',
+            semesterResult: '',
+        }
+    },
+    methods: {
+        handleProgramResult(searchResult) {
+            this.programResult = searchResult;
+        },
+
+        handleYearResult(searchResult) {
+            this.yearResult = searchResult;
+        },
+
+        handleSemesterResult(searchResult) {
+            this.semesterResult = searchResult;
+        }
+    }
 }
 </script>
 
@@ -23,11 +43,11 @@ export default {
         <h2 class="text-sm">Please respond to all boxes</h2>
         <br>
         <p>Choose your program</p>
-        <RequirementNumber number="1." text="Program" class="question" id="number" />
+        <RequirementNumber number="1." text="Program" class="question" id="number" v-on:search-result="handleProgramResult" />
         <p>Select the year you first enrolled in selected program</p>
-        <RequirementYear number="2." text="Enrollment Year" class="question" id="year" />
+        <RequirementYear number="2." text="Enrollment Year" class="question" id="year" v-on:search-result="handleYearResult" />
         <p>Select the term you first enrolled in selected program</p>
-        <RequirementSemester number="3." text="Enrollment Term" class="question" id="semester" />
+        <RequirementSemester number="3." text="Enrollment Term" class="question" id="semester" v-on:search-result="handleSemesterResult" />
     </div>
 </template>
 
