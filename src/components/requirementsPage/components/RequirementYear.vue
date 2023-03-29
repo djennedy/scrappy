@@ -26,7 +26,6 @@ export default {
     methods: {
         selectSuggestion(suggestion) {
             this.search = suggestion;
-            this.$emit('search-result', suggestion);
         }
     },
     watch: {
@@ -34,6 +33,7 @@ export default {
             if (this.suggestions.some((e) => e === newValue)){
                 // Remove the suggestions
                 console.log("remove the suggestion")
+                this.$emit('search-result', newValue);
             }
         }
     }
