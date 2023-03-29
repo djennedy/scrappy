@@ -12,8 +12,8 @@
       ></FilterButton>
       <FilterButton
         class="w-28"
-        v-bind="filters.level">
-        @filter-event="setFilter"
+        v-bind="filters.level"
+        @filter-event="setFilter">
       </FilterButton>
     </div>
     <div
