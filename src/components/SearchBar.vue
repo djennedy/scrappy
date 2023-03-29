@@ -1,5 +1,6 @@
 <script>
 import { Icon } from '@iconify/vue';
+import { coursesList } from './functions/courses.js';
 export default {
   width: 100,
   components:{
@@ -7,14 +8,32 @@ export default {
   },
   data() {
     return {
-      search: "",
+      search: '',
+      suggestions: coursesList,
     };
+  },
+  created() {
+    this.fetchSuggestions();
+  },
+  computed: {
+    filteredSuggestions() {
+      return this.suggestions.filter(suggestion => suggestion.toLowerCase().includes(this.search.toLowerCase()));
+    }
   },
   methods: {
     searchText() {
       console.log(this.search);
       this.$router.push({ name: 'coursepage', params: {coursenum: this.search} });
     },
+    selectSuggestion(suggestion) {
+      this.search = suggestion;
+    },
+    async fetchSuggestions() {
+      // PUT THE DAMN API CALL HERE
+      console.log("this is working");
+      let x = fetch("http://www.sfu.ca/bin/wcm/course-outlines").then(response => response.json());
+      console.log(x)
+    }
   },
 };
 </script>
@@ -33,6 +52,11 @@ export default {
       @input="$emit('input', search)"
       @keyup.enter="searchText"
     />
+    <ul class="suggestions" v-if="search.length && filteredSuggestions.length">
+        <li v-for="(suggestion, index) in filteredSuggestions" :key="index" @click="selectSuggestion(suggestion)">
+          {{ suggestion }}
+        </li>
+    </ul>
   </div>
 </template>
 
@@ -50,6 +74,7 @@ div.search-bar {
   width: 100%;
   z-index: 1;
 }
+
 input {
   border: none;
   outline: none;
@@ -62,5 +87,16 @@ input {
 input:focus {
   border: none;
   outline: none;
+}
+
+.suggestions {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 47px;
+  right: 0;
+  background-color: white;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 </style>
