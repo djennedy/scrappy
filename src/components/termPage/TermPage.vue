@@ -1,10 +1,10 @@
 <template>
-  <div class="flex flex-col items-center">
+  <div class=" pt-4 flex flex-col items-center">
     <header class="w-full h-[80px]"></header>
     <div class="flex font-bold text-4xl flex-row items-center gap-20">
-      <button>Previous</button>
-      <h3>{{ term }}</h3>
-      <button>Next</button>
+      <button @click="getPrevTerm()">Previous</button>
+      <h3>{{ term.toUpperCase() }}</h3>
+      <button @click="getNextTerm()">Next</button>
     </div>
     <div class="flex flex-col items-center pt-8 gap-2 w-[80%] max-w-[1200px]">
       <TermPageOptions
@@ -53,6 +53,7 @@ import {
 } from "@/components/functions/termPageFilters";
 import FilterButton from "@/components/termPage/components/filter-components/FilterButton.vue";
 import { toRaw } from "vue";
+import { Terms } from "@/components/functions/termEnum";
 
 export default {
   name: "TermPage",
@@ -114,20 +115,21 @@ export default {
      * @returns {[TermInfo]}
      */
     getFilteredCourses: {
-      get(){
+      get() {
         let courses = this.unfilteredCourses;
         Object.values(this.filter).forEach((filter) => {
-          console.log(`Begin loop`,courses);
+          console.log(`Begin loop`, courses);
           if (!filter.params || filter.title.toLowerCase() === "department") {
             return;
           }
           courses = this.getFilter(
             courses,
             filter.title.toLowerCase(),
-            filter.params);
-          console.log(`After filtering through ${filter.title}`,courses);
+            filter.params
+          );
+          console.log(`After filtering through ${filter.title}`, courses);
         });
-        console.log(`After finishing the whole loop`,courses);
+        console.log(`After finishing the whole loop`, courses);
         this.loading.set(false);
         // hack to re-trigger getFilteredCourses refreshing
         return this.loading ? courses : courses;
@@ -142,7 +144,7 @@ export default {
       return this.filter.department.params.map((dept) => dept["abbr"]);
     },
     updateFilter(type, params) {
-      if(this.filter[type].params !== params){
+      if (this.filter[type].params !== params) {
         this.loading.set(true);
       }
       this.filter[type].params = params;
@@ -186,8 +188,41 @@ export default {
         }
       }
     },
+    getPrevTerm() {
+      let term = "".concat(
+        this.term.match(new RegExp("[a-z]", "gmi")).join("")
+      );
+      let year = Number.parseInt(
+        "".concat(this.term.match(new RegExp("[0-9]", "gmi")).join(""))
+      );
+      console.log(term);
+      let prevTerm = Terms.getPrevTerm(Terms.stringToTerm(term));
+      console.log(Terms.getPrevTerm(Terms.stringToTerm(term)));
+      if (prevTerm === Terms.Fall) {
+        year -= 1;
+      }
+      this.term = prevTerm.toString() + " " + year;
+      this.initData();
+      this.clearFilter();
+    },
+    getNextTerm() {
+      let term = "".concat(
+        this.term.match(new RegExp("[a-z]", "gmi")).join("")
+      );
+      let year = Number.parseInt(
+        "".concat(this.term.match(new RegExp("[0-9]", "gmi")).join(""))
+      );
+
+      let nextTerm = Terms.getPrevTerm(Terms.stringToTerm(term));
+      if (nextTerm === Terms.Spring) {
+        year += 1;
+      }
+      this.term = nextTerm.toString() + " " + year;
+      this.initData();
+      this.clearFilter();
+    },
     getDepartment() {
-      getDepartmentName(this.defaultTerm)
+      getDepartmentName(this.term)
         .then((data) => (this.filter.department.options = data))
         .catch((err) => console.log(err));
     },
@@ -242,7 +277,7 @@ export default {
     },
     initData() {
       this.loading.set(true);
-      getTermInfo(this.defaultTerm, this.getDepartmentsAbbr())
+      getTermInfo(this.term, this.getDepartmentsAbbr())
         .then((data) => {
           this.unfilteredCourses = data;
         })

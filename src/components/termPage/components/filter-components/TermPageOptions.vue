@@ -1,6 +1,4 @@
 <template>
-  <!--  Term Page Course Card-->
-  <!--  https://headlessui.com/vue/menu headlessUI Menu documentation-->
   <div
     class="w-full grid grid-rows-1 grid-cols-9 justify-between border-[1px] border-[#E4E4E4] rounded-[8px] px-4 py-6"
   >
