@@ -12,9 +12,6 @@ export default {
       suggestions: coursesList,
     };
   },
-  created() {
-    this.fetchSuggestions();
-  },
   computed: {
     filteredSuggestions() {
       return this.suggestions.filter(suggestion => suggestion.toLowerCase().includes(this.search.toLowerCase()));
@@ -23,16 +20,10 @@ export default {
   methods: {
     searchText() {
       console.log(this.search);
-      this.$router.push({ name: 'coursepage', params: {coursenum: this.search} });
+      this.$router.push({ name: 'coursepage', params: {coursenum: this.search.split("-")[0]} });
     },
     selectSuggestion(suggestion) {
       this.search = suggestion;
-    },
-    async fetchSuggestions() {
-      // PUT THE DAMN API CALL HERE
-      console.log("this is working");
-      let x = fetch("http://www.sfu.ca/bin/wcm/course-outlines").then(response => response.json());
-      console.log(x)
     }
   },
 };
