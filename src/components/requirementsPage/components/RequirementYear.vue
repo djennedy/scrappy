@@ -31,9 +31,8 @@ export default {
     watch: {
         search(newValue) {
             if (this.suggestions.some((e) => e === newValue)){
-                // Remove the suggestions
                 console.log("remove the suggestion")
-             
+                this.$emit('search-result', newValue);
             }
         }
     }
