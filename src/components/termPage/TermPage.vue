@@ -1,5 +1,5 @@
 <template>
-  <div class=" pt-4 flex flex-col items-center">
+  <div class="pt-4 flex flex-col items-center">
     <header class="w-full h-[80px]"></header>
     <div class="flex font-bold text-4xl flex-row items-center gap-20">
       <button @click="getPrevTerm()">Previous</button>
@@ -24,7 +24,7 @@
           @filter-event="updateFilter"
         />
       </div>
-      <p v-else-if="loading.get()">Loading Term Information...</p>
+      <p v-else-if="loading.get()" class="font-bold text-3xl">Loading Term Information...</p>
       <TermPageCard
         v-else-if="!loading.get() && !isDepartmentEmpty"
         class=""
@@ -54,30 +54,33 @@ import {
 import FilterButton from "@/components/termPage/components/filter-components/FilterButton.vue";
 import { toRaw } from "vue";
 import { Terms } from "@/components/functions/termEnum";
+import { getRegistrationTermString } from "../functions/commonFunctions";
 
 export default {
   name: "TermPage",
   components: { FilterButton, TermPageCard, TermPageOptions },
   beforeMount() {
-    this.initData();
+    this.setRegistrationTerm().then(() => {
+      this.initData();
+    });
   },
   data() {
     return {
-      defaultTerm: "Spring 2023",
       updates: 0,
       deptName: [Department],
       loading: {
         value: false,
         get() {
+          console.log(`In get: loading is set to ${this.value}`);
           return this.value;
         },
         set(newVal) {
-          console.log(`Loading is set to ${newVal}`);
           this.value = newVal;
+          console.log("Loading is now " + this.value);
         },
       },
       unfilteredCourses: [TermInfo],
-      term: "Spring 2023",
+      term: "Loading...",
       filter: {
         department: {
           title: "Department",
@@ -130,9 +133,8 @@ export default {
           console.log(`After filtering through ${filter.title}`, courses);
         });
         console.log(`After finishing the whole loop`, courses);
-        this.loading.set(false);
         // hack to re-trigger getFilteredCourses refreshing
-        return this.loading ? courses : courses;
+        return true ? courses : courses;
       },
     },
   },
@@ -144,9 +146,6 @@ export default {
       return this.filter.department.params.map((dept) => dept["abbr"]);
     },
     updateFilter(type, params) {
-      if (this.filter[type].params !== params) {
-        this.loading.set(true);
-      }
       this.filter[type].params = params;
       if (type.toLowerCase() === "department") {
         this.initData();
@@ -172,12 +171,12 @@ export default {
      */
     getFilter(list, type, params) {
       list = toRaw(list);
+      console.log("inGetFilter:", list, params);
       switch (type) {
         case "level": {
           return filterByLevels(list, params);
         }
         case "instructor": {
-          console.log(filterByInstructors(list, params));
           return filterByInstructors(list, params);
         }
         case "campus": {
@@ -213,7 +212,7 @@ export default {
         "".concat(this.term.match(new RegExp("[0-9]", "gmi")).join(""))
       );
 
-      let nextTerm = Terms.getPrevTerm(Terms.stringToTerm(term));
+      let nextTerm = Terms.getNextTerm(Terms.stringToTerm(term));
       if (nextTerm === Terms.Spring) {
         year += 1;
       }
@@ -277,6 +276,7 @@ export default {
     },
     initData() {
       this.loading.set(true);
+      console.log("in init data");
       getTermInfo(this.term, this.getDepartmentsAbbr())
         .then((data) => {
           this.unfilteredCourses = data;
@@ -288,8 +288,13 @@ export default {
           this.getLevels();
           this.getWQB();
           this.getCampus();
-        });
-      this.loading.set(false);
+        })
+        .then(() => {
+          console.log("exiting init data");
+          this.loading.set(false)});
+    },
+    async setRegistrationTerm() {
+      this.term = await getRegistrationTermString();
     },
   },
 };
