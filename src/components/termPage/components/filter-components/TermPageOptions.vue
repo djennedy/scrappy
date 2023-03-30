@@ -11,9 +11,9 @@
         @filter-event="setFilter"
       ></FilterButton>
       <FilterButton
-        v-bind="filters.level">
+        v-bind="filters.level"
         @filter-event="setFilter"
-      </FilterButton>
+      ></FilterButton>
     </div>
     <div
       class="col-span-5 flex flex-row justify-center items-center gap-4 flex-1"

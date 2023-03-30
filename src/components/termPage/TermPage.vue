@@ -1,5 +1,5 @@
 <template>
-  <div class="min-w-[80%]  pt-4 flex flex-col items-center font-['Proxima_Nova']">
+  <div class="min-w-[80%]  pt-4 flex flex-col items-center ">
     <header class="w-full h-[80px]"></header>
     <div class="flex font-bold text-4xl flex-row items-center gap-20">
       <button @click="getPrevTerm()">
@@ -161,10 +161,11 @@ export default {
       return this.filter.department.params.map((dept) => dept["abbr"]);
     },
     updateFilter(type, params) {
+      console.log("hhh")
       if (this.filter[type].params === params) {
+        console.log("same");
         return;
       }
-      this.loading.set(true);
       this.filter[type].params = params;
       if (type.toLowerCase() === "department") {
         let filteredCourses = this.unfilteredCourses.filter((course) =>
@@ -179,6 +180,7 @@ export default {
           this.unfilteredCourses = filteredCourses;
         }
       }
+      this.loading.set(true);
       console.log("updated");
       this.getFilteredCourses.$forceUpdate;
     },
