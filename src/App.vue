@@ -16,7 +16,7 @@ import Header from './components/Header.vue'
 .container {
   max-width: var(--page-width);
   margin: 0 auto;
-  height: 100vh;
+  height: 140vh;
   color: black
 }
 
