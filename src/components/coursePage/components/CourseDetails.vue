@@ -13,10 +13,19 @@ export default {
   data() {
     return {
       section: 0,
-      loadingText:
+      calendarDescriptionText:
         "Loading...",
+      prereqText: "Loading...",
     };
   },
+  watch: {
+    loading(newVal){
+      if (!newVal) {
+        this.calendarDescriptionText = this.currentCourse.calendarDescription;
+        this.prereqText = this.currentCourse.prerequisites;
+      }
+    }
+  }
 };
 </script>
 
@@ -24,11 +33,11 @@ export default {
   <div class="space-y-[35.57px] mt-16">
     <CourseParagraph
       header="Calendar Description"
-      :rawHtml="loadingText"
+      :rawHtml="calendarDescriptionText"
     />
     <CourseParagraph
       header="Pre-requisites"
-      :rawHtml="loadingText"
+      :rawHtml="prereqText"
     />
     <template v-if="currentCourse.sectionSpecificInfo && !loading">
       <v-tabs v-model="section" color="#D3001F" class="rounded-lg">
