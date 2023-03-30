@@ -1,11 +1,11 @@
 <template>
-  <div class="min-w-[80%]  pt-4 flex flex-col items-center font-['Proxima_Nova']">
+  <div class="min-w-[80%]  pt-4 flex flex-col items-center font-['Proxima Nova']">
     <header class="w-full h-[80px]"></header>
     <div class="flex font-bold text-4xl flex-row items-center gap-20">
       <button @click="getPrevTerm()">
         <Icon icon="material-symbols:arrow-left" />
       </button>
-      <h3 class="font-['Proxima_Nova'] font-bold">{{ term.toUpperCase() }}</h3>
+      <h3 class="font-['Proxima Nova'] font-bold">{{ term.toUpperCase() }}</h3>
       <button @click="getNextTerm()">
         <Icon icon="material-symbols:arrow-right" />
       </button>
@@ -166,7 +166,6 @@ export default {
       if (this.filter[type].params === params) {
         return;
       }
-      this.loading.set(true);
       this.filter[type].params = params;
       if (type.toLowerCase() === "department") {
         let filteredCourses = this.unfilteredCourses.filter((course) =>
