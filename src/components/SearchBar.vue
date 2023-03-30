@@ -24,6 +24,8 @@ export default {
     },
     selectSuggestion(suggestion) {
       this.search = suggestion;
+      this.$router.push({ name: 'coursepage', params: {coursenum: this.search.split("-")[0]} });
+      this.search = "";
     },
   },
 };
