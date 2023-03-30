@@ -1,12 +1,16 @@
 <template>
-  <div class=" pt-4 flex flex-col items-center">
+  <div class="min-w-[80%]  pt-4 flex flex-col items-center font-['Proxima_Nova']">
     <header class="w-full h-[80px]"></header>
     <div class="flex font-bold text-4xl flex-row items-center gap-20">
-      <button @click="getPrevTerm()">Previous</button>
-      <h3>{{ term.toUpperCase() }}</h3>
-      <button @click="getNextTerm()">Next</button>
+      <button @click="getPrevTerm()">
+        <Icon icon="material-symbols:arrow-left" />
+      </button>
+      <h3 class="font-['Proxima_Nova'] font-bold">{{ term.toUpperCase() }}</h3>
+      <button @click="getNextTerm()">
+        <Icon icon="material-symbols:arrow-right" />
+      </button>
     </div>
-    <div class="flex flex-col items-center pt-8 gap-2 w-[80%] max-w-[1200px]">
+    <div class="flex flex-col items-center pt-8 gap-2 w-[90%] max-w-[1400px]">
       <TermPageOptions
         class=""
         :filters="filter"
@@ -21,6 +25,7 @@
         <FilterButton
           v-bind="filter.department"
           v-bind:is-department="true"
+          class="w-[160px]"
           @filter-event="updateFilter"
         />
       </div>
@@ -39,6 +44,7 @@
 <script>
 import TermPageCard from "./components/TermPageCard.vue";
 import TermPageOptions from "./components/filter-components/TermPageOptions.vue";
+import { Icon } from "@iconify/vue";
 import {
   Department,
   getDepartmentName,
@@ -47,6 +53,7 @@ import {
 } from "@/components/functions/termInfoFunctions";
 import {
   filterByCampuses,
+  filterByCredits,
   filterByInstructors,
   filterByLevels,
   filterByWqbs,
@@ -57,7 +64,7 @@ import { Terms } from "@/components/functions/termEnum";
 
 export default {
   name: "TermPage",
-  components: { FilterButton, TermPageCard, TermPageOptions },
+  components: { Icon, FilterButton, TermPageCard, TermPageOptions },
   beforeMount() {
     this.initData();
   },
@@ -104,8 +111,16 @@ export default {
           options: [],
           params: [],
         },
+        credits: {
+          title: "Credits",
+          options: [],
+          params: [],
+        },
       },
     };
+  },
+  created() {
+    this.term = "Spring 2023";
   },
   computed: {
     isDepartmentEmpty() {
@@ -118,10 +133,12 @@ export default {
       get() {
         let courses = this.unfilteredCourses;
         Object.values(this.filter).forEach((filter) => {
-          console.log(`Begin loop`, courses);
+          console.log(`Begin loop at`, filter.title);
           if (!filter.params || filter.title.toLowerCase() === "department") {
             return;
           }
+          console.log(` loop not empty:`, filter.title);
+
           courses = this.getFilter(
             courses,
             filter.title.toLowerCase(),
@@ -144,13 +161,23 @@ export default {
       return this.filter.department.params.map((dept) => dept["abbr"]);
     },
     updateFilter(type, params) {
-      if (this.filter[type].params !== params) {
-        this.loading.set(true);
+      if (this.filter[type].params === params) {
+        return;
       }
+      this.loading.set(true);
       this.filter[type].params = params;
       if (type.toLowerCase() === "department") {
-        this.initData();
-        this.clearFilter();
+        let filteredCourses = this.unfilteredCourses.filter((course) =>
+          params.includes(course["courseDept"])
+        );
+        if(!filteredCourses || filteredCourses.length === 0){
+          console.log("no course found. Reloading");
+          this.initData();
+          this.clearFilter();
+        }else {
+          console.log("found. Reloading");
+          this.unfilteredCourses = filteredCourses;
+        }
       }
       console.log("updated");
       this.getFilteredCourses.$forceUpdate;
@@ -177,7 +204,6 @@ export default {
           return filterByLevels(list, params);
         }
         case "instructor": {
-          console.log(filterByInstructors(list, params));
           return filterByInstructors(list, params);
         }
         case "campus": {
@@ -185,6 +211,10 @@ export default {
         }
         case "wqb": {
           return filterByWqbs(list, params);
+        }
+        case "credits": {
+          console.log("Credits:", list, params);
+          return filterByCredits(list, params);
         }
       }
     },
@@ -262,6 +292,19 @@ export default {
         []
       );
     },
+    getCredits: function () {
+      this.filter.credits.options = this.getFilteredCourses.reduce(
+        (accumulator, curr) => {
+          let level = Number.parseInt(curr["credits"]);
+          if (accumulator.includes(level) || !level || isNaN(level)) {
+            return accumulator;
+          }
+          accumulator.push(level);
+          return accumulator;
+        },
+        []
+      );
+    },
     getWQB() {
       this.filter.wqb.options = this.getFilteredCourses.reduce(
         (accum, curr) => {
@@ -283,6 +326,7 @@ export default {
         })
         .catch((err) => console.log(err))
         .then(() => {
+          this.getCredits();
           this.getDepartment();
           this.getInstructorName();
           this.getLevels();

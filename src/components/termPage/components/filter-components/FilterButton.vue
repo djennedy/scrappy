@@ -4,6 +4,8 @@
     :label="this.title"
     :items="options"
     :item-title="isDepartment ? `abbr` : `title`"
+    chips
+    clearable
     @blur="
       emitFilterParam();
       sortByChosen();
@@ -11,12 +13,13 @@
     multiple
     class="w-fit"
   >
-    <template v-slot:selection></template>
+
     <template v-slot:item="{ item, props }">
+
       <v-list-item
         v-bind="props"
         :subtitle="isDepartment ? item.value.fullName : false"
-        class=""
+        class="items-center"
       >
         <template v-slot:prepend="{ isActive }">
           <v-list-item-action>
@@ -53,6 +56,11 @@ export default {
     };
   },
   methods: {
+    randomColor(id) {
+      const r = () => Math.floor(256 * Math.random());
+
+      return this.colorCache[id] || (this.colorCache[id] = `rgb(${r()}, ${r()}, ${r()})`);
+    },
     sortByChosen() {
       this.params.sort((a, b) => {
         if (this.chosenParams.includes(a)) return -1;
