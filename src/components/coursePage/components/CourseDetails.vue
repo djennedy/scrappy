@@ -19,11 +19,9 @@ export default {
     };
   },
   watch: {
-    loading(newVal){
-      if (!newVal) {
-        this.calendarDescriptionText = this.currentCourse.calendarDescription;
-        this.prereqText = this.currentCourse.prerequisites;
-      }
+    currentCourse(newVal){
+        this.calendarDescriptionText = newVal.calendarDescription;
+        this.prereqText = newVal.prerequisites;
     }
   }
 };
