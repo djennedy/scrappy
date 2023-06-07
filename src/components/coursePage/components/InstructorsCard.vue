@@ -27,7 +27,7 @@ export default {
         <p class="font-medium text-[18px] leading-[22px] mt-0">
           {{ instructor }}
         </p>
-        <a :href="`https://www.ratemyprofessors.com/search/teachers?sid=1482&query=${instructor}`" class=" font-bold text-[11px] text-[#D3001F] hover:underline">
+        <a :href="`https://www.ratemyprofessors.com/search/professors/1482?q=${instructor}`" class=" font-bold text-[11px] text-[#D3001F] hover:underline">
           see ratemyprof
         </a>
       </div>
