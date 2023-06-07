@@ -26,9 +26,9 @@ export default {
     <div class="flex flex-row items-center justify-between pt-[19px] pb-[12px]">
       <CourseInfoUI
         v-if="loading || currentCourse.courseNumber === undefined"
-        courseNumber="CMPT 120"
-        term="Spring 2023"
-        courseName="Introduction to Computing Science and Programming I"
+        courseNumber="Loading..."
+        term="Loading..."
+        courseName="Loading..."
       />
       <CourseInfoUI
         v-else

@@ -24,14 +24,20 @@
       <p>{{ credits }}</p>
     </div>
     <div class="col-span-1 flex flex-row justify-end items-center">
-      <button
-        class="p-1.5 border-solid border-2 border-sfu-red rounded-[4px] w-fit bg-transparent text-white font-bold"
-      >
-        <div class="text-sfu-red flex flex-row items-center gap-2 px-4">
-          <p class="text-xl">Details</p>
-          <Icon class="text-2xl" icon="material-symbols:arrow-right-alt-rounded" color="#d3001f"/>
-        </div>
-      </button>
+      <a :href="`../coursepage/${courseDept + courseNumber}`">
+        <button
+          class="p-1.5 border-solid border-2 border-sfu-red rounded-[4px] w-fit bg-transparent text-white font-bold"
+        >
+          <div class="text-sfu-red flex flex-row items-center gap-2 px-4">
+            <p class="text-xl">Details</p>
+            <Icon
+              class="text-2xl"
+              icon="material-symbols:arrow-right-alt-rounded"
+              color="#d3001f"
+            />
+          </div>
+        </button>
+      </a>
     </div>
   </div>
 </template>

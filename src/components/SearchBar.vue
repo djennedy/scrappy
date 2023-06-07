@@ -20,10 +20,12 @@ export default {
   methods: {
     searchText() {
       console.log(this.search);
-      this.$router.push({ name: this.search });
+      this.$router.push({ name: 'coursepage', params: {coursenum: this.search.split("-")[0]} });
     },
     selectSuggestion(suggestion) {
       this.search = suggestion;
+      this.$router.push({ name: 'coursepage', params: {coursenum: this.search.split("-")[0]} });
+      this.search = "";
     },
   },
 };
@@ -31,7 +33,7 @@ export default {
 
 <template>
   <div class="search-bar">
-    <button class="search-btn mr-2">
+    <button @click="searchText" class="search-btn mr-2">
       <Icon icon="material-symbols:search" width="18" color='#ACB5BF'/>
     </button>
 
